@@ -26,14 +26,14 @@ if mainConfig == Light()
     simPars.verbose = false   
     simPars.checkassumption = false 
     simPars.sleeptime = 0 
-    pars.poppars.initialPop = 500
+    pars.poppars.initialPop = 5000
 end
 
 const model = setupModel(pars)
 
 const logfile = setupLogging(simPars,mainConfig)
 
-const demoData = loadDemographyData(pars.datapars)
+const demoData = loadDemographyData(pars.datapars,SEPATH)
 
 const ukDemography = MAModel(model,pars,demoData)
 

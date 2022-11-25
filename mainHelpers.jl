@@ -1,14 +1,16 @@
-addToLoadPath!(".", "$(SOCIO_ECONOMIC_JL_PATH)/src")
+using SocioEconomics: SEPATH, SESRCPATH 
+
+addToLoadPath!(".")
 
 using ArgParse
 
-using LPM.ParamTypes
+using SocioEconomics.ParamTypes
 
 using XAgents
 
-using LPM.Demography.Create
-using LPM.Demography.Initialize
-using LPM.Demography.Simulate
+using SocioEconomics.Demography.Create
+using SocioEconomics.Demography.Initialize
+using SocioEconomics.Demography.Simulate
 
 using Utilities
 
@@ -17,9 +19,9 @@ using Utilities
 # Atiyah: Suggestion: as it is related to ParamTypes, it fits there
 #                     or another module for Data (though currently 
 #                     not that significant amount of code)
-include("$(SOCIO_ECONOMIC_JL_PATH)/src/lpm/demography/demographydata.jl")
+include("$(SESRCPATH)/lpm/demography/demographydata.jl")
 
-include("$(SOCIO_ECONOMIC_JL_PATH)/src/handleParams.jl")
+include("$(SESRCPATH)/handleParams.jl")
 
 include("analysis.jl")
 
@@ -45,7 +47,7 @@ function createDemography!(pars)
     # Atiyah: For more DRY code, you may want to consider calling 
     #         loadDemographyData(datapars) 
     datp = pars.datapars
-    dir = datp.datadir
+    dir = SEPATH * "/" * datp.datadir
 
     ukDemoData   = loadDemographyData(dir * "/" * datp.fertFName, 
                                       dir * "/" * datp.deathFFName,
