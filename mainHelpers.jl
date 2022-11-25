@@ -19,7 +19,7 @@ using Utilities
 # Atiyah: Suggestion: as it is related to ParamTypes, it fits there
 #                     or another module for Data (though currently 
 #                     not that significant amount of code)
-include("$(SESRCPATH)/lpm/demography/demographydata.jl")
+include("$(SESRCPATH)/socioeconomics/demography/demographydata.jl")
 
 include("$(SESRCPATH)/handleParams.jl")
 

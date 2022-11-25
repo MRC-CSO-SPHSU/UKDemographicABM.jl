@@ -12,8 +12,8 @@ using MALPM.Demography.Population: removeDead!
 using MALPM.Demography: DemographyExample, LPMUKDemography, LPMUKDemographyOpt
 using MALPM.Models # no need for explicit listing anything(model) is from there
 import MALPM.Demography: allPeople  
-using LPM
-import LPM.Demography.SimulateNew: doDeaths!#, doBirths!, doDivorces!
+using SocioEconomics
+import SocioEconomics.Demography.SimulateNew: doDeaths!#, doBirths!, doDivorces!
 # export doDeaths!,doBirths!
 
 alivePeople(model,::LPMUKDemography) = allPeople(model)
@@ -46,7 +46,7 @@ function doBirths!(model::AbstractMABM, sim::AbstractABMSimulation, example::Dem
 
     population = model.pop 
 
-    newbabies = LPM.Demography.Simulate.doBirths!(
+    newbabies = SocioEconomics.Demography.Simulate.doBirths!(
                         alivePeople(population,example),
                         currstep(sim),
                         population.data,
@@ -66,7 +66,7 @@ function doDivorces!(model::AbstractMABM, sim::AbstractABMSimulation, example::D
 
     population = model.pop 
 
-    LPM.Demography.Simulate.doDivorces!(
+    SocioEconomics.Demography.Simulate.doDivorces!(
                         #allagents(population),
                         alivePeople(population,example),
                         currstep(sim),

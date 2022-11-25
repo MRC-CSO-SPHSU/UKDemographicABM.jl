@@ -9,8 +9,8 @@ module Models
 using XAgents: Town, PersonHouse, Person, alive  
 using MultiAgents: AbstractMABM, ABM
 
-import LPM.ModelAPI: alivePeople, dataOf # Functions has to be listed explicitly ? 
-import LPM.ParamTypes: populationParameters, allParameters
+import SocioEconomics.ModelAPI: alivePeople, dataOf # Functions has to be listed explicitly ? 
+import SocioEconomics.ParamTypes: populationParameters, allParameters
 import MultiAgents: allagents
 
 export allagents, allPeople, alivePeople, dataOf, houses, towns # TODO is this needed?

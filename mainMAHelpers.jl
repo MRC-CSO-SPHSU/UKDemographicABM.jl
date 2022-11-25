@@ -2,13 +2,13 @@ using Random
 
 include("util.jl")
 addToLoadPath!("../SocioEconomics.jl/src")
+addToLoadPath!("../SocioEconomics.jl/src/multiagents") 
+addToLoadPath!("../MultiAgents.jl")
+addToLoadPath!("./src")
 
 using SocioEconomics: SEVERSION, SEPATH, SESRCPATH 
 
 @assert SEVERSION == v"0.1.0" 
-
-addToLoadPath!("$(SESRCPATH)/multiagents") 
-addToLoadPath!("../MultiAgents.jl")
 
 include("mainHelpers.jl")
 
@@ -17,7 +17,7 @@ initMultiAgents()             # reset agents counter
 @assert MAVERSION == v"0.3.1"   # ensure MultiAgents.jl latest update 
 
 
-using LPM.ParamTypes: seed!
+using SocioEconomics.ParamTypes: seed!
 using MultiAgents: AbstractMABM, ABMSimulationP 
 using MultiAgents: run!
 using MALPM.Models: MAModel
