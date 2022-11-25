@@ -18,5 +18,4 @@ function addToLoadPath!(paths...)
     end
 end
 
-const SOCIO_ECONOMIC_JL_PATH = "../SocioEconomics.jl"
 
