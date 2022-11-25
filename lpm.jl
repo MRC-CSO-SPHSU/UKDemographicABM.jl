@@ -1,5 +1,10 @@
-include("./loadLibsPath.jl")
+include("util.jl")
 
-addToLoadPath!("$(SOCIO_ECONOMIC_JL_PATH)/src/generic")
+addToLoadPath!("../SocioEconomics.jl/src/generic")
+addToLoadPath!("../SocioEconomics.jl/src")
+
+using SocioEconomics: SEVERSION 
+@assert SEVERSION == v"0.1.0" 
 
 include("mainHelpers.jl")
+
