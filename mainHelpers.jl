@@ -1,16 +1,7 @@
-using SocioEconomics: SEPATH, SESRCPATH 
 
 addToLoadPath!(".")
 
 using ArgParse
-
-using SocioEconomics.ParamTypes
-
-using XAgents
-
-using SocioEconomics.Demography.Create
-using SocioEconomics.Demography.Initialize
-using SocioEconomics.Demography.Simulate
 
 using Utilities
 

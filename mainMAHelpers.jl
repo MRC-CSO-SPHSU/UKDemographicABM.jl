@@ -2,13 +2,21 @@ using Random
 
 include("util.jl")
 addToLoadPath!("../SocioEconomics.jl/src")
-addToLoadPath!("../SocioEconomics.jl/src/multiagents") 
+#addToLoadPath!("../SocioEconomics.jl/src/multiagents") 
 addToLoadPath!("../MultiAgents.jl")
 addToLoadPath!("./src")
 
 using SocioEconomics: SEVERSION, SEPATH, SESRCPATH 
 
 @assert SEVERSION == v"0.1.0" 
+
+using SocioEconomics.ParamTypes
+
+using XAgents
+
+using SocioEconomics.Demography.Create
+using SocioEconomics.Demography.Initialize
+using SocioEconomics.Demography.Simulate
 
 include("mainHelpers.jl")
 
