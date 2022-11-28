@@ -1,5 +1,5 @@
 # LPM.jl
-Implementation of the Lone Parents Model based on the SocioEconomics.jl Library 
+Implementation of the Lone Parents Model based on the SocioEconomics.jl Library. The initial code is based on the LoneParentsModel.jl package that was implemented together by Martin Hinsch and Atiyah Elsheikh.  
 
 Releases
 ========
