@@ -8,7 +8,7 @@ addToLoadPath!("./src")
 
 using SocioEconomics: SEVERSION, SEPATH, SESRCPATH 
 
-@assert SEVERSION == v"0.1.0" 
+@assert SEVERSION == v"0.1.1" 
 
 using SocioEconomics.ParamTypes
 
