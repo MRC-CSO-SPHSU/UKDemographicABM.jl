@@ -20,10 +20,8 @@ using SocioEconomics.Demography.Simulate
 
 include("mainHelpers.jl")
 
-using MultiAgents: initMultiAgents, MAVERSION
-initMultiAgents()             # reset agents counter
-@assert MAVERSION == v"0.3.1"   # ensure MultiAgents.jl latest update 
-
+using MultiAgents: initMultiAgents
+initMultiAgents()             # reset agents id counter
 
 using SocioEconomics.ParamTypes: seed!
 using MultiAgents: AbstractMABM, ABMSimulationP 
