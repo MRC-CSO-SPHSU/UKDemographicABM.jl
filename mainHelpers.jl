@@ -1,6 +1,4 @@
 
-addToLoadPath!(".")
-
 using ArgParse
 
 using Utilities

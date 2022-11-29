@@ -1,9 +1,7 @@
 using Random
 
-include("util.jl")
-addToLoadPath!("../SocioEconomics.jl/src")
+include("libspath.jl")
 addToLoadPath!("../MultiAgents.jl")
-addToLoadPath!("./src")
 
 using SocioEconomics: SEVERSION, SEPATH, SESRCPATH 
 

@@ -1,6 +1,4 @@
-include("util.jl")
-
-addToLoadPath!("../SocioEconomics.jl/src")
+include("libspath.jl")
 
 using SocioEconomicsX: SEVERSION 
 using SocioEconomicsX: SEPATH, SESRCPATH 
