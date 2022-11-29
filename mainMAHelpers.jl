@@ -1,21 +1,24 @@
 using Random
 
-include("util.jl")
-addToLoadPath!("../SocioEconomics.jl/src")
-addToLoadPath!("../SocioEconomics.jl/src/multiagents") 
+include("libspath.jl")
 addToLoadPath!("../MultiAgents.jl")
-addToLoadPath!("./src")
 
 using SocioEconomics: SEVERSION, SEPATH, SESRCPATH 
 
-@assert SEVERSION == v"0.1.0" 
+@assert SEVERSION == v"0.1.1" 
+
+using SocioEconomics.ParamTypes
+
+using SocioEconomics.XAgents
+
+using SocioEconomics.Demography.Create
+using SocioEconomics.Demography.Initialize
+using SocioEconomics.Demography.Simulate
 
 include("mainHelpers.jl")
 
-using MultiAgents: initMultiAgents, MAVERSION
-initMultiAgents()             # reset agents counter
-@assert MAVERSION == v"0.3.1"   # ensure MultiAgents.jl latest update 
-
+using MultiAgents: initMultiAgents
+initMultiAgents()             # reset agents id counter
 
 using SocioEconomics.ParamTypes: seed!
 using MultiAgents: AbstractMABM, ABMSimulationP 
