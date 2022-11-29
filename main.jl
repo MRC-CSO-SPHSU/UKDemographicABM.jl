@@ -6,7 +6,7 @@ include("lpm.jl")
 
 # create parameters
 const simPars, pars = loadParameters(ARGS)
-# pars.poppars.initialPop = 500  # Quick ad-hoc adjustment 
+pars.poppars.initialPop = 500  # Quick ad-hoc adjustment 
 
 # Atiyah: for more DRY Code, you may consider using 
 # SocioEconomics.ParamTypes.{seed!,reseed0!} within mainHelpers.jl 
