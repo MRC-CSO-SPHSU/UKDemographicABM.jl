@@ -4,4 +4,5 @@ Implementation of the Lone Parents Model based on the SocioEconomics.jl Library.
 Releases
 ========
 
-**V0.1.0 (28.11.2022)** : The lone parent model (corresponding to LoneParentsModel.jl Version 0.6.1) based on the SocioEconomics.jl package V0.1.0 
+- **V0.1.0 (28.11.2022)** : The lone parent model (corresponding to LoneParentsModel.jl Version 0.6.1) based on the SocioEconomics.jl package V0.1.0 
+   - V0.1.1 (29.11.2022)  : Simplified usage of SocioEconomics Library 
