@@ -2,7 +2,6 @@ using Random
 
 include("util.jl")
 addToLoadPath!("../SocioEconomics.jl/src")
-#addToLoadPath!("../SocioEconomics.jl/src/multiagents") 
 addToLoadPath!("../MultiAgents.jl")
 addToLoadPath!("./src")
 

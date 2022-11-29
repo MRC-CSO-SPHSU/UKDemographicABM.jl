@@ -1,6 +1,5 @@
 include("util.jl")
 
-#addToLoadPath!("../SocioEconomics.jl/src/generic")
 addToLoadPath!("../SocioEconomics.jl/src")
 
 using SocioEconomicsX: SEVERSION 
