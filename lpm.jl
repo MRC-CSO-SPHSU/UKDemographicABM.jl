@@ -7,7 +7,7 @@ using SocioEconomicsX: SEPATH, SESRCPATH
 
 using SocioEconomicsX.ParamTypes
 
-using XAgents
+using SocioEconomicsX.XAgents
 
 using SocioEconomicsX.Demography.Create
 using SocioEconomicsX.Demography.Initialize

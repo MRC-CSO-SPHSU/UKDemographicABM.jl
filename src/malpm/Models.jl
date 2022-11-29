@@ -6,7 +6,7 @@ This module is within the MALPM module
 
 module Models 
 
-using XAgents: Town, PersonHouse, Person, alive  
+using SocioEconomics.XAgents: Town, PersonHouse, Person, alive  
 using MultiAgents: AbstractMABM, ABM
 
 import SocioEconomics.ModelAPI: alivePeople, dataOf # Functions has to be listed explicitly ? 

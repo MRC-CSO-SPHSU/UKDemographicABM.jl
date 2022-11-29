@@ -4,7 +4,7 @@
 
 module Simulate
 
-using XAgents: Person, isFemale, alive, age
+using SocioEconomics.XAgents: Person, isFemale, alive, age
 
 using MultiAgents: ABM, AbstractMABM, AbstractABMSimulation
 using MultiAgents: allagents, add_agent!, currstep, verbose 

@@ -9,7 +9,7 @@ using SocioEconomics: SEVERSION, SEPATH, SESRCPATH
 
 using SocioEconomics.ParamTypes
 
-using XAgents
+using SocioEconomics.XAgents
 
 using SocioEconomics.Demography.Create
 using SocioEconomics.Demography.Initialize

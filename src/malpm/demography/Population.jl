@@ -6,11 +6,11 @@ module Population
 
 using  MultiAgents: ABM, AbstractABMSimulation, AbstractMABM  
 using  MultiAgents: allagents, dt, kill_agent! 
-using  XAgents: Person 
-using  XAgents: alive, agestepAlive! 
+using  SocioEconomics.XAgents: Person 
+using  SocioEconomics.XAgents: alive, agestepAlive! 
 # using  MALPM.Demography: population
 
-import XAgents: agestep!
+import SocioEconomics.XAgents: agestep!
 
 export population_step!, agestepAlivePerson!, removeDead!
 
