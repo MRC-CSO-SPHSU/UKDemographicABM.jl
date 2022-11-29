@@ -26,7 +26,7 @@ if mainConfig == Light()
     simPars.verbose = false   
     simPars.checkassumption = false 
     simPars.sleeptime = 0 
-    pars.poppars.initialPop = 5000
+    pars.poppars.initialPop = 500
 end
 
 const model = setupModel(pars)
