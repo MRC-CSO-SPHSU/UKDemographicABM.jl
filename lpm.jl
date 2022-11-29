@@ -1,10 +1,17 @@
-include("util.jl")
+include("libspath.jl")
 
-addToLoadPath!("../SocioEconomics.jl/src/generic")
-addToLoadPath!("../SocioEconomics.jl/src")
+using SocioEconomicsX: SEVERSION 
+using SocioEconomicsX: SEPATH, SESRCPATH 
 
-using SocioEconomics: SEVERSION 
-@assert SEVERSION == v"0.1.0" 
+@assert SEVERSION == v"0.1.1" 
+
+using SocioEconomicsX.ParamTypes
+
+using SocioEconomicsX.XAgents
+
+using SocioEconomicsX.Demography.Create
+using SocioEconomicsX.Demography.Initialize
+using SocioEconomicsX.Demography.Simulate
 
 include("mainHelpers.jl")
 
