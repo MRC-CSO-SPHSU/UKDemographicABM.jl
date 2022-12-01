@@ -18,7 +18,7 @@ mutable struct Model
     deathMale :: Matrix{Float64}
 end
 
-function createDemography!(pars)
+function createDemography!(datapars, pars)
     ukTowns = createTowns(pars.mappars)
 
     ukHouses = Vector{PersonHouse}()
@@ -29,8 +29,7 @@ function createDemography!(pars)
     
     # temporarily solution , input files and command line arguments 
     #   should be invistigated 
-    datp = DataPars() 
-    ukDemoData   = loadDemographyData(datp)
+    ukDemoData   = loadDemographyData(datapars)
 
     Model(ukTowns, ukHouses, ukPopulation, 
             ukDemoData.fertility , ukDemoData.deathFemale, ukDemoData.deathMale)
@@ -100,8 +99,8 @@ function stepModel!(model, time, simPars, pars)
     append!(model.pop, babies)
 end
 
-function setupModel(pars)
-    model = createDemography!(pars)
+function setupModel(datapars,pars)
+    model = createDemography!(datapars,pars)
 
     initializeDemography!(model, pars.poppars, pars.workpars, pars.mappars)
 

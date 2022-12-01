@@ -16,7 +16,7 @@ const mainConfig = Light()    # no input files, logging or flags (REPL Exec.)
 const lpmExample = LPMUKDemography()    # remove deads
 # lpmExample = LPMUKDemographyOpt()   # don't remove deads 
 
-const simPars, pars = loadParameters(mainConfig) 
+const simPars, dataPars, pars = loadParameters(mainConfig) 
 
 # Most significant simulation and model parameters 
 # The following works only with Light() configuration
@@ -29,11 +29,11 @@ if mainConfig == Light()
     pars.poppars.initialPop = 500
 end
 
-const model = setupModel(pars)
+const model = setupModel(dataPars, pars)
 
 const logfile = setupLogging(simPars,mainConfig)
 
-const demoData = loadDemographyData(pars.datapars,SEPATH)
+const demoData = loadDemographyData(dataPars)
 
 const ukDemography = MAModel(model,pars,demoData)
 
