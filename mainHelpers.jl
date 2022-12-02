@@ -1,5 +1,3 @@
-#using Utilities
-
 include("analysis.jl")
 
 mutable struct Model

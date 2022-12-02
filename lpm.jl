@@ -13,5 +13,7 @@ using SocioEconomicsX.Demography.Create
 using SocioEconomicsX.Demography.Initialize
 using SocioEconomicsX.Demography.Simulate
 
+using SocioEconomicsX.Utilities
+
 include("mainHelpers.jl")
 
