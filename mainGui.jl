@@ -19,10 +19,10 @@ function main(parOverrides...)
     end
 
     # need to do that first, otherwise it blocks the GUI
-    simPars, pars, args = loadParameters(args, 
+    simPars, datapars, pars, args = loadParameters(args, 
         ["--gui-scale"], 
         Dict(:help => "set gui scale", :default => 1.0, :arg_type => Float64))
-    model = setupModel(pars)
+    model = setupModel(datapars, pars)
     logfile = setupLogging(simPars)
 
     scale = args[:gui_scale]

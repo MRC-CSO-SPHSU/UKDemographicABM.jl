@@ -5,7 +5,7 @@ addToLoadPath!("../MultiAgents.jl")
 
 using SocioEconomics: SEVERSION, SEPATH, SESRCPATH 
 
-@assert SEVERSION == v"0.1.1" 
+@assert SEVERSION == v"0.1.2" 
 
 using SocioEconomics.ParamTypes
 
@@ -37,16 +37,17 @@ struct WithInputFiles <: MainSim end   # Input parameter files
 struct Light <: MainSim end            # no input files 
 
 function loadParameters(::WithInputFiles) 
-    simPars, pars = loadParameters(ARGS)
+    simPars, dataPars, pars = loadParameters(ARGS)
     seed!(simPars)
-    simPars, pars 
+    simPars, dataPars, pars 
 end  
 
 function loadParameters(::Light)
     simPars = SimulationPars()
     seed!(simPars)
+    dataPars = DataPars() 
     pars = DemographyPars()
-    simPars, pars 
+    simPars, dataPars, pars 
 end
 
 setupLogging(simPars,::WithInputFiles) = setupLogging(simPars)

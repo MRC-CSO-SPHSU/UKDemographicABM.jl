@@ -5,7 +5,7 @@ using Random
 include("lpm.jl")
 
 # create parameters
-const simPars, pars = loadParameters(ARGS)
+const simPars, dataPars, pars = loadParameters(ARGS)
 pars.poppars.initialPop = 500  # Quick ad-hoc adjustment 
 
 # Atiyah: for more DRY Code, you may consider using 
@@ -14,7 +14,7 @@ pars.poppars.initialPop = 500  # Quick ad-hoc adjustment
 Random.seed!(simPars.seed)
 
 # create model object
-const model = setupModel(pars)
+const model = setupModel(dataPars, pars)
 
 # like this for CSV output:
 # const logfile = setupLogging(simPars, FS=",")
