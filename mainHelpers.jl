@@ -52,6 +52,20 @@ function initializeDemography!(model, poppars, workpars, mappars)
     nothing
 end
 
+"Apply a transition function to an iterator."
+function applyTransition!(people, transition, name, args...)
+    count = 0
+    for p in people 
+        transition(p, args...)
+        count += 1
+    end
+
+    verbose() do 
+        if name != ""
+            println(count, " agents processed in ", name)
+        end
+    end
+end
 
 # Atiyah: remove this for the primative API simulation function
 # alivePeople(model) = Iterators.filter(a->alive(a), model.pop)
