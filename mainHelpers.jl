@@ -11,13 +11,13 @@ mutable struct Model
 end
 
 function createDemography!(datapars, pars)
-    ukTowns = createTowns(pars.mappars)
+    ukTowns = createTowns(pars)
 
     ukHouses = Vector{PersonHouse}()
 
     # maybe switch using parameter
-    #ukPopulation = createPopulation(pars.poppars)
-    ukPopulation = createPyramidPopulation(pars.poppars)
+    #ukPopulation = createPopulation(pars)
+    ukPopulation = createPyramidPopulation(pars)
     
     # temporarily solution , input files and command line arguments 
     #   should be invistigated 
