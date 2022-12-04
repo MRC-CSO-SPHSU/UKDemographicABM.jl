@@ -5,7 +5,7 @@ addToLoadPath!("../MultiAgents.jl")
 
 using SocioEconomics: SEVERSION, SEPATH, SESRCPATH 
 
-@assert SEVERSION == v"0.1.3" 
+@assert SEVERSION == v"0.2.0" 
 
 using SocioEconomics.ParamTypes
 
@@ -21,7 +21,7 @@ using MultiAgents: initMultiAgents
 initMultiAgents()             # reset agents id counter
 
 using SocioEconomics.ParamTypes: seed!
-using MultiAgents: AbstractMABM, ABMSimulationP 
+using MultiAgents: ABMSimulationP 
 using MultiAgents: run!
 using MALPM.Models: MAModel
 using MALPM.Demography: LPMUKDemography, LPMUKDemographyOpt 
