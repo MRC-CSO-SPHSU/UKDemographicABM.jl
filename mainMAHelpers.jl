@@ -11,9 +11,9 @@ using SocioEconomics.ParamTypes
 
 using SocioEconomics.XAgents
 
-using SocioEconomics.Demography.Create
-using SocioEconomics.Demography.Initialize
-using SocioEconomics.Demography.Simulate
+using SocioEconomics.Specification.Create
+using SocioEconomics.Specification.Initialize
+using SocioEconomics.Specification.Simulate
 
 include("mainHelpers.jl")
 
