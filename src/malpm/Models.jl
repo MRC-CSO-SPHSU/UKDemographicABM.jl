@@ -9,7 +9,7 @@ module Models
 using SocioEconomics.XAgents: Town, PersonHouse, Person, alive  
 using MultiAgents: AbstractMABM, ABM
 
-import SocioEconomics.ModelAPI: alivePeople, dataOf # Functions has to be listed explicitly ? 
+import SocioEconomics.API.ModelFunc: alivePeople, dataOf # Functions has to be listed explicitly ? 
 import SocioEconomics.ParamTypes: populationParameters, allParameters
 import MultiAgents: allagents
 

@@ -11,7 +11,7 @@ using  MALPM.Demography.Simulate: doDeaths!#, doBirths!, doDivorces!
 using  MultiAgents: AbstractABMSimulation
 using  MultiAgents: attach_pre_model_step!, attach_post_model_step!, 
                     attach_agent_step!
-using  Utilities: setVerbose!, unsetVerbose!, setDelay!,
+using  SocioEconomics.Utilities: setVerbose!, unsetVerbose!, setDelay!,
                     checkAssumptions!, ignoreAssumptions!
 import MultiAgents: setup!, verbose
 export setup!  
