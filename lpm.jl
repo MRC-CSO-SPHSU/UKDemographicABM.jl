@@ -9,6 +9,7 @@ using SocioEconomicsX.ParamTypes
 
 using SocioEconomicsX.XAgents
 
+using SocioEconomicsX.Demography
 using SocioEconomicsX.Demography.Create
 using SocioEconomicsX.Demography.Initialize
 using SocioEconomicsX.Demography.Simulate
