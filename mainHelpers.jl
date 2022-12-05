@@ -11,13 +11,13 @@ mutable struct Model
 end
 
 function createDemography!(datapars, pars)
-    ukTowns = createTowns(pars.mappars)
+    ukTowns = createTowns(pars)
 
     ukHouses = Vector{PersonHouse}()
 
     # maybe switch using parameter
-    #ukPopulation = createPopulation(pars.poppars)
-    ukPopulation = createPyramidPopulation(pars.poppars)
+    #ukPopulation = createPopulation(pars)
+    ukPopulation = createPyramidPopulation(pars)
     
     # temporarily solution , input files and command line arguments 
     #   should be invistigated 
@@ -27,26 +27,12 @@ function createDemography!(datapars, pars)
             ukDemoData.fertility , ukDemoData.deathFemale, ukDemoData.deathMale)
 end
 
-
-function initialConnectH!(houses, towns, pars)
-    newHouses = initializeHousesInTowns(towns, pars)
-    append!(houses, newHouses)
-end
-
-function initialConnectP!(pop, houses, pars)
-    assignCouplesToHouses!(pop, houses)
-end
-
-
-function initializeDemography!(model, poppars, workpars, mappars)
-    initialConnectH!(model.houses, model.towns, mappars)
-    initialConnectP!(model.pop, model.houses, mappars)
-
-    for person in model.pop
-        initClass!(person, poppars)
-        initWork!(person, workpars)
-    end
-
+function initializeDemography!(model, pars)
+    initialConnect!(model.houses, model.towns, pars)
+    #initialConnect!(model.pop, model.houses, pars) # works too 
+    initialConnect!(model.houses, model.pop, pars)
+    init!(model.pop,pars,InitClassesProcess())
+    init!(model.pop,pars,InitWorkProcess())
     nothing
 end
 
@@ -108,7 +94,7 @@ end
 function setupModel(datapars,pars)
     model = createDemography!(datapars,pars)
 
-    initializeDemography!(model, pars.poppars, pars.workpars, pars.mappars)
+    initializeDemography!(model, pars)
 
     model
 end
