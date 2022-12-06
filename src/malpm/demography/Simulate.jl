@@ -13,7 +13,7 @@ using MALPM.Demography: DemographyExample, LPMUKDemography, LPMUKDemographyOpt
 using MALPM.Models # no need for explicit listing anything(model) is from there
 import MALPM.Demography: allPeople  
 using SocioEconomics
-import SocioEconomics.Specification.SimulateNew: doDeaths!#, doBirths!, doDivorces!
+import SocioEconomics.Specification.SimulateNew: doDeaths!, doBirths! #, doDivorces!
 # export doDeaths!,doBirths!
 
 alivePeople(model,::LPMUKDemography) = allPeople(model)
@@ -41,27 +41,20 @@ function doDeaths!(model::AbstractMABM, sim::AbstractABMSimulation, example::Dem
     nothing 
 end # function doDeaths!
 
-#=
 function doBirths!(model::AbstractMABM, sim::AbstractABMSimulation, example::DemographyExample) 
 
-    population = model.pop 
-
-    newbabies = SocioEconomics.Specification.Simulate.doBirths!(
-                        alivePeople(population,example),
-                        currstep(sim),
-                        population.data,
-                        population.parameters.birthpars) 
+    newbabies = doBirths!(model, currstep(sim)) 
 
     # false ? population.variables[:numBirths] += length(newbabies) : nothing # Temporarily this way till realized 
     
     for baby in newbabies
-        add_agent!(population,baby)
+        add_agent!(model.pop,baby)
     end
 
     nothing 
 end
 
-
+#=
 function doDivorces!(model::AbstractMABM, sim::AbstractABMSimulation, example::DemographyExample) 
 
     population = model.pop 
