@@ -4,16 +4,12 @@
 
 module Simulate
 
-using SocioEconomics.XAgents: Person, isFemale, alive, age
-
-using MultiAgents: ABM, AbstractMABM, AbstractABMSimulation
-using MultiAgents: allagents, add_agent!, currstep, verbose 
+using MultiAgents:  AbstractMABM, AbstractABMSimulation 
+using MultiAgents:  add_agent!, currstep 
 using MALPM.Demography.Population: removeDead!
 using MALPM.Demography: DemographyExample, LPMUKDemography, LPMUKDemographyOpt
-#import MALPM.Models # no need for explicit listing anything(model) is from there
 using SocioEconomics
 import SocioEconomics.Specification.SimulateNew: doDeaths!, doBirths!, doDivorces!
-export doDeaths!, doBirths!, doDivorces!
 
 #alivePeople(model,::LPMUKDemography) = allPeople(model)
 #alivePeople(model,::LPMUKDemographyOpt) = alivePeople(model)

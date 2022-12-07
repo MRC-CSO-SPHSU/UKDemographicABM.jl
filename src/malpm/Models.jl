@@ -9,13 +9,11 @@ module Models
 using SocioEconomics.XAgents: Town, PersonHouse, Person, alive  
 using MultiAgents: AbstractMABM, ABM
 
+import SocioEconomics.API.ParamFunc: populationParameters, birthParameters, divorceParameters, 
+										allParameters
 import SocioEconomics.API.ModelFunc: allPeople, alivePeople, dataOf, houses, towns 
-import SocioEconomics.ParamTypes: populationParameters, birthParameters, divorceParameters, 
-									allParameters
-import MultiAgents: allagents
 
-export allagents, allPeople, alivePeople, dataOf, houses, towns 
-export populationParameters, allParameters, birthParameters, divorceParameters 
+import MultiAgents: allagents
 
 export MAModel 
 
