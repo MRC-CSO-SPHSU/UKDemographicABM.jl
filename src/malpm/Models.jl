@@ -9,12 +9,13 @@ module Models
 using SocioEconomics.XAgents: Town, PersonHouse, Person, alive  
 using MultiAgents: AbstractMABM, ABM
 
-import SocioEconomics.API.ModelFunc: alivePeople, dataOf # Functions has to be listed explicitly ? 
-import SocioEconomics.ParamTypes: populationParameters, allParameters
+import SocioEconomics.API.ModelFunc: allPeople, alivePeople, dataOf, houses, towns 
+import SocioEconomics.ParamTypes: populationParameters, birthParameters, divorceParameters, 
+									allParameters
 import MultiAgents: allagents
 
-export allagents, allPeople, alivePeople, dataOf, houses, towns # TODO is this needed?
-export populationParameters, allParameters
+export allagents, allPeople, alivePeople, dataOf, houses, towns 
+export populationParameters, allParameters, birthParameters, divorceParameters 
 
 export MAModel 
 
@@ -46,5 +47,7 @@ allParameters(model::MAModel) =
     merge(model.pop.parameters, (mappars = model.towns.parameters,))
 
 populationParameters(model::MAModel) = model.pop.parameters.poppars  
+birthParameters(model::MAModel)	 	 = model.pop.parameters.birthpars 
+divorceParameters(model::MAModel)    = model.pop.parameters.divorcepars 
 
 end # module Models 
