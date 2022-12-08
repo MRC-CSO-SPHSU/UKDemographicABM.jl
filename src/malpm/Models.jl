@@ -10,7 +10,7 @@ using SocioEconomics.XAgents: Town, PersonHouse, Person, alive
 using MultiAgents: AbstractMABM, ABM
 
 import SocioEconomics.API.ParamFunc: populationParameters, birthParameters, divorceParameters, 
-										allParameters
+                                        marriageParameters, workParameters, allParameters
 import SocioEconomics.API.ModelFunc: allPeople, alivePeople, dataOf, houses, towns 
 
 import MultiAgents: allagents
@@ -25,8 +25,11 @@ mutable struct MAModel <: AbstractMABM
     function MAModel(model,pars,data) 
         ukTowns  = ABM{Town}(model.towns,parameters = pars.mappars) 
         ukHouses = ABM{PersonHouse}(model.houses)
-        parameters = (poppars = pars.poppars, birthpars = pars.birthpars, 
-                        divorcepars = pars.divorcepars, workpars = pars.workpars)   
+        parameters = (poppars = pars.poppars, 
+                        birthpars = pars.birthpars, 
+                        divorcepars = pars.divorcepars, 
+                        marriagepars = pars.marriagepars,
+                        workpars = pars.workpars)   
         ukPopulation = ABM{Person}(model.pop,parameters=parameters,data=data)
         new(ukTowns,ukHouses,ukPopulation)
     end
@@ -47,5 +50,7 @@ allParameters(model::MAModel) =
 populationParameters(model::MAModel) = model.pop.parameters.poppars  
 birthParameters(model::MAModel)	 	 = model.pop.parameters.birthpars 
 divorceParameters(model::MAModel)    = model.pop.parameters.divorcepars 
+marriageParameters(model::MAModel)   = model.pop.parameters.marriagepars 
+workParameters(model::MAModel)       = model.pop.parameters.workpars 
 
 end # module Models 
