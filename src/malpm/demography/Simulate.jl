@@ -9,7 +9,7 @@ using MultiAgents:  add_agent!, currstep
 using MALPM.Demography.Population: removeDead!
 using MALPM.Demography: DemographyExample, LPMUKDemography, LPMUKDemographyOpt
 using SocioEconomics
-import SocioEconomics.Specification.SimulateNew: doDeaths!, doBirths!, doDivorces!
+import SocioEconomics.Specification.SimulateNew: doDeaths!, doBirths!, doDivorces!, doMarriages!
 
 #alivePeople(model,::LPMUKDemography) = allPeople(model)
 #alivePeople(model,::LPMUKDemographyOpt) = alivePeople(model)
@@ -51,6 +51,14 @@ end
 function doDivorces!(model::AbstractMABM, sim::AbstractABMSimulation, example::DemographyExample) 
 
     doDivorces!(model, currstep(sim)) 
+
+    nothing 
+end
+
+
+function doMarriages!(model::AbstractMABM, sim::AbstractABMSimulation, example::DemographyExample) 
+
+    doMarriages!(model, currstep(sim)) 
 
     nothing 
 end
