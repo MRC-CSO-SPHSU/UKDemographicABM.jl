@@ -10,4 +10,5 @@ Releases
    - V0.1.3 ( 2.12)  : Utilties is a part of the SE* libraries (compatible with SE V0.1.3)  
 - **V0.2.0 (5.12.2022)** : Unified API of CreateX and Initialize functions (compatible with SE V0.2) 
    - V0.2.1 (7.12)   : - (MALPM only) New Simulation Interface for 3 functions, doBirths!, doDeaths!, doDivorces, Improved API for parameter accessory functions, compatible with SE* Version 0.2.1
+   - V0.2.2 (8.12)   : - (MALPM only) doMarriages (SE* V0.2.2)
 
