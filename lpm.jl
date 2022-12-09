@@ -3,7 +3,7 @@ include("libspath.jl")
 using SocioEconomicsX: SEVERSION 
 using SocioEconomicsX: SEPATH, SESRCPATH 
 
-@assert SEVERSION == v"0.2.2" 
+@assert SEVERSION == v"0.2.3" 
 
 using SocioEconomicsX.ParamTypes
 
