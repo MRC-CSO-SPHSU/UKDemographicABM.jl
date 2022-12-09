@@ -6,7 +6,7 @@ using MALPM.Demography.Population: removeDead!,
 
 using  MALPM.Demography: DemographyExample, 
                             LPMUKDemography, LPMUKDemographyOpt
-using  MALPM.Demography.Simulate: doDeaths!, doBirths!, 
+using  MALPM.Demography.Simulate: doDeaths!, doBirths!, doAgeTransitions!,
                                     doDivorces!, doMarriages!, doAssignGuardians!
 
 using  MultiAgents: AbstractABMSimulation
@@ -37,6 +37,7 @@ function setupCommon!(sim::AbstractABMSimulation)
     attach_post_model_step!(sim,doDeaths!)
     attach_post_model_step!(sim,doAssignGuardians!)
     attach_post_model_step!(sim,doBirths!)
+    attach_post_model_step!(sim,doAgeTransitions!)
     attach_post_model_step!(sim,doDivorces!)
     attach_post_model_step!(sim,doMarriages!)
 
@@ -46,7 +47,7 @@ end
 "set up simulation functions where dead people are removed" 
 function setup!(sim::AbstractABMSimulation, example::LPMUKDemography)
     # attach_pre_model_step!(sim,population_step!)
-    attach_agent_step!(sim,agestep!)
+    # attach_agent_step!(sim,agestep!)
     setupCommon!(sim)
 
     nothing 
