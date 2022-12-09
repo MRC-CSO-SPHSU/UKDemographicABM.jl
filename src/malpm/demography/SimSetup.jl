@@ -7,7 +7,7 @@ using MALPM.Demography.Population: removeDead!,
 using  MALPM.Demography: DemographyExample, 
                             LPMUKDemography, LPMUKDemographyOpt
 using  MALPM.Demography.Simulate: doDeaths!, doBirths!, 
-                                    doAgeTransitions!, doWorkTransitions!, 
+                                    doAgeTransitions!, doWorkTransitions!, doSocialTransitions!, 
                                     doDivorces!, doMarriages!, doAssignGuardians!
 
 using  MultiAgents: AbstractABMSimulation
@@ -40,6 +40,7 @@ function setupCommon!(sim::AbstractABMSimulation)
     attach_post_model_step!(sim,doBirths!)
     attach_post_model_step!(sim,doAgeTransitions!)
     attach_post_model_step!(sim,doWorkTransitions!)
+    attach_post_model_step!(sim,doSocialTransitions!)
     attach_post_model_step!(sim,doDivorces!)
     attach_post_model_step!(sim,doMarriages!)
 

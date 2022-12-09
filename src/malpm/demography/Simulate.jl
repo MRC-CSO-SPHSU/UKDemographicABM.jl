@@ -10,8 +10,8 @@ using MALPM.Demography.Population: removeDead!
 using MALPM.Demography: DemographyExample, LPMUKDemography, LPMUKDemographyOpt
 using SocioEconomics
 import SocioEconomics.Specification.SimulateNew: doDeaths!, doBirths!, 
-                                                    doAgeTransitions!, doWorkTransitions!, 
-                                                    doDivorces!, doMarriages!, doAssignGuardians!
+                        doAgeTransitions!, doWorkTransitions!, doSocialTransitions!,  
+                        doDivorces!, doMarriages!, doAssignGuardians!
 
 #alivePeople(model,::LPMUKDemography) = allPeople(model)
 #alivePeople(model,::LPMUKDemographyOpt) = alivePeople(model)
@@ -87,6 +87,14 @@ function doWorkTransitions!(model::AbstractMABM, sim::AbstractABMSimulation, exa
 
     nothing 
 end
+
+function doSocialTransitions!(model::AbstractMABM, sim::AbstractABMSimulation, example::DemographyExample) 
+
+    doSocialTransitions!(model, currstep(sim)) 
+
+    nothing 
+end
+
 
 
 
