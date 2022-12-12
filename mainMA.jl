@@ -13,8 +13,8 @@ include("mainMAHelpers.jl")
 const mainConfig = Light()    # no input files, logging or flags (REPL Exec.) 
 # mainConfig = WithInputFiles()
 
-const lpmExample = LPMUKDemography()    # remove deads
-# lpmExample = LPMUKDemographyOpt()   # don't remove deads 
+# lpmExample = LPMUKDemography()    # remove deads
+lpmExample = LPMUKDemographyOpt()   # don't remove deads 
 
 const simPars, dataPars, pars = loadParameters(mainConfig) 
 
