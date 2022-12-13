@@ -5,7 +5,8 @@ Population module providing help utilities for realizing a population as an ABM
 module Population 
 
 using  MultiAgents: ABM, AbstractABMSimulation, AbstractMABM  
-using  MultiAgents: allagents, dt, kill_agent! 
+using  MultiAgents: allagents, dt, kill_agent!, kill_agent_opt!,
+                        kill_agent_at!, kill_agent_at_opt!
 using  SocioEconomics.XAgents: Person 
 using  SocioEconomics.XAgents: alive, agestepAlive! 
 # using  MALPM.Demography: population
@@ -33,9 +34,13 @@ population_step!(model::AbstractMABM,
 
 "remove dead persons" 
 function removeDead!(person::PersonType, population::ABM{PersonType}) where {PersonType} 
-    if !alive(person) 
-        kill_agent!(person, population) 
-    end 
+    @assert alive(person)
+    kill_agent_opt!(person, population) 
+    nothing 
+end
+
+function removeDead!(idx::Int, population::ABM{PersonType}) where {PersonType} 
+    kill_agent_at_opt!(idx, population)  
     nothing 
 end
 

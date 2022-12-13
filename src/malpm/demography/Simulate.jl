@@ -17,8 +17,12 @@ import SocioEconomics.Specification.SimulateNew: doDeaths!, doBirths!,
 #alivePeople(model,::LPMUKDemographyOpt) = alivePeople(model)
        
 
+"""
+dead people could be indicies in the population and in such a 
+    case it is assumed that these indices are ordered
+"""
 function removeDeads!(deadpeople,pop,::LPMUKDemography)    
-    for deadperson in deadpeople
+    for deadperson in Iterators.reverse(deadpeople)
         removeDead!(deadperson,pop)
     end
     
@@ -29,10 +33,16 @@ removeDeads!(deadpeople,pop,::LPMUKDemographyOpt) = nothing
 
 function doDeaths!(model::AbstractMABM, sim::AbstractABMSimulation, example::DemographyExample) # argument simulation or simulation properties ? 
 
-    (deadpeople) = doDeaths!(model,currstep(sim))
+    #(deadpeople, deadsind) = doDeaths!(model,currstep(sim))
+    (; deadsind) = doDeaths!(model,currstep(sim))
     
+    #len = length(model.pop.agentsList)
+    #@info deadsind len 
+
     # ToDo separate step? 
-    removeDeads!(deadpeople,model.pop,example)
+    # removeDeads!(deads,model.pop,example)
+    removeDeads!(deadsind,model.pop,example)
+
     nothing 
 end # function doDeaths!
 
