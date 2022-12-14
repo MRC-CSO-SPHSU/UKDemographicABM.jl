@@ -4,7 +4,7 @@
 
 module Simulate
 
-using MultiAgents:  AbstractMABM, AbstractABMSimulation 
+using MultiAgents:  AbstractMABM, AbstractABMSimulator
 using MultiAgents:  add_agent!, currstep 
 using MALPM.Demography.Population: removeDead!
 using MALPM.Demography: DemographyExample, LPMUKDemography, LPMUKDemographyOpt
@@ -12,11 +12,7 @@ using SocioEconomics
 import SocioEconomics.Specification.SimulateNew: doDeaths!, doBirths!, 
                         doAgeTransitions!, doWorkTransitions!, doSocialTransitions!,  
                         doDivorces!, doMarriages!, doAssignGuardians!
-
-#alivePeople(model,::LPMUKDemography) = allPeople(model)
-#alivePeople(model,::LPMUKDemographyOpt) = alivePeople(model)
        
-
 """
 dead people could be indicies in the population and in such a 
     case it is assumed that these indices are ordered
@@ -31,8 +27,7 @@ end
 
 removeDeads!(deadpeople,pop,::LPMUKDemographyOpt) = nothing 
 
-function doDeaths!(model::AbstractMABM, sim::AbstractABMSimulation, example::DemographyExample) # argument simulation or simulation properties ? 
-
+function doDeaths!(model::AbstractMABM, sim::AbstractABMSimulator, example::DemographyExample) 
     #(deadpeople, deadsind) = doDeaths!(model,currstep(sim))
     (; deadsind) = doDeaths!(model,currstep(sim))
     
@@ -46,7 +41,7 @@ function doDeaths!(model::AbstractMABM, sim::AbstractABMSimulation, example::Dem
     nothing 
 end # function doDeaths!
 
-function doBirths!(model::AbstractMABM, sim::AbstractABMSimulation, example::DemographyExample) 
+function doBirths!(model::AbstractMABM, sim::AbstractABMSimulator, example::DemographyExample) 
 
     newbabies = doBirths!(model, currstep(sim)) 
 
@@ -60,7 +55,7 @@ function doBirths!(model::AbstractMABM, sim::AbstractABMSimulation, example::Dem
 end
 
 
-function doDivorces!(model::AbstractMABM, sim::AbstractABMSimulation, example::DemographyExample) 
+function doDivorces!(model::AbstractMABM, sim::AbstractABMSimulator, example::DemographyExample) 
 
     doDivorces!(model, currstep(sim)) 
 
@@ -68,7 +63,7 @@ function doDivorces!(model::AbstractMABM, sim::AbstractABMSimulation, example::D
 end
 
 
-function doMarriages!(model::AbstractMABM, sim::AbstractABMSimulation, example::DemographyExample) 
+function doMarriages!(model::AbstractMABM, sim::AbstractABMSimulator, example::DemographyExample) 
 
     doMarriages!(model, currstep(sim)) 
 
@@ -76,7 +71,7 @@ function doMarriages!(model::AbstractMABM, sim::AbstractABMSimulation, example::
 end
 
 
-function doAssignGuardians!(model::AbstractMABM, sim::AbstractABMSimulation, example::DemographyExample) 
+function doAssignGuardians!(model::AbstractMABM, sim::AbstractABMSimulator, example::DemographyExample) 
 
     doAssignGuardians!(model, currstep(sim)) 
 
@@ -84,21 +79,21 @@ function doAssignGuardians!(model::AbstractMABM, sim::AbstractABMSimulation, exa
 end
 
 
-function doAgeTransitions!(model::AbstractMABM, sim::AbstractABMSimulation, example::DemographyExample) 
+function doAgeTransitions!(model::AbstractMABM, sim::AbstractABMSimulator, example::DemographyExample) 
 
     doAgeTransitions!(model, currstep(sim)) 
 
     nothing 
 end
 
-function doWorkTransitions!(model::AbstractMABM, sim::AbstractABMSimulation, example::DemographyExample) 
+function doWorkTransitions!(model::AbstractMABM, sim::AbstractABMSimulator, example::DemographyExample) 
 
     doWorkTransitions!(model, currstep(sim)) 
 
     nothing 
 end
 
-function doSocialTransitions!(model::AbstractMABM, sim::AbstractABMSimulation, example::DemographyExample) 
+function doSocialTransitions!(model::AbstractMABM, sim::AbstractABMSimulator, example::DemographyExample) 
 
     doSocialTransitions!(model, currstep(sim)) 
 
