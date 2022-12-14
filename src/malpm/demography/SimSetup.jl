@@ -10,7 +10,7 @@ using  MALPM.Demography.Simulate: doDeaths!, doBirths!,
                                     doAgeTransitions!, doWorkTransitions!, doSocialTransitions!, 
                                     doDivorces!, doMarriages!, doAssignGuardians!
 
-using  MultiAgents: AbstractABMSimulation
+using  MultiAgents: AbstractABMSimulator
 using  MultiAgents: attach_pre_model_step!, attach_post_model_step!, 
                     attach_agent_step!
 using  SocioEconomics.Utilities: setVerbose!, unsetVerbose!, setDelay!,
@@ -21,14 +21,14 @@ export setup!
 """
 set simulation paramters @return dictionary of symbols to values
 
-All information needed by the generic Simulations.run! function
+All information needed by the generic Simulators.run! function
 is provided here
 
 @return dictionary of required simulation parameters 
 """
 
 
-function setupCommon!(sim::AbstractABMSimulation) 
+function setupCommon!(sim::AbstractABMSimulator) 
 
     verbose(sim) ? setVerbose!() : unsetVerbose!()
     setDelay!(sim.parameters.sleeptime)
@@ -47,7 +47,7 @@ function setupCommon!(sim::AbstractABMSimulation)
 end 
 
 "set up simulation functions where dead people are removed" 
-function setup!(sim::AbstractABMSimulation, example::LPMUKDemography)
+function setup!(sim::AbstractABMSimulator, example::LPMUKDemography)
     # attach_pre_model_step!(sim,population_step!)
     #attach_agent_step!(sim,agestep!)
     setupCommon!(sim)
@@ -56,7 +56,7 @@ function setup!(sim::AbstractABMSimulation, example::LPMUKDemography)
 end
 
 
-function setup!(sim::AbstractABMSimulation,example::LPMUKDemographyOpt) 
+function setup!(sim::AbstractABMSimulator,example::LPMUKDemographyOpt) 
 
     #attach_agent_step!(sim,agestepAlivePerson!)
     setupCommon!(sim)
