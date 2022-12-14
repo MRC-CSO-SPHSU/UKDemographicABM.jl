@@ -11,12 +11,5 @@ Releases
 - **V0.2.0 (5.12.2022)** : Unified API of CreateX and Initialize functions (compatible with SE V0.2) 
    - V0.2.1 (7.12)   : - (MALPM only) New Simulation Interface for 3 functions, doBirths!, doDeaths!, doDivorces, Improved API for parameter accessory functions, compatible with SE* Version 0.2.1
    - V0.2.2 (8.12)   : - (MALPM only) doMarriages (SE* V0.2.2)
-<<<<<<< HEAD
-<<<<<<< HEAD
-   
-=======
-=======
    - V0.2.3 (9.12)   : - (MALPM only) adoptions, workTransitions, socialTransitions, ageTransitions (SE* V0.2.3)  
->>>>>>> 2960019 (V0.2.3)
-
->>>>>>> 690e5c6 (Version 0.2.2)
+   - V0.2.4 (14.12)  : - (MALPM only) adjusting to SimpleABM types of MA Version 0.4, improved model data structure 
