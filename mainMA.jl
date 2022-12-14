@@ -10,6 +10,11 @@ from REPL execute it using
 
 include("mainMAHelpers.jl")
 
+using MultiAgents: ABMSimulatorP
+using MultiAgents: run!, setup! 
+using MALPM.Models: MAModel
+using MALPM.Demography: LPMUKDemography, LPMUKDemographyOpt 
+
 const mainConfig = Light()    # no input files, logging or flags (REPL Exec.) 
 # mainConfig = WithInputFiles()
 
@@ -38,7 +43,7 @@ const demoData = loadDemographyData(dataPars)
 const ukDemography = MAModel(model,pars,demoData)
 
 const lpmDemographySim = 
-    ABMSimulationP{typeof(simPars)}(simPars,setupEnabled = false)
+    ABMSimulatorP{typeof(simPars)}(simPars,setupEnabled = false)
     
 setup!(lpmDemographySim,lpmExample) 
  

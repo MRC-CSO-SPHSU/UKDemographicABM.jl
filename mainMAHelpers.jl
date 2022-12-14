@@ -21,17 +21,11 @@ using MultiAgents: init_majl
 init_majl()             # reset agents id counter
 
 using SocioEconomics.ParamTypes: seed!
-using MultiAgents: ABMSimulationP 
-using MultiAgents: run!
-using MALPM.Models: MAModel
-using MALPM.Demography: LPMUKDemography, LPMUKDemographyOpt 
-using MALPM.Demography.SimSetup: setup! 
 
 """
 How simulations is to be executed: 
 - with or without input files, arguments and logging 
 """ 
-
 abstract type MainSim end 
 struct WithInputFiles <: MainSim end   # Input parameter files 
 struct Light <: MainSim end            # no input files 
