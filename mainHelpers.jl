@@ -114,12 +114,12 @@ end
 
 
 function runModel!(model, simPars, pars, logfile = nothing; FS = "\t")
-    time = simPars.startTime
+    time = simPars.starttime
 
     simPars.verbose ? setVerbose!() : unsetVerbose!()
     setDelay!(simPars.sleeptime)
 
-    while time < simPars.finishTime
+    while time < simPars.finishtime
         stepModel!(model, time, simPars, pars)
 
         if logfile != nothing

@@ -17,8 +17,8 @@ using SocioEconomics.Specification.Simulate
 
 include("mainHelpers.jl")
 
-using MultiAgents: initMultiAgents
-initMultiAgents()             # reset agents id counter
+using MultiAgents: init_majl
+init_majl()             # reset agents id counter
 
 using SocioEconomics.ParamTypes: seed!
 using MultiAgents: ABMSimulationP 
