@@ -7,7 +7,8 @@ This module is within the MALPM module
 module Models 
 
 using SocioEconomics.XAgents: Town, PersonHouse, Person, alive  
-using MultiAgents: AbstractMABM, ABM
+using SocioEconomics.ParamTypes: DemographyPars, MapPars, DemographyData 
+using MultiAgents: AbstractMABM, SimpleABM  
 
 import SocioEconomics.API.ParamFunc: populationParameters, birthParameters, divorceParameters, 
                                         marriageParameters, workParameters, allParameters
@@ -18,20 +19,17 @@ import MultiAgents: allagents
 export MAModel 
 
 mutable struct MAModel <: AbstractMABM 
-    towns  :: ABM{Town} 
-    houses :: ABM{PersonHouse}
-    pop    :: ABM{Person}
+    towns  :: SimpleABM{Town} 
+    houses :: SimpleABM{PersonHouse}
+    pop    :: SimpleABM{Person}
+    parameters :: DemographyPars
+    data       :: DemographyData
 
     function MAModel(model,pars,data) 
-        ukTowns  = ABM{Town}(model.towns,parameters = pars.mappars) 
-        ukHouses = ABM{PersonHouse}(model.houses)
-        parameters = (poppars = pars.poppars, 
-                        birthpars = pars.birthpars, 
-                        divorcepars = pars.divorcepars, 
-                        marriagepars = pars.marriagepars,
-                        workpars = pars.workpars)   
-        ukPopulation = ABM{Person}(model.pop,parameters=parameters,data=data)
-        new(ukTowns,ukHouses,ukPopulation)
+        ukTowns  = SimpleABM{Town}(model.towns) 
+        ukHouses = SimpleABM{PersonHouse}(model.houses)
+        ukPopulation = SimpleABM{Person}(model.pop)
+        new(ukTowns,ukHouses,ukPopulation,pars,data)
     end
 end
 
@@ -42,15 +40,15 @@ alivePeople(model::MAModel) =
     # Iterators.filter(person->alive(person),people) # Iterators did not show significant value sofar
 houses(model::MAModel) = allagents(model.houses)
 towns(model::MAModel) = allagents(model.towns) 
-dataOf(model) = model.pop.data
+#dataOf(model) = model.pop.data
+dataOf(model) = model.data
 
-allParameters(model::MAModel) = 
-    merge(model.pop.parameters, (mappars = model.towns.parameters,))
 
-populationParameters(model::MAModel) = model.pop.parameters.poppars  
-birthParameters(model::MAModel)	 	 = model.pop.parameters.birthpars 
-divorceParameters(model::MAModel)    = model.pop.parameters.divorcepars 
-marriageParameters(model::MAModel)   = model.pop.parameters.marriagepars 
-workParameters(model::MAModel)       = model.pop.parameters.workpars 
+allParameters(model::MAModel) = model.parameters 
+populationParameters(model::MAModel) = model.parameters.poppars  
+birthParameters(model::MAModel)	 	 = model.parameters.birthpars 
+divorceParameters(model::MAModel)    = model.parameters.divorcepars 
+marriageParameters(model::MAModel)   = model.parameters.marriagepars 
+workParameters(model::MAModel)       = model.parameters.workpars 
 
 end # module Models 
