@@ -18,7 +18,7 @@ import MultiAgents: allagents
 
 export MAModel 
 
-mutable struct MAModel <: AbstractMABM 
+struct MAModel <: AbstractMABM 
     towns  :: SimpleABM{Town} 
     houses :: SimpleABM{PersonHouse}
     pop    :: SimpleABM{Person}
