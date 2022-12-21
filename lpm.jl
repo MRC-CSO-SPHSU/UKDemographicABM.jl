@@ -16,4 +16,3 @@ using SocioEconomicsX.Specification.Simulate
 using SocioEconomicsX.Utilities
 
 include("mainHelpers.jl")
-
