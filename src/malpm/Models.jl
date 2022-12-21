@@ -6,7 +6,7 @@ This module is within the MALPM module
 
 module Models 
 
-using SocioEconomics.XAgents: Town, PersonHouse, Person, alive  
+using SocioEconomics.XAgents: Town, PersonHouse, PersonTown, Person, alive  
 using SocioEconomics.ParamTypes: DemographyPars, MapPars, DemographyData 
 using MultiAgents: AbstractMABM, SimpleABM  
 
@@ -19,14 +19,14 @@ import MultiAgents: allagents
 export MAModel 
 
 struct MAModel <: AbstractMABM 
-    towns  :: SimpleABM{Town} 
+    towns  :: SimpleABM{PersonTown} 
     houses :: SimpleABM{PersonHouse}
     pop    :: SimpleABM{Person}
     parameters :: DemographyPars
     data       :: DemographyData
 
     function MAModel(model,pars,data) 
-        ukTowns  = SimpleABM{Town}(model.towns) 
+        ukTowns  = SimpleABM{PersonTown}(model.towns) 
         ukHouses = SimpleABM{PersonHouse}(model.houses)
         ukPopulation = SimpleABM{Person}(model.pop)
         new(ukTowns,ukHouses,ukPopulation,pars,data)
