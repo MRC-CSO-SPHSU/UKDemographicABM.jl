@@ -9,7 +9,7 @@ using MultiAgents:  add_agent!, currstep
 using MALPM.Demography.Population: removeDead!
 using MALPM.Demography: DemographyExample, LPMUKDemography, LPMUKDemographyOpt
 using SocioEconomics
-using SocioEconomics.API.Traits: FullPopulation
+using SocioEconomics.API.Traits: FullPopulation, NoReturn
 import SocioEconomics.Specification.SimulateNew: dodeaths!, dobirths!, 
                         dodivorces!, 
                         doAgeTransitions!, doWorkTransitions!, doSocialTransitions!,  
@@ -17,11 +17,12 @@ import SocioEconomics.Specification.SimulateNew: dodeaths!, dobirths!,
        
 
 function doDeaths!(model::AbstractMABM, sim::AbstractABMSimulator, ::LPMUKDemography) 
-    (; deadsind) = dodeaths!(model,currstep(sim))
+    # (; deadsind) = dodeaths!(model,currstep(sim))
     # ToDo separate step? 
-    for ind in Iterators.reverse(deadsind)
-        removeDead!(ind,model.pop)
-    end
+    # for ind in Iterators.reverse(deadsind)
+    #    removeDead!(ind,model.pop)
+    # end
+    dodeaths!(model, currstep(sim))
     nothing 
 end # function doDeaths!
 
@@ -31,14 +32,16 @@ function doDeaths!(model, sim, ::LPMUKDemographyOpt)
 end # function doDeaths!
 
 _dobirths!(model,sim,::LPMUKDemography) = dobirths!(model, currstep(sim))  
-_dobirths!(model,sim,::LPMUKDemographyOpt) = dobirths!(model, currstep(sim),FullPopulation()) 
+_dobirths!(model,sim,::LPMUKDemographyOpt) = 
+    dobirths!(model, currstep(sim),FullPopulation(),NoReturn()) 
 
 function doBirths!(model, sim, example)  
-    (;babies) = _dobirths!(model, sim, example) 
+    #(;babies) = _dobirths!(model, sim, example) 
     # TODO separate step? 
-    for baby in babies
-        add_agent!(model.pop,baby)
-    end
+    # for baby in babies
+    #    add_agent!(model.pop,baby)
+    #end
+    _dobirths!(model, sim, example)
     nothing 
 end
 
