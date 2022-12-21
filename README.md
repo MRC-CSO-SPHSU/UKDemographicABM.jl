@@ -16,4 +16,3 @@ Releases
    - V0.2.2 (8.12)   : - (MALPM only) doMarriages (SE* V0.2.2)
    - V0.2.3 (9.12)   : - (MALPM only) adoptions, workTransitions, socialTransitions, ageTransitions (SE* V0.2.3)  
    - V0.2.4 (14.12)  : - (MALPM only) adjusting to SimpleABM types of MA Version 0.4, improved model data structure 
-
