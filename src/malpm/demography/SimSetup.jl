@@ -36,20 +36,20 @@ function setupCommon!(sim::AbstractABMSimulator)
                                         ignoreAssumptions!()
 
     attach_post_model_step!(sim,doDeaths!)
-    #attach_post_model_step!(sim,doAssignGuardians!)
+    attach_post_model_step!(sim,doAssignGuardians!)
     attach_post_model_step!(sim,doBirths!)
-    #=attach_post_model_step!(sim,doAgeTransitions!)
+    attach_post_model_step!(sim,doAgeTransitions!)
     attach_post_model_step!(sim,doWorkTransitions!)
-    attach_post_model_step!(sim,doSocialTransitions!)=#
+    attach_post_model_step!(sim,doSocialTransitions!)
     attach_post_model_step!(sim,doDivorces!)
-    #attach_post_model_step!(sim,doMarriages!)
+    attach_post_model_step!(sim,doMarriages!)
     nothing 
 end 
 
 "set up simulation functions where dead people are removed" 
 function setup!(sim::AbstractABMSimulator, example::LPMUKDemography)
     # attach_pre_model_step!(sim,population_step!)
-    attach_agent_step!(sim,agestep!)
+    # attach_agent_step!(sim,agestep!)
     setupCommon!(sim)
 
     nothing 
@@ -58,7 +58,7 @@ end
 
 function setup!(sim::AbstractABMSimulator,example::LPMUKDemographyOpt) 
 
-    attach_agent_step!(sim,agestepAlivePerson!)
+    # attach_agent_step!(sim,agestepAlivePerson!)
     setupCommon!(sim)
 
     nothing 
