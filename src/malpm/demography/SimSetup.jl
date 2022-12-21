@@ -49,7 +49,7 @@ end
 "set up simulation functions where dead people are removed" 
 function setup!(sim::AbstractABMSimulator, example::LPMUKDemography)
     # attach_pre_model_step!(sim,population_step!)
-    # attach_agent_step!(sim,agestep!)
+    #attach_agent_step!(sim,agestep!)
     setupCommon!(sim)
 
     nothing 
@@ -57,7 +57,6 @@ end
 
 
 function setup!(sim::AbstractABMSimulator,example::LPMUKDemographyOpt) 
-
     # attach_agent_step!(sim,agestepAlivePerson!)
     setupCommon!(sim)
 
