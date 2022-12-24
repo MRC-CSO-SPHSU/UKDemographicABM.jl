@@ -11,7 +11,7 @@ mutable struct Model
 end
 
 function createDemography!(datapars, pars)
-    ukTowns = createTowns(pars)
+    ukTowns = create_inhabited_towns(pars)
 
     ukHouses = Vector{PersonHouse}()
 
