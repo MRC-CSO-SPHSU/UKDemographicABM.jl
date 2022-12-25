@@ -36,11 +36,11 @@ function setupCommon!(sim::AbstractABMSimulator)
 
     attach_post_model_step!(sim,doDeaths!)
     #attach_post_model_step!(sim,doAssignGuardians!)
-    #attach_post_model_step!(sim,doBirths!)
+    attach_post_model_step!(sim,doBirths!)
     #=attach_post_model_step!(sim,doAgeTransitions!)
     attach_post_model_step!(sim,doWorkTransitions!)
     attach_post_model_step!(sim,doSocialTransitions!)=#
-    #attach_post_model_step!(sim,doDivorces!)
+    attach_post_model_step!(sim,doDivorces!)
     #attach_post_model_step!(sim,doMarriages!)
     nothing 
 end 
