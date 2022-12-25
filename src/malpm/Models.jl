@@ -8,11 +8,12 @@ module Models
 
 using SocioEconomics.XAgents: Town, PersonHouse, PersonTown, Person, alive  
 using SocioEconomics.ParamTypes: DemographyPars, MapPars, DemographyData 
-using MultiAgents: AbstractMABM, SimpleABM  
+using MultiAgents: AbstractMABM, SimpleABM
+using MultiAgents: add_agent!, kill_agent_at_opt!  
 
 import SocioEconomics.API.ParamFunc: populationParameters, birthParameters, divorceParameters, 
                                         marriageParameters, workParameters, allParameters
-import SocioEconomics.API.ModelFunc: allPeople, alivePeople, dataOf, houses, towns 
+import SocioEconomics.API.ModelFunc: allPeople, alivePeople, dataOf, houses, towns, add_person!, add_house!, remove_person!  
 
 import MultiAgents: allagents
 
@@ -42,6 +43,9 @@ houses(model::MAModel) = allagents(model.houses)
 towns(model::MAModel) = allagents(model.towns) 
 #dataOf(model) = model.pop.data
 dataOf(model) = model.data
+add_person!(model, person) = add_agent!(model.pop, person)
+remove_person!(model, personidx::Int) = kill_agent_at_opt!(personidx, model.pop) 
+add_house!(model, house) = add_agent!(model.houses, house)
 
 
 allParameters(model::MAModel) = model.parameters 
