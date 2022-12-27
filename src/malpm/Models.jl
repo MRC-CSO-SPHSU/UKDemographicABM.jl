@@ -12,7 +12,7 @@ using MultiAgents: AbstractMABM, SimpleABM
 using MultiAgents: add_agent!, kill_agent_at_opt!  
 
 import SocioEconomics.API.ParamFunc: populationParameters, birthParameters, divorceParameters, 
-                                        marriageParameters, workParameters, allParameters
+                                        marriageParameters, workParameters, allParameters, mapParameters
 import SocioEconomics.API.ModelFunc: allPeople, alivePeople, dataOf, houses, towns, add_person!, add_house!, remove_person!  
 
 import MultiAgents: allagents
@@ -54,5 +54,6 @@ birthParameters(model::MAModel)	 	 = model.parameters.birthpars
 divorceParameters(model::MAModel)    = model.parameters.divorcepars 
 marriageParameters(model::MAModel)   = model.parameters.marriagepars 
 workParameters(model::MAModel)       = model.parameters.workpars 
+mapParameters(model::MAModel)        = model.parameters.mappars
 
 end # module Models 
