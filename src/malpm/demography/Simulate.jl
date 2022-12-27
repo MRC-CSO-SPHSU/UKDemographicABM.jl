@@ -11,9 +11,9 @@ using MALPM.Demography: DemographyExample, LPMUKDemography, LPMUKDemographyOpt
 using SocioEconomics
 using SocioEconomics.API.Traits: FullPopulation, NoReturn
 import SocioEconomics.Specification.SimulateNew: dodeaths!, dobirths!, 
-                        dodivorces!, 
+                        dodivorces!, domarriages!,
                         doAgeTransitions!, doWorkTransitions!, doSocialTransitions!,  
-                        doMarriages!, doAssignGuardians!
+                        doAssignGuardians!
        
 
 function doDeaths!(model::AbstractMABM, sim::AbstractABMSimulator, ::LPMUKDemography) 
@@ -27,7 +27,7 @@ function doDeaths!(model::AbstractMABM, sim::AbstractABMSimulator, ::LPMUKDemogr
 end # function doDeaths!
 
 function doDeaths!(model, sim, ::LPMUKDemographyOpt) 
-    dodeaths!(model,currstep(sim),FullPopulation())
+    dodeaths!(model,currstep(sim),FullPopulation(),NoReturn())
     nothing 
 end # function doDeaths!
 
@@ -46,18 +46,18 @@ function doBirths!(model, sim, example)
 end
 
 _dodivorces!(model,sim,::LPMUKDemography) = dodivorces!(model, currstep(sim))  
-_dodivorces!(model,sim,::LPMUKDemographyOpt) = dodivorces!(model, currstep(sim),FullPopulation()) 
+_dodivorces!(model,sim,::LPMUKDemographyOpt) = dodivorces!(model, currstep(sim),FullPopulation(), NoReturn()) 
 
 function doDivorces!(model, sim, example) 
     _dodivorces!(model, sim, example) 
     nothing 
 end
 
+_domarriages!(model,sim,::LPMUKDemography) = domarriages!(model, currstep(sim))  
+_domarriages!(model,sim,::LPMUKDemographyOpt) = domarriages!(model, currstep(sim),FullPopulation(), NoReturn()) 
 
 function doMarriages!(model::AbstractMABM, sim::AbstractABMSimulator, example::DemographyExample) 
-
-    doMarriages!(model, currstep(sim)) 
-
+    _domarriages!(model, sim,example) 
     nothing 
 end
 
