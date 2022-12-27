@@ -27,7 +27,6 @@ is provided here
 @return dictionary of required simulation parameters 
 """
 
-
 function setupCommon!(sim::AbstractABMSimulator) 
 
     verbose(sim) ? setVerbose!() : unsetVerbose!()
@@ -57,7 +56,7 @@ end
 
 
 function setup!(sim::AbstractABMSimulator,example::LPMUKDemographyOpt) 
-    # attach_agent_step!(sim,agestepAlivePerson!)
+    #attach_agent_step!(sim,agestepAlivePerson!)
     setupCommon!(sim)
 
     nothing 
