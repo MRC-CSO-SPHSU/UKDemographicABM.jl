@@ -17,3 +17,4 @@ Releases
    - V0.2.3 (9.12)   : (MALPM only) adoptions, workTransitions, socialTransitions, ageTransitions (SE* V0.2.3)  
    - V0.2.4 (14.12)  : (MALPM only) adjusting to SimpleABM types of MA Version 0.4, improved model data structure 
    - V0.2.5 (21.12)  : (MALPM only) exploits some tuned simulation functions from SE* V0.2.5 and improved performance (3x faster)  
+   - V0.2.6 (27.12)  : (MALPM only) Improved implementation of allocation algorithms (no temporary arrays), tuned do marriage algorithm (memoization can be avoided) & Improved runtime performance (3x faster & 4x less memory allocation and storage w.r.t. V0.2.5) 
