@@ -9,64 +9,55 @@ using MultiAgents:  add_agent!, currstep
 using MALPM.Demography.Population: removeDead!
 using MALPM.Demography: DemographyExample, LPMUKDemography, LPMUKDemographyOpt
 using SocioEconomics
-import SocioEconomics.Specification.SimulateNew: doDeaths!, doBirths!, 
+using SocioEconomics.API.Traits: FullPopulation, NoReturn
+import SocioEconomics.Specification.SimulateNew: dodeaths!, dobirths!, 
+                        dodivorces!, domarriages!,
                         doAgeTransitions!, doWorkTransitions!, doSocialTransitions!,  
-                        doDivorces!, doMarriages!, doAssignGuardians!
+                        doAssignGuardians!
        
-"""
-dead people could be indicies in the population and in such a 
-    case it is assumed that these indices are ordered
-"""
-function removeDeads!(deadpeople,pop,::LPMUKDemography)    
-    for deadperson in Iterators.reverse(deadpeople)
-        removeDead!(deadperson,pop)
-    end
-    
-    nothing 
-end
 
-removeDeads!(deadpeople,pop,::LPMUKDemographyOpt) = nothing 
-
-function doDeaths!(model::AbstractMABM, sim::AbstractABMSimulator, example::DemographyExample) 
-    #(deadpeople, deadsind) = doDeaths!(model,currstep(sim))
-    (; deadsind) = doDeaths!(model,currstep(sim))
-    
-    #len = length(model.pop.agentsList)
-    #@info deadsind len 
-
+function doDeaths!(model::AbstractMABM, sim::AbstractABMSimulator, ::LPMUKDemography) 
+    # (; deadsind) = dodeaths!(model,currstep(sim))
     # ToDo separate step? 
-    # removeDeads!(deads,model.pop,example)
-    removeDeads!(deadsind,model.pop,example)
-
+    # for ind in Iterators.reverse(deadsind)
+    #    removeDead!(ind,model.pop)
+    # end
+    dodeaths!(model, currstep(sim))
     nothing 
 end # function doDeaths!
 
-function doBirths!(model::AbstractMABM, sim::AbstractABMSimulator, example::DemographyExample) 
+function doDeaths!(model, sim, ::LPMUKDemographyOpt) 
+    dodeaths!(model,currstep(sim),FullPopulation(),NoReturn())
+    nothing 
+end # function doDeaths!
 
-    newbabies = doBirths!(model, currstep(sim)) 
+_dobirths!(model,sim,::LPMUKDemography) = dobirths!(model, currstep(sim))  
+_dobirths!(model,sim,::LPMUKDemographyOpt) = 
+    dobirths!(model, currstep(sim),FullPopulation(),NoReturn()) 
 
-    # false ? population.variables[:numBirths] += length(newbabies) : nothing # Temporarily this way till realized 
-    
-    for baby in newbabies
-        add_agent!(model.pop,baby)
-    end
-
+function doBirths!(model, sim, example)  
+    #(;babies) = _dobirths!(model, sim, example) 
+    # TODO separate step? 
+    # for baby in babies
+    #    add_agent!(model.pop,baby)
+    #end
+    _dobirths!(model, sim, example)
     nothing 
 end
 
+_dodivorces!(model,sim,::LPMUKDemography) = dodivorces!(model, currstep(sim))  
+_dodivorces!(model,sim,::LPMUKDemographyOpt) = dodivorces!(model, currstep(sim),FullPopulation(), NoReturn()) 
 
-function doDivorces!(model::AbstractMABM, sim::AbstractABMSimulator, example::DemographyExample) 
-
-    doDivorces!(model, currstep(sim)) 
-
+function doDivorces!(model, sim, example) 
+    _dodivorces!(model, sim, example) 
     nothing 
 end
 
+_domarriages!(model,sim,::LPMUKDemography) = domarriages!(model, currstep(sim))  
+_domarriages!(model,sim,::LPMUKDemographyOpt) = domarriages!(model, currstep(sim),FullPopulation(), NoReturn()) 
 
 function doMarriages!(model::AbstractMABM, sim::AbstractABMSimulator, example::DemographyExample) 
-
-    doMarriages!(model, currstep(sim)) 
-
+    _domarriages!(model, sim,example) 
     nothing 
 end
 
