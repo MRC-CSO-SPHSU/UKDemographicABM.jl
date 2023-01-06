@@ -18,8 +18,8 @@ using MALPM.Demography: LPMUKDemography, LPMUKDemographyOpt
 const mainConfig = Light()    # no input files, logging or flags (REPL Exec.) 
 # mainConfig = WithInputFiles()
 
-lpmExample = LPMUKDemography()    # don't remove deads
-# lpmExample = LPMUKDemographyOpt()   # remove deads 
+# lpmExample = LPMUKDemography()    # don't remove deads
+lpmExample = LPMUKDemographyOpt()   # remove deads 
 
 const simPars, dataPars, pars = loadParameters(mainConfig) 
 
@@ -31,7 +31,7 @@ if mainConfig == Light()
     simPars.verbose = false     
     simPars.checkassumption = false 
     simPars.sleeptime = 0
-    pars.poppars.initialPop = 500
+    pars.poppars.initialPop = 5000
 end
 
 const model = setupModel(dataPars, pars)
