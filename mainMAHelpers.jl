@@ -8,9 +8,7 @@ using SocioEconomics: SEVERSION, SEPATH, SESRCPATH
 @assert SEVERSION == v"0.2.7" 
 
 using SocioEconomics.ParamTypes
-
 using SocioEconomics.XAgents
-
 using SocioEconomics.Specification.Create
 using SocioEconomics.Specification.Initialize
 using SocioEconomics.Specification.Simulate

@@ -100,5 +100,4 @@ function setup!(sim::AbstractABMSimulator,example::LPMUKDemographyOpt)
     nothing 
 end
 
-
 end # SimSetup 

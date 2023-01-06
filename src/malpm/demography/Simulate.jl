@@ -16,10 +16,8 @@ import SocioEconomics.Specification.SimulateNew: dodeaths!, dobirths!,
                         dodivorces!, domarriages!,
                         doAgeTransitions!, doWorkTransitions!, doSocialTransitions!,  
                         doAssignGuardians!
- 
 
 const retDeath = Person[]
-
 _init_return(::LPMUKDemographyOpt,::SimProcess) = 0
 _init_return(::LPMUKDemography,::Death) = retDeath 
 
