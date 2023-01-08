@@ -18,7 +18,7 @@ using  SocioEconomics.Utilities: setVerbose!, unsetVerbose!, setDelay!,
                     checkAssumptions!, ignoreAssumptions!, date2yearsmonths
 using  SocioEconomics.XAgents: age, isMale, isFemale, isSingle, alive, hasDependents
 using  SocioEconomics.API.Traits: FullPopulation
-using  SocioEconomics.Specification.SimulateNew: death!, birth!, divorce!, marriage!
+using  SocioEconomics.Specification.SimulateNew: death!, birth!, divorce!, marriage!, assign_guardian!
 
 import SocioEconomics.API.ModelFunc: share_childless_men, eligible_women
 import MultiAgents: setup!, verbose
@@ -32,8 +32,8 @@ function setupCommon!(sim::AbstractABMSimulator)
                                         ignoreAssumptions!()
     
     attach_post_model_step!(sim,doDeaths!)
-    attach_post_model_step!(sim,doBirths!)
     attach_post_model_step!(sim,doAssignGuardians!)
+    attach_post_model_step!(sim,doBirths!)
     attach_post_model_step!(sim,doAgeTransitions!)
     attach_post_model_step!(sim,doWorkTransitions!)
     attach_post_model_step!(sim,doSocialTransitions!)
@@ -56,6 +56,9 @@ divorcestep!(person, model, sim, example) =
 
 marriagestep!(person, model, sim, example) = 
     marriage!(person, currstep(sim), model, _popfeature(example))
+
+assign_guardian_step!(person, model, sim, example) = 
+    assign_guardian!(person, currstep(sim), model, _popfeature(example))
 
 _ageclass(person) = trunc(Int, age(person)/10)
 @memoize Dict function share_childless_men(model::MAModel, ageclass :: Int)
@@ -87,6 +90,7 @@ function setup!(sim::AbstractABMSimulator, example::LPMUKDemography)
     # attach_agent_step!(sim,agestepAlivePerson!)
     # attach_agent_step!(sim,deathstep!) this leads to excessive memory allocation and memory storage
     # attach_agent_step!(sim,birthstep!) this leads to excessive memory allocation and memory storage
+    #attach_agent_step!(sim,assign_guardian_step!)
     attach_agent_step!(sim,divorcestep!)
     # attach_agent_step!(sim,marriagestep!) # does not seem to work properly (may be due to memoization)
     setupCommon!(sim)
@@ -95,6 +99,7 @@ end
 
 function setup!(sim::AbstractABMSimulator,example::LPMUKDemographyOpt) 
     # attach_agent_step!(sim,agestep!)
+    #attach_post_model_step!(sim,doAssignGuardians!)
     attach_post_model_step!(sim,doDivorces!)
     setupCommon!(sim)
     nothing 
