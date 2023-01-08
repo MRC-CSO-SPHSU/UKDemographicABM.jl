@@ -10,12 +10,11 @@ using MALPM.Demography.Population: removeDead!
 using MALPM.Demography: DemographyExample, LPMUKDemography, LPMUKDemographyOpt
 using SocioEconomics
 using SocioEconomics.XAgents: Person
-using SocioEconomics.API.Traits: FullPopulation, SimProcess, Death, Birth, Marriage
+using SocioEconomics.API.Traits: FullPopulation, SimProcess, Death, Birth, Marriage, AssignGuardian 
 using SocioEconomics.Utilities: date2yearsmonths
 import SocioEconomics.Specification.SimulateNew: dodeaths!, dobirths!, 
-                        dodivorces!, domarriages!,
-                        doAgeTransitions!, doWorkTransitions!, doSocialTransitions!,  
-                        doAssignGuardians!
+                        dodivorces!, domarriages!, do_assign_guardians!,
+                        doAgeTransitions!, doWorkTransitions!, doSocialTransitions!
 
 const retDeath = Person[]
 _init_return(::LPMUKDemographyOpt,::SimProcess) = 0
@@ -69,11 +68,17 @@ function doMarriages!(model::AbstractMABM, sim::AbstractABMSimulator, example::D
     nothing 
 end
 
+_do_assign_guardians!(ret,model,sim,::LPMUKDemographyOpt) = 
+    do_assign_guardians!(model, currstep(sim), ret)  
+_do_assign_guardians!(ret,model,sim,::LPMUKDemography) = 
+    do_assign_guardians!(model, currstep(sim), FullPopulation(), ret) 
+
+const retAGuarians = Person[] 
+_init_return(::LPMUKDemography,::AssignGuardian) = retAGuarians 
 
 function doAssignGuardians!(model::AbstractMABM, sim::AbstractABMSimulator, example::DemographyExample) 
-
-    doAssignGuardians!(model, currstep(sim)) 
-
+    ret = _init_return(example, AssignGuardian())
+    _do_assign_guardians!(ret,model,sim,example)
     nothing 
 end
 
