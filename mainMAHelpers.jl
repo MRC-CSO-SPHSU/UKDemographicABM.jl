@@ -5,7 +5,7 @@ addToLoadPath!("../MultiAgents.jl")
 
 using SocioEconomics: SEVERSION, SEPATH, SESRCPATH 
 
-@assert SEVERSION == v"0.2.8" 
+@assert SEVERSION == v"0.3" 
 
 using SocioEconomics.ParamTypes
 using SocioEconomics.XAgents
