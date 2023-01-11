@@ -11,12 +11,13 @@ using MALPM.Demography: DemographyExample, LPMUKDemography, LPMUKDemographyOpt
 using SocioEconomics
 using SocioEconomics.XAgents: Person
 using SocioEconomics.API.Traits: FullPopulation, AlivePopulation,
-                                    SimProcess, Death, Birth, Marriage, 
-                                        AssignGuardian, AgeTransition  
+                                    SimProcess, Death, Birth, Marriage,
+                                        AssignGuardian, AgeTransition, 
+                                        WorkTransition, SocialTransition  
 using SocioEconomics.Utilities: date2yearsmonths
 import SocioEconomics.Specification.SimulateNew: dodeaths!, dobirths!, 
-                        dodivorces!, domarriages!, do_assign_guardians!, do_age_transitions!,
-                        doWorkTransitions!, doSocialTransitions!
+                        dodivorces!, domarriages!, do_assign_guardians!, 
+                        do_age_transitions!, do_work_transitions!, do_social_transitions!
 
 _popfeature(::LPMUKDemography) = FullPopulation()
 _popfeature(::LPMUKDemographyOpt) = AlivePopulation() 
@@ -78,17 +79,21 @@ function doAgeTransitions!(model::AbstractMABM, sim::AbstractABMSimulator, examp
     nothing 
 end
 
+_init_return(::LPMUKDemography,pr::WorkTransition) =  
+    _init_return(LPMUKDemographyOpt(),pr)
+ 
 function doWorkTransitions!(model::AbstractMABM, sim::AbstractABMSimulator, example::DemographyExample) 
-
-    doWorkTransitions!(model, currstep(sim)) 
-
+    ret = _init_return(example,WorkTransition())
+    ret = do_work_transitions!(model,currstep(sim),_popfeature(example),ret)
     nothing 
 end
 
+_init_return(::LPMUKDemography,pr::SocialTransition) =  
+    _init_return(LPMUKDemographyOpt(),pr)
+
 function doSocialTransitions!(model::AbstractMABM, sim::AbstractABMSimulator, example::DemographyExample) 
-
-    doSocialTransitions!(model, currstep(sim)) 
-
+    ret = _init_return(example,SocialTransition())
+    ret = do_social_transitions!(model,currstep(sim),_popfeature(example),ret)
     nothing 
 end
 
