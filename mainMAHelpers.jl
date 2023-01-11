@@ -11,7 +11,6 @@ using SocioEconomics.ParamTypes
 using SocioEconomics.XAgents
 using SocioEconomics.Specification.Create
 using SocioEconomics.Specification.Initialize
-using SocioEconomics.Specification.Simulate
 
 include("mainHelpers.jl")
 
