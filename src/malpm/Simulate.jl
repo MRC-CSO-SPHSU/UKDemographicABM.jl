@@ -6,7 +6,7 @@ module Simulate
 
 using MultiAgents:  AbstractMABM, AbstractABMSimulator
 using MultiAgents:  currstep 
-using MALPM.Demography: DemographyExample, LPMUKDemography, LPMUKDemographyOpt
+using MALPM.Examples
 using SocioEconomics
 using SocioEconomics.XAgents: Person
 using SocioEconomics.API.Traits: FullPopulation, AlivePopulation,

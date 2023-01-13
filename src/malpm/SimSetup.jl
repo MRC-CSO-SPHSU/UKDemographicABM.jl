@@ -3,8 +3,8 @@ module SimSetup
 using Memoization 
 
 using  MALPM.Models: MAModel, allPeople, birthParameters
-using  MALPM.Demography: LPMUKDemography, LPMUKDemographyOpt
-using  MALPM.Demography.Simulate: dodeaths!, dobirths!, 
+using  MALPM.Examples
+using  MALPM.Simulate: dodeaths!, dobirths!, 
         do_age_transitions!, do_work_transitions!, do_social_transitions!, 
         dodivorces!, domarriages!, do_assign_guardians!
 
