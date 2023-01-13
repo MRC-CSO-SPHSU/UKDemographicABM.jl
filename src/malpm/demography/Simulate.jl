@@ -5,8 +5,7 @@
 module Simulate
 
 using MultiAgents:  AbstractMABM, AbstractABMSimulator
-using MultiAgents:  add_agent!, currstep 
-using MALPM.Demography.Population: removeDead!
+using MultiAgents:  currstep 
 using MALPM.Demography: DemographyExample, LPMUKDemography, LPMUKDemographyOpt
 using SocioEconomics
 using SocioEconomics.XAgents: Person
@@ -27,7 +26,7 @@ _init_return(::LPMUKDemographyOpt,::SimProcess) = 0
 const retDeath = Person[]
 _init_return(::LPMUKDemography,::Death) = retDeath 
 
-function doDeaths!(model, sim, example) 
+function dodeaths!(model, sim, example::DemographyExample) 
     ret = _init_return(example,Death())
     ret = dodeaths!(model,currstep(sim),_popfeature(example),ret) 
     #=years, months = date2yearsmonths(currstep(sim))
@@ -38,7 +37,7 @@ end # function doDeaths!
 const retBirth = Person[]
 _init_return(::LPMUKDemography,::Birth) = retBirth 
 
-function doBirths!(model, sim, example)  
+function dobirths!(model, sim, example::DemographyExample)  
     ret = _init_return(example,Birth())
     ret = dobirths!(model,currstep(sim),_popfeature(example),ret)
     nothing 
@@ -47,7 +46,7 @@ end
 const retBirth = Person[] 
 _init_return(::LPMUKDemography,::Birth) = retBirth 
 
-function doDivorces!(model, sim, example) 
+function dodivorces!(model, sim, example::DemographyExample) 
     ret = _init_return(example, Birth())
     ret = dodivorces!(model,currstep(sim),_popfeature(example),ret)
     nothing 
@@ -56,7 +55,7 @@ end
 const retMarriage = Person[] 
 _init_return(::LPMUKDemography,::Marriage) = retMarriage 
 
-function doMarriages!(model::AbstractMABM, sim::AbstractABMSimulator, example::DemographyExample) 
+function domarriages!(model, sim, example::DemographyExample) 
     ret = _init_return(example, Marriage())
     ret = domarriages!(model,currstep(sim),_popfeature(example),ret)
 end
@@ -64,7 +63,7 @@ end
 const retAGuarians = Person[] 
 _init_return(::LPMUKDemography,::AssignGuardian) = retAGuarians 
 
-function doAssignGuardians!(model::AbstractMABM, sim::AbstractABMSimulator, example::DemographyExample) 
+function do_assign_guardians!(model::AbstractMABM, sim::AbstractABMSimulator, example::DemographyExample) 
     ret = _init_return(example, AssignGuardian())
     ret = do_assign_guardians!(model,currstep(sim),_popfeature(example),ret)
     nothing 
@@ -73,7 +72,7 @@ end
 _init_return(::LPMUKDemography,pr::AgeTransition) =  
     _init_return(LPMUKDemographyOpt(),pr) 
 
-function doAgeTransitions!(model::AbstractMABM, sim::AbstractABMSimulator, example::DemographyExample) 
+function do_age_transitions!(model::AbstractMABM, sim::AbstractABMSimulator, example::DemographyExample) 
     ret = _init_return(example,AgeTransition())
     ret = do_age_transitions!(model,currstep(sim),_popfeature(example),ret)
     nothing 
@@ -82,7 +81,7 @@ end
 _init_return(::LPMUKDemography,pr::WorkTransition) =  
     _init_return(LPMUKDemographyOpt(),pr)
  
-function doWorkTransitions!(model::AbstractMABM, sim::AbstractABMSimulator, example::DemographyExample) 
+function do_work_transitions!(model::AbstractMABM, sim, example::DemographyExample) 
     ret = _init_return(example,WorkTransition())
     ret = do_work_transitions!(model,currstep(sim),_popfeature(example),ret)
     nothing 
@@ -91,7 +90,7 @@ end
 _init_return(::LPMUKDemography,pr::SocialTransition) =  
     _init_return(LPMUKDemographyOpt(),pr)
 
-function doSocialTransitions!(model::AbstractMABM, sim::AbstractABMSimulator, example::DemographyExample) 
+function do_social_transitions!(model::AbstractMABM, sim, example::DemographyExample) 
     ret = _init_return(example,SocialTransition())
     ret = do_social_transitions!(model,currstep(sim),_popfeature(example),ret)
     nothing 
