@@ -1,5 +1,8 @@
-module Demography
- 
+"""
+Example traits to express different models and configurations
+"""
+module Examples
+
 import MultiAgents.Util: AbstractExample
 
 export DemographyExample, LPMUKDemography, LPMUKDemographyOpt
@@ -14,10 +17,4 @@ struct LPMUKDemography <: DemographyExample end
 "This is an attemp for improved algorthimic translation"
 struct LPMUKDemographyOpt <: DemographyExample end 
 
-
-include("./demography/Population.jl") 
-include("./demography/Simulate.jl")
-include("./demography/SimSetup.jl")  
-
-
-end # Demography
+end
