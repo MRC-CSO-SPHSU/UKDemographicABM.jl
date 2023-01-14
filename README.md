@@ -21,7 +21,7 @@ Releases
    - V0.2.6 (27.12)  : Improved implementation of allocation algorithms (no temporary arrays), tuned do marriage algorithm (memoization can be avoided) & Improved runtime performance (3x faster & 4x less memory allocation and storage w.r.t. V0.2.5) 
    - V0.2.7 (6.1.2023) : (MALPM only) Memoization with domarriage alg can be done only externally (if desired). Employing newly tuned and exact API of four simulation functions. Optimized simulation (with deads removal) vs. normal simulation (without deads removal) 
    - V0.2.8 (8.1.2023) : (MALPM only) employing tuned API of assigning guardians 
-- **V0.3 (14-01-2022) : Making use of the rest of the fixed API of SE's Simulate function, further code simplification and tuning. Signficant memory allocation reduction and runtime performance improvement  
+- **V0.3 (14-01-2022)** : Making use of the rest of the fixed API of SE's Simulate function, further code simplification and tuning. Signficant memory allocation reduction and runtime performance improvement  
 
 Performance Progress History 
 ============================
