@@ -11,13 +11,17 @@ Releases
    - V0.1.3 ( 2.12)  : Utilties is a part of the SE* libraries (compatible with SE V0.1.3)  
    
 - **V0.2.0 (5.12.2022)** : Unified API of CreateX and Initialize functions (compatible with SE V0.2)
+   - Remark: main.jl is no longer maintained. 
 
-   - V0.2.1 (7.12)   : (MALPM only) New Simulation Interface for 3 functions, doBirths!, doDeaths!, doDivorces, Improved API for parameter accessory functions, compatible with SE* Version 0.2.1
-   - V0.2.2 (8.12)   : (MALPM only) doMarriages (SE* V0.2.2)
-   - V0.2.3 (9.12)   : (MALPM only) adoptions, workTransitions, socialTransitions, ageTransitions (SE* V0.2.3)  
-   - V0.2.4 (14.12)  : (MALPM only) adjusting to SimpleABM types of MA Version 0.4, improved model data structure 
-   - V0.2.5 (21.12)  : (MALPM only) exploits some tuned simulation functions from SE* V0.2.5 and improved performance (3x faster)  
-   - V0.2.6 (27.12)  : (MALPM only) Improved implementation of allocation algorithms (no temporary arrays), tuned do marriage algorithm (memoization can be avoided) & Improved runtime performance (3x faster & 4x less memory allocation and storage w.r.t. V0.2.5) 
+   - V0.2.1 (7.12)   : New Simulation Interface for 3 functions, doBirths!, doDeaths!, doDivorces, Improved API for parameter accessory functions, compatible with SE* Version 0.2.1
+   - V0.2.2 (8.12)   : doMarriages (SE* V0.2.2)
+   - V0.2.3 (9.12)   : adoptions, workTransitions, socialTransitions, ageTransitions (SE* V0.2.3)  
+   - V0.2.4 (14.12)  : adjusting to SimpleABM types of MA Version 0.4, improved model data structure 
+   - V0.2.5 (21.12)  : exploits some tuned simulation functions from SE* V0.2.5 and improved performance (3x faster)  
+   - V0.2.6 (27.12)  : Improved implementation of allocation algorithms (no temporary arrays), tuned do marriage algorithm (memoization can be avoided) & Improved runtime performance (3x faster & 4x less memory allocation and storage w.r.t. V0.2.5) 
    - V0.2.7 (6.1.2023) : (MALPM only) Memoization with domarriage alg can be done only externally (if desired). Employing newly tuned and exact API of four simulation functions. Optimized simulation (with deads removal) vs. normal simulation (without deads removal) 
    - V0.2.8 (8.1.2023) : (MALPM only) employing tuned API of assigning guardians 
+- **V0.3 (14-01-2022) : Making use of the rest of the fixed API of SE's Simulate function, further code simplification and tuning. Signficant memory allocation reduction and runtime performance improvement  
+
+
 
