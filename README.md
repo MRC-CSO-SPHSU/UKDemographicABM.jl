@@ -17,7 +17,7 @@ Releases
    - V0.2.2 (8.12)   : doMarriages (SE* V0.2.2)
    - V0.2.3 (9.12)   : adoptions, workTransitions, socialTransitions, ageTransitions (SE* V0.2.3)  
    - V0.2.4 (14.12)  : adjusting to SimpleABM types of MA Version 0.4, improved model data structure 
-   - V0.2.5 (21.12)  : exploits some tuned simulation functions from SE* V0.2.5 and improved performance (3x faster)  
+   - V0.2.5 (21.12)  : exploits some tuned simulation functions from SE* V0.2.5 and improved performance  
    - V0.2.6 (27.12)  : Improved implementation of allocation algorithms (no temporary arrays), tuned do marriage algorithm (memoization can be avoided) & Improved runtime performance (3x faster & 4x less memory allocation and storage w.r.t. V0.2.5) 
    - V0.2.7 (6.1.2023) : (MALPM only) Memoization with domarriage alg can be done only externally (if desired). Employing newly tuned and exact API of four simulation functions. Optimized simulation (with deads removal) vs. normal simulation (without deads removal) 
    - V0.2.8 (8.1.2023) : (MALPM only) employing tuned API of assigning guardians 
@@ -28,11 +28,15 @@ Performance Progress History
 
 The following is the progress history of executing mainMA.jl on 
 
-
 Version   |   Runtime  |  # Memory Allocation | Storage used | Comment 
---- | --- | --- | --- | ---
-0  | ~29 sec. | ~ 400 M | 12.6 GB | The state of LoneParentsModel.jl before starting this repo.  
-V0.2.2 | 21.sec | ~ 282 M | 9.7 GB | execution with main.jl was quite faster but consumed more memory and storage 
+0  | ~29 sec. | ~ 400 M | 12.5 GB | The state of LoneParentsModel.jl before starting this repo.  
+V0.2.3 | 29 sec. | ~ 360 M | ~ 14 GB | execution with main.jl was quite faster but consumed more memory and storage 
+V0.2.4 | 21.5 sec. | ~ 280 M | ~ 10.5 GB | MA Version 0.4
+V0.2.5 | 20 sec. | ~ 155 M | ~ 8 GB |  
+V0.2.6 | 7.6 sec. | ~ 37 M | ~ 2.2 GB | 
+V0.2.8 | 6.3 sec. | ~ 24 M | ~ 1.6 GB |
+V0.3 | 4.7 sec | ~ 380 K | ~ 90 MB | 
+
 
 
 
