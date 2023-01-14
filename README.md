@@ -11,7 +11,7 @@ Releases
    - V0.1.3 ( 2.12)  : Utilties is a part of the SE* libraries (compatible with SE V0.1.3)  
    
 - **V0.2.0 (5.12.2022)** : Unified API of CreateX and Initialize functions (compatible with SE V0.2)
-   - Remark: main.jl is no longer maintained. 
+   - Remark: main.jl is no longer maintained.  
 
    - V0.2.1 (7.12)   : New Simulation Interface for 3 functions, doBirths!, doDeaths!, doDivorces, Improved API for parameter accessory functions, compatible with SE* Version 0.2.1
    - V0.2.2 (8.12)   : doMarriages (SE* V0.2.2)
@@ -22,6 +22,19 @@ Releases
    - V0.2.7 (6.1.2023) : (MALPM only) Memoization with domarriage alg can be done only externally (if desired). Employing newly tuned and exact API of four simulation functions. Optimized simulation (with deads removal) vs. normal simulation (without deads removal) 
    - V0.2.8 (8.1.2023) : (MALPM only) employing tuned API of assigning guardians 
 - **V0.3 (14-01-2022) : Making use of the rest of the fixed API of SE's Simulate function, further code simplification and tuning. Signficant memory allocation reduction and runtime performance improvement  
+
+Performance Progress History 
+============================
+
+The following is the progress history of executing mainMA.jl on 
+
+
+Version   |   Runtime  |  # Memory Allocation | Storage used | Comment 
+--- | --- | --- | --- | ---
+0  | ~29 sec. | ~ 400 M | 12.6 GB | The state of LoneParentsModel.jl before starting this repo.  
+V0.2.2 | 21.sec | ~ 282 M | 9.7 GB | execution with main.jl was quite faster but consumed more memory and storage 
+
+
 
 
 
