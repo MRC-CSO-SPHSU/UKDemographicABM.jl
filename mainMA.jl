@@ -13,7 +13,7 @@ include("mainMAHelpers.jl")
 using MultiAgents: ABMSimulatorP
 using MultiAgents: run!, setup! 
 using MALPM.Models: MAModel
-using MALPM.Demography: LPMUKDemography, LPMUKDemographyOpt 
+using MALPM.Examples
 
 const mainConfig = Light()    # no input files, logging or flags (REPL Exec.) 
 # mainConfig = WithInputFiles()
