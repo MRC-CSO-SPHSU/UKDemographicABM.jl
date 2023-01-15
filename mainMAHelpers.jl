@@ -1,23 +1,25 @@
 using Random
 
 include("libspath.jl")
+include("analysis.jl")
 addToLoadPath!("../MultiAgents.jl")
 
-using SocioEconomics: SEVERSION, SEPATH, SESRCPATH 
+using MiniObserve
 
+using SocioEconomics: SEVERSION, SEPATH, SESRCPATH 
 @assert SEVERSION == v"0.3" 
 
 using SocioEconomics.ParamTypes
+import SocioEconomics.ParamTypes: loadParameters
 using SocioEconomics.XAgents
 using SocioEconomics.Specification.Create
 using SocioEconomics.Specification.Initialize
 
-include("mainHelpers.jl")
+# include("mainHelpers.jl")
 
 using MultiAgents: init_majl
+using MultiAgents: SimpleABM
 init_majl()             # reset agents id counter
-
-using SocioEconomics.ParamTypes: seed!
 
 """
 How simulations is to be executed: 
@@ -39,6 +41,22 @@ function loadParameters(::Light)
     dataPars = DataPars() 
     pars = DemographyPars()
     simPars, dataPars, pars 
+end
+
+function create_uk_demography(pars,data) 
+    ukTowns =  SimpleABM{PersonTown}(create_inhabited_towns(pars)) 
+    ukHouses = SimpleABM{PersonHouse}() 
+    ukPopulation = SimpleABM{Person}(createPyramidPopulation(pars))
+    ukTowns, ukHouses, ukPopulation
+end
+
+function setupLogging(simPars; FS = "\t")
+    if simPars.logfile == ""
+        return nothing
+    end
+    file = open(simPars.logfile, "w")
+    print_header(file, Data; FS)
+    file
 end
 
 setupLogging(simPars,::WithInputFiles) = setupLogging(simPars)

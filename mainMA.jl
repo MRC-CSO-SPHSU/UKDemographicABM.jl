@@ -12,7 +12,7 @@ include("mainMAHelpers.jl")
 
 using MultiAgents: ABMSimulatorP
 using MultiAgents: run!, setup! 
-using MALPM.Models: MAModel
+using MALPM.Models: MAModel, init!
 using MALPM.Examples
 
 const mainConfig = Light()    # no input files, logging or flags (REPL Exec.) 
@@ -34,13 +34,15 @@ if mainConfig == Light()
     pars.poppars.initialPop = 5000
 end
 
-const model = setupModel(dataPars, pars)
-
 const logfile = setupLogging(simPars,mainConfig)
 
-const demoData = loadDemographyData(dataPars)
+const data = loadDemographyData(dataPars)
 
-const ukDemography = MAModel(model,pars,demoData)
+const ukTowns, ukHouses, ukPop = create_uk_demography(pars,data)
+
+const ukDemography = MAModel(ukTowns, ukHouses, ukPop, pars, data)
+
+init!(ukDemography)
 
 const lpmDemographySim = 
     ABMSimulatorP{typeof(simPars)}(simPars,setupEnabled = false)
