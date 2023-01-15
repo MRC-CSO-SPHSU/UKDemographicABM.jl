@@ -26,16 +26,7 @@ Releases
 Performance Progress History 
 ============================
 
-The following is the progress history of executing mainMA.jl on 
-
-Version   |   Runtime  |  # Memory Allocation | Storage used | Comment 
-0  | ~29 sec. | ~ 400 M | 12.5 GB | The state of LoneParentsModel.jl before starting this repo.  
-V0.2.3 | 29 sec. | ~ 360 M | ~ 14 GB | execution with main.jl was quite faster but consumed more memory and storage 
-V0.2.4 | 21.5 sec. | ~ 280 M | ~ 10.5 GB | MA Version 0.4
-V0.2.5 | 20 sec. | ~ 155 M | ~ 8 GB |  
-V0.2.6 | 7.6 sec. | ~ 37 M | ~ 2.2 GB | 
-V0.2.8 | 6.3 sec. | ~ 24 M | ~ 1.6 GB |
-V0.3 | 4.7 sec | ~ 380 K | ~ 90 MB | 
+The following is the progress history of executing mainMA.jl on a personal labtop equipped with 2.5 GHz processor (11th Gen. Intel i9-11900) & Memory of 32 GB
 
 Version   |   Runtime  |  # Memory Allocation | Storage used | Comment 
 --- | --- | --- | --- | ---
