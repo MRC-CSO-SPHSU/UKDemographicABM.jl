@@ -46,7 +46,7 @@ end
 function create_uk_demography(pars,data) 
     ukTowns =  SimpleABM{PersonTown}(create_inhabited_towns(pars)) 
     ukHouses = SimpleABM{PersonHouse}() 
-    ukPopulation = SimpleABM{Person}(createPyramidPopulation(pars))
+    ukPopulation = SimpleABM{Person}(create_pyramid_population(pars))
     ukTowns, ukHouses, ukPopulation
 end
 
