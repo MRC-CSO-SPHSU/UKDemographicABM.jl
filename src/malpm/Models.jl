@@ -6,17 +6,16 @@ This module is within the MALPM module
 
 module Models 
 
-using SocioEconomics.XAgents: Town, PersonHouse, PersonTown, Person, alive  
+using SocioEconomics.XAgents: PersonHouse, PersonTown, Person, alive  
 using SocioEconomics.ParamTypes: DemographyPars, MapPars, DemographyData 
 using MultiAgents: AbstractMABM, SimpleABM
 using MultiAgents: add_agent!, kill_agent_at_opt!  
-using SocioEconomics.Specification.Initialize: initialConnect!, InitClassesProcess, InitWorkProcess
 
 import SocioEconomics.API.ParamFunc: populationParameters, birthParameters, divorceParameters, 
                                         marriageParameters, workParameters, allParameters, mapParameters
-import SocioEconomics.API.ModelFunc: allPeople, alivePeople, dataOf, houses, towns, add_person!, add_house!, remove_person!  
-import SocioEconomics.Specification.Initialize: init!
-
+import SocioEconomics.API.ModelFunc: allPeople, alivePeople, 
+    dataOf, houses, towns, 
+    add_person!, add_house!, remove_person!  
 import MultiAgents: allagents
 
 export MAModel
@@ -27,19 +26,6 @@ struct MAModel <: AbstractMABM
     pop    :: SimpleABM{Person}
     parameters :: DemographyPars
     data       :: DemographyData
-end
-
-initial_connect!(houses::SimpleABM{PersonHouse}, towns::SimpleABM{PersonTown}, pars) =
-    initialConnect!(allagents(houses),allagents(towns), pars)
-
-initial_connect!(houses::SimpleABM{PersonHouse}, pop::SimpleABM{Person}, pars) =
-    initialConnect!(allagents(houses),allagents(pop), pars)
-
-function init!(model::MAModel) 
-    initial_connect!(model.houses, model.towns, model.parameters) 
-    initial_connect!(model.houses, model.pop, model.parameters) 
-    init!(allagents(model.pop),model.parameters,InitClassesProcess())
-    init!(allagents(model.pop),model.parameters,InitWorkProcess())
 end
 
 allagents(model::MAModel) = allagents(model.pop)

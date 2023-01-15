@@ -12,7 +12,8 @@ include("mainMAHelpers.jl")
 
 using MultiAgents: ABMSimulatorP
 using MultiAgents: run!, setup! 
-using MALPM.Models: MAModel, init!
+using MALPM.Models: MAModel
+using SocioEconomics.Specification.Initialize: init!
 using MALPM.Examples
 
 const mainConfig = Light()    # no input files, logging or flags (REPL Exec.) 
