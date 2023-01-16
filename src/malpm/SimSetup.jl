@@ -22,7 +22,7 @@ import SocioEconomics.API.ModelFunc: share_childless_men, eligible_women
 import MultiAgents: setup!, verbose
 #export setup!  
 
-function setupCommon!(sim::AbstractABMSimulator) 
+function _setup_common!(sim::AbstractABMSimulator) 
 
     verbose(sim) ? setVerbose!() : unsetVerbose!()
     setDelay!(sim.parameters.sleeptime)
@@ -94,7 +94,7 @@ function setup!(sim::AbstractABMSimulator, example::LPMUKDemography)
     attach_agent_step!(sim,work_transition_step!)
     attach_agent_step!(sim,social_transition_step!)
     # attach_agent_step!(sim,marriagestep!) # does not seem to work properly (may be due to memoization)
-    setupCommon!(sim)
+    _setup_common!(sim)
     nothing 
 end
 
@@ -103,7 +103,7 @@ function setup!(sim::AbstractABMSimulator,example::LPMUKDemographyOpt)
     attach_post_model_step!(sim,dodivorces!)
     attach_post_model_step!(sim,do_work_transitions!)
     attach_post_model_step!(sim,do_social_transitions!)
-    setupCommon!(sim)
+    _setup_common!(sim)
     nothing 
 end
 

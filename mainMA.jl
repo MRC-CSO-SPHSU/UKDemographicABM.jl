@@ -17,12 +17,12 @@ using SocioEconomics.Specification.Initialize: init!
 using MALPM.Examples
 
 const mainConfig = Light()    # no input files, logging or flags (REPL Exec.) 
-# mainConfig = WithInputFiles()
+# const mainConfig = WithInputFiles()
 
 # lpmExample = LPMUKDemography()    # don't remove deads
 lpmExample = LPMUKDemographyOpt()   # remove deads 
 
-const simPars, dataPars, pars = loadParameters(mainConfig) 
+const simPars, dataPars, pars = load_parameters(mainConfig) 
 
 # Most significant simulation and model parameters 
 # The following works only with Light() configuration
@@ -32,12 +32,12 @@ if mainConfig == Light()
     simPars.verbose = false     
     simPars.checkassumption = false 
     simPars.sleeptime = 0
-    pars.poppars.initialPop = 5000 # 28100
+    pars.poppars.initialPop = 5000 # 28100 for 1-min simulation
 end
 
-const logfile = setupLogging(simPars,mainConfig)
+const logfile = setup_logging(simPars,mainConfig)
 
-const data = loadDemographyData(dataPars)
+const data = load_demography_data(dataPars)
 
 const ukTowns, ukHouses, ukPop = create_uk_demography(pars,data)
 
@@ -53,5 +53,5 @@ setup!(lpmDemographySim,lpmExample)
 # Execution 
 @time run!(ukDemography,lpmDemographySim,lpmExample)
 
-closeLogfile(logfile,mainConfig)
+close_logfile(logfile,mainConfig)
  

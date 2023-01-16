@@ -2,7 +2,7 @@ using Random
 
 include("libspath.jl")
 include("analysis.jl")
-addToLoadPath!("../MultiAgents.jl")
+add_to_loadpath!("../MultiAgents.jl")
 
 using MiniObserve
 
@@ -10,7 +10,7 @@ using SocioEconomics: SEVERSION, SEPATH, SESRCPATH
 @assert SEVERSION == v"0.3" 
 
 using SocioEconomics.ParamTypes
-import SocioEconomics.ParamTypes: loadParameters
+import SocioEconomics.ParamTypes: load_parameters
 using SocioEconomics.XAgents
 using SocioEconomics.Specification.Create
 using SocioEconomics.Specification.Initialize
@@ -29,13 +29,13 @@ abstract type MainSim end
 struct WithInputFiles <: MainSim end   # Input parameter files 
 struct Light <: MainSim end            # no input files 
 
-function loadParameters(::WithInputFiles) 
-    simPars, dataPars, pars = loadParameters(ARGS)
+function load_parameters(::WithInputFiles) 
+    simPars, dataPars, pars = load_parameters(ARGS)
     seed!(simPars)
     simPars, dataPars, pars 
 end  
 
-function loadParameters(::Light)
+function load_parameters(::Light)
     simPars = SimulationPars()
     seed!(simPars)
     dataPars = DataPars() 
@@ -50,7 +50,7 @@ function create_uk_demography(pars,data)
     ukTowns, ukHouses, ukPopulation
 end
 
-function setupLogging(simPars; FS = "\t")
+function setup_logging(simPars; FS = "\t")
     if simPars.logfile == ""
         return nothing
     end
@@ -59,8 +59,8 @@ function setupLogging(simPars; FS = "\t")
     file
 end
 
-setupLogging(simPars,::WithInputFiles) = setupLogging(simPars)
-setupLogging(simPars,::Light) = nothing 
+setup_logging(simPars,::WithInputFiles) = setup_logging(simPars)
+setup_logging(simPars,::Light) = nothing 
 
-closeLogfile(loffile,::WithInputFiles) = close(logfile)
-closeLogfile(logfile,::Light) = nothing 
+close_logfile(loffile,::WithInputFiles) = close(logfile)
+close_logfile(logfile,::Light) = nothing 
