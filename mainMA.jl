@@ -32,7 +32,7 @@ if mainConfig == Light()
     simPars.verbose = false     
     simPars.checkassumption = false 
     simPars.sleeptime = 0
-    pars.poppars.initialPop = 5000
+    pars.poppars.initialPop = 5000 # 28100
 end
 
 const logfile = setupLogging(simPars,mainConfig)
