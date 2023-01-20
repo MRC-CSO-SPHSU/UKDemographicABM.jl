@@ -47,8 +47,7 @@ The following are performance statistics (IPS : Initial Population Size)
 
 Version | 1 Minute simulation with IPS of | IPS = 100000 
 --- | --- | --- 
-0.3.1 | 56200 (~ 2.1 M A. + 520 MB) | ~ 3 minutes (7.48 M A. , 1.11 GB) 
-
+0.3.1 | 56200 (~ 2.1 M A. + 520 MB) | ~ 168 secs  (3.84 M A. , 930 MB) 
 
 
 
