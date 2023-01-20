@@ -43,11 +43,11 @@ V0.2.6 | 7.6 sec. | ~ 37 M | ~ 2.2 GB |
 V0.2.8 | 6.3 sec. | ~ 24 M | ~ 1.6 GB |
 V0.3 | 4.7 sec | ~ 380 K | ~ 90 MB | 
 
-The following is the initial population size for a 1-minute simulation 
+The following are performance statistics (IPS : Initial Population Size)
 
-Version | 1 Min. 
---- | --- 
-0.3.1 | 56200 (~ 2.1 M Allocations + 520 MB) 
+Version | 1 Minute simulation with IPS of | IPS = 100000 
+--- | --- | --- 
+0.3.1 | 56200 (~ 2.1 M A. + 520 MB) | ~ 3 minutes (7.48 M A. , 1.11 GB) 
 
 
 
