@@ -13,11 +13,11 @@ const MMA = MaxMinAcc{Float64}
     end
 
     @for person in model.pop begin
-        @stat("married", CountAcc) <| (alive(person) && !isSingle(person))
+        @stat("married", CountAcc) <| (alive(person) && !issingle(person))
         @stat("age", MVA) <| Float64(age(person))
         @stat("alive", CountAcc) <| alive(person)
-        @stat("eligible", CountAcc) <| (alive(person) && isFemale(person) && age(person) > 17)
-        @stat("eligible2", CountAcc) <| (alive(person) && isSingle(person) && isFemale(person) && age(person) > 17)
+        @stat("eligible", CountAcc) <| (alive(person) && isfemale(person) && age(person) > 17)
+        @stat("eligible2", CountAcc) <| (alive(person) && issingle(person) && isfemale(person) && age(person) > 17)
     end
 
 

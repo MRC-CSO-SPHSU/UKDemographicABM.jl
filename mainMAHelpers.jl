@@ -1,23 +1,25 @@
 using Random
 
 include("libspath.jl")
-addToLoadPath!("../MultiAgents.jl")
+include("analysis.jl")
+add_to_loadpath!("../MultiAgents.jl")
+
+using MiniObserve
 
 using SocioEconomics: SEVERSION, SEPATH, SESRCPATH 
-
-@assert SEVERSION == v"0.3" 
+@assert SEVERSION == v"0.3.2" 
 
 using SocioEconomics.ParamTypes
+import SocioEconomics.ParamTypes: load_parameters
 using SocioEconomics.XAgents
 using SocioEconomics.Specification.Create
 using SocioEconomics.Specification.Initialize
 
-include("mainHelpers.jl")
+# include("mainHelpers.jl")
 
 using MultiAgents: init_majl
+using MultiAgents: SimpleABM
 init_majl()             # reset agents id counter
-
-using SocioEconomics.ParamTypes: seed!
 
 """
 How simulations is to be executed: 
@@ -27,13 +29,13 @@ abstract type MainSim end
 struct WithInputFiles <: MainSim end   # Input parameter files 
 struct Light <: MainSim end            # no input files 
 
-function loadParameters(::WithInputFiles) 
-    simPars, dataPars, pars = loadParameters(ARGS)
+function load_parameters(::WithInputFiles) 
+    simPars, dataPars, pars = load_parameters(ARGS)
     seed!(simPars)
     simPars, dataPars, pars 
 end  
 
-function loadParameters(::Light)
+function load_parameters(::Light)
     simPars = SimulationPars()
     seed!(simPars)
     dataPars = DataPars() 
@@ -41,8 +43,24 @@ function loadParameters(::Light)
     simPars, dataPars, pars 
 end
 
-setupLogging(simPars,::WithInputFiles) = setupLogging(simPars)
-setupLogging(simPars,::Light) = nothing 
+function create_uk_demography(pars,data) 
+    ukTowns =  SimpleABM{PersonTown}(create_inhabited_towns(pars)) 
+    ukHouses = SimpleABM{PersonHouse}() 
+    ukPopulation = SimpleABM{Person}(create_pyramid_population(pars))
+    ukTowns, ukHouses, ukPopulation
+end
 
-closeLogfile(loffile,::WithInputFiles) = close(logfile)
-closeLogfile(logfile,::Light) = nothing 
+function setup_logging(simPars; FS = "\t")
+    if simPars.logfile == ""
+        return nothing
+    end
+    file = open(simPars.logfile, "w")
+    print_header(file, Data; FS)
+    file
+end
+
+setup_logging(simPars,::WithInputFiles) = setup_logging(simPars)
+setup_logging(simPars,::Light) = nothing 
+
+close_logfile(loffile,::WithInputFiles) = close(logfile)
+close_logfile(logfile,::Light) = nothing 

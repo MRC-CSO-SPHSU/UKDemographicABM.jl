@@ -18,18 +18,18 @@ function createDemography!(datapars, pars)
     # maybe switch using parameter
     #ukPopulation = createPopulation(pars)
     ukPopulation = createPyramidPopulation(pars)
-    
-    # temporarily solution , input files and command line arguments 
-    #   should be invistigated 
+
+    # temporarily solution , input files and command line arguments
+    #   should be invistigated
     ukDemoData   = loadDemographyData(datapars)
 
-    Model(ukTowns, ukHouses, ukPopulation, 
+    Model(ukTowns, ukHouses, ukPopulation,
             ukDemoData.fertility , ukDemoData.deathFemale, ukDemoData.deathMale)
 end
 
 function initializeDemography!(model, pars)
     initialConnect!(model.houses, model.towns, pars)
-    #initialConnect!(model.pop, model.houses, pars) # works too 
+    #initialConnect!(model.pop, model.houses, pars) # works too
     initialConnect!(model.houses, model.pop, pars)
     init!(model.pop,pars,InitClassesProcess())
     init!(model.pop,pars,InitWorkProcess())
@@ -39,12 +39,12 @@ end
 "Apply a transition function to an iterator."
 function applyTransition!(people, transition, name, args...)
     count = 0
-    for p in people 
+    for p in people
         transition(p, args...)
         count += 1
     end
 
-    verbose() do 
+    verbose() do
         if name != ""
             println(count, " agents processed in ", name)
         end
@@ -52,23 +52,23 @@ function applyTransition!(people, transition, name, args...)
 end
 
 # Atiyah: remove this for the primative API simulation function
-# alivePeople(model) = Iterators.filter(a->alive(a), model.pop)
-# data(model) = model 
+# alive_people(model) = Iterators.filter(a->alive(a), model.pop)
+# data(model) = model
 
 function stepModel!(model, time, simPars, pars)
     # TODO remove dead people?
-    
-    # Atiyah: 
-    doDeaths!(model,time,pars)   # a possible unified way 
-    # or the primiative-API 
-    # doDeaths!(alivePeople(model), time, data(model), pars.poppars)
+
+    # Atiyah:
+    doDeaths!(model,time,pars)   # a possible unified way
+    # or the primiative-API
+    # doDeaths!(alive_people(model), time, data(model), pars.poppars)
 
     orphans = Iterators.filter(p->selectAssignGuardian(p), model.pop)
     applyTransition!(orphans, assignGuardian!, "adoption", time, model, pars)
 
-    # Atiyah: 
+    # Atiyah:
     babies = doBirths!(model,time,pars)
-    # babies = doBirths!(alivePeople(model), model.pop), time, model, pars.birthpars)
+    # babies = doBirths!(alive_people(model), model.pop), time, model, pars.birthpars)
 
     selected = Iterators.filter(p->selectAgeTransition(p, pars.workpars), model.pop)
     applyTransition!(selected, ageTransition!, "age", time, model, pars.workpars)
@@ -76,16 +76,16 @@ function stepModel!(model, time, simPars, pars)
     selected = Iterators.filter(p->selectWorkTransition(p, pars.workpars), model.pop)
     applyTransition!(selected, workTransition!, "work", time, model, pars.workpars)
 
-    selected = Iterators.filter(p->selectSocialTransition(p, pars.workpars), model.pop) 
-    applyTransition!(selected, socialTransition!, "social", time, model, pars.workpars) 
+    selected = Iterators.filter(p->selectSocialTransition(p, pars.workpars), model.pop)
+    applyTransition!(selected, socialTransition!, "social", time, model, pars.workpars)
 
     selected = Iterators.filter(p->selectDivorce(p, pars), model.pop)
-    applyTransition!(selected, divorce!, "divorce", time, model, 
+    applyTransition!(selected, divorce!, "divorce", time, model,
                      fuse(pars.divorcepars, pars.workpars))
 
     resetCacheMarriages()
     selected = Iterators.filter(p->selectMarriage(p, pars.workpars), model.pop)
-    applyTransition!(selected, marriage!, "marriage", time, model, 
+    applyTransition!(selected, marriage!, "marriage", time, model,
                      fuse(pars.poppars, pars.marriagepars, pars.birthpars, pars.mappars))
 
     append!(model.pop, babies)
@@ -130,6 +130,3 @@ function runModel!(model, simPars, pars, logfile = nothing; FS = "\t")
         time += simPars.dt
     end
 end
-
-
-

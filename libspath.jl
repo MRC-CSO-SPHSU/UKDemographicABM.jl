@@ -1,4 +1,4 @@
-function addToLoadPath!(paths...)
+function add_to_loadpath!(paths...)
     for path in paths
         if ! (path in LOAD_PATH)
             push!(LOAD_PATH, path)
@@ -6,9 +6,9 @@ function addToLoadPath!(paths...)
     end
 end
 
-addToLoadPath!("../SocioEconomics.jl/src")
-addToLoadPath!("./src")
-addToLoadPath!(".")
+add_to_loadpath!("../SocioEconomics.jl/src")
+add_to_loadpath!("./src")
+add_to_loadpath!(".")
 
 
 
