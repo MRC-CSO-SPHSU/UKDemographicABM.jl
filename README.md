@@ -49,17 +49,10 @@ V0.4.2 | 4.44 sec | ~ 354 k | 88 MB |
 
 The following are performance statistics (IPS : Initial Population Size)
 
-Version | 1 Minute simulation with IPS of | IPS = 100,000 | IPS = 1,000,000
---- | --- | --- | --- 
-0.3.1 | 56200 (~ 2.1 M A. + 520 MB) | ~ 168 secs  (3.84 M A., 930 MB) | 5 hours 11 min (40.04 M A., 9.116 GB)
-0.4.2 | 57000 (~ 2.08 M A. + 518 MB) | ~ 162 secs (3.77 M A., 929 MB) | ?  
+Version | 1 Minute simulation with IPS of | IPS = 100000 
+--- | --- | --- 
+0.3.1 | 56200 (~ 2.1 M A. + 520 MB) | ~ 3 minutes (7.48 M A. , 1.11 GB) 
 
-The following is Agents.jl performance with IPS = 500 for 100 year 
-
-Version   |   Runtime  |  # Memory Allocation | Storage used | Comment 
---- | --- | --- | --- | --- 
-0.4.1  | ~54 sec. | ~ 91 M | 6 GB | This is only the first version and it is subject to improvement 
-0.4.2  | ~39.5 sec | 55.5 M | 3.95 GB | Improvement was due to the usage of Julia compiler V1.9.0 (instead of V1.8.1) 
 
 
 
