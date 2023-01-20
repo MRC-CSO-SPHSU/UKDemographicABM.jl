@@ -22,10 +22,11 @@ Releases
    - V0.2.4 (14.12)  : adjusting to SimpleABM types of MA Version 0.4, improved model data structure 
    - V0.2.5 (21.12)  : exploits some tuned simulation functions from SE* V0.2.5 and improved performance  
    - V0.2.6 (27.12)  : Improved implementation of allocation algorithms (no temporary arrays), tuned do marriage algorithm (memoization can be avoided) & Improved runtime performance (3x faster & 4x less memory allocation and storage w.r.t. V0.2.5) 
-   - V0.2.7 (6.1.2023) : (MALPM only) Memoization with domarriage alg can be done only externally (if desired). Employing newly tuned and exact API of four simulation functions. Optimized simulation (with deads removal) vs. normal simulation (without deads removal) 
-   - V0.2.8 (8.1.2023) : (MALPM only) employing tuned API of assigning guardians 
+   - V0.2.7 (6.1.2023) :  Memoization with domarriage alg can be done only externally (if desired). Employing newly tuned and exact API of four simulation functions. Optimized simulation (with deads removal) vs. normal simulation (without deads removal) 
+   - V0.2.8 (8.1.2023) :  employing tuned API of assigning guardians 
 - **V0.3 (14.01.2023)** : Making use of the rest of the fixed API of SE's Simulate function, further code simplification and tuning. Signficant memory allocation reduction and runtime performance improvement  
    - V0.3.1 (16.1) : Blue style badge, separating mainMAHelpers.jl from mainHelpers.jl, arbitrary population size
+   - V0.3.2 (20.1) : Employing the blue-styled SE V0.3.2 
 
 Performance Progress History 
 ============================
@@ -46,7 +47,7 @@ The following is the initial population size for a 1-minute simulation
 
 Version | 1 Min. 
 --- | --- 
-0.3.1 | 56200 
+0.3.1 | 56200 (~ 2.1 M Allocations + 520 MB) 
 
 
 
