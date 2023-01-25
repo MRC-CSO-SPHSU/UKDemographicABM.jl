@@ -31,7 +31,7 @@ Releases
 Performance Progress History 
 ============================
 
-The following is the progress history of executing mainMA.jl on a personal labtop equipped with 2.5 GHz processor (11th Gen. Intel i9-11900) & Memory of 32 GB
+The following is the progress history of executing mainMA.jl on a personal labtop equipped with 2.5 GHz processor (11th Gen. Intel i9-11900) & Memory of 32 GB. The parameter values and data used are given within [SocioEconomics.ParamTypes module](https://github.com/MRC-CSO-SPHSU/SocioEconomics.jl/tree/V0.3.1/src/socioeconomics/paramtypes)
 
 Version   |   Runtime  |  # Memory Allocation | Storage used | Comment 
 --- | --- | --- | --- | ---
