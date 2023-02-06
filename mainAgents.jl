@@ -2,7 +2,7 @@ include("libspath.jl")
 add_to_loadpath!("../MultiAgents.jl")
 
 using Agents
-using SocioEconomics.XAgents: Person, PersonHouse
+using SocioEconomics.XAgents: Person, PersonHouse, UNDEFINED_HOUSE
 using SocioEconomics.ParamTypes
 using SocioEconomics.Specification.Create
 using SocioEconomics.Specification.Initialize
@@ -25,4 +25,5 @@ const ukHouses = PersonHouse[]
 const ukPop = create_pyramid_population(pars)
 
 # to fix
-model = AgentBasedModel(Person,Vector{PersonHouse})
+space = UNDEFINED_HOUSE
+model = AgentBasedModel(Person,space)
