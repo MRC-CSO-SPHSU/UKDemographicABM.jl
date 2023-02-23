@@ -21,8 +21,8 @@ import MultiAgents: allagents
 export MAModel
 
 struct MAModel <: AbstractMABM
-    towns  :: SimpleABM{PersonTown}
-    houses :: SimpleABM{PersonHouse}
+    towns  :: Vector{PersonTown}
+    houses :: Vector{PersonHouse}
     pop    :: SimpleABM{Person}
     parameters :: DemographyPars
     data       :: DemographyData
@@ -33,12 +33,12 @@ all_people(model::MAModel) = allagents(model.pop)
 alive_people(model::MAModel) =
     [ person for person in all_people(model)  if alive(person) ]
     # Iterators.filter(person->alive(person),people) # Iterators did not show significant value sofar
-houses(model::MAModel) = allagents(model.houses)
-towns(model::MAModel) = allagents(model.towns)
+houses(model::MAModel) = model.houses
+towns(model::MAModel) = model.towns
 data_of(model) = model.data
 add_person!(model, person) = add_agent!(model.pop, person)
 remove_person!(model, personidx::Int) = kill_agent_at_opt!(personidx, model.pop)
-add_house!(model, house) = add_agent!(model.houses, house)
+add_house!(model, house) = push!(model.houses, house)
 
 all_pars(model::MAModel) = model.parameters
 population_pars(model::MAModel) = model.parameters.poppars
