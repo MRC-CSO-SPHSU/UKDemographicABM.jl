@@ -12,7 +12,7 @@ using SocioEconomics: SEVERSION, SEPATH, SESRCPATH
 using SocioEconomics.ParamTypes
 import SocioEconomics.ParamTypes: load_parameters
 using SocioEconomics.XAgents
-using SocioEconomics.Specification.Create
+using SocioEconomics.Specification.Declare
 using SocioEconomics.Specification.Initialize
 
 # include("mainHelpers.jl")
