@@ -33,14 +33,14 @@ if mainConfig == Light()
     simPars.checkassumption = false
     simPars.sleeptime = 0
     # V0.3.3 28300 for 1-min simulation / 165 sec for IPS = 100,000
-    pars.poppars.initialPop = 50000
+    pars.poppars.initialPop = 500
 end
 
 const logfile = setup_logging(simPars,mainConfig)
 
 const data = load_demography_data(dataPars)
 
-const ukTowns, ukHouses, ukPop = create_uk_demography(pars,data)
+const ukTowns, ukHouses, ukPop = declare_uk_demography(pars,data)
 
 const ukDemography = MAModel(ukTowns, ukHouses, ukPop, pars, data)
 
