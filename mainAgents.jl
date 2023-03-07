@@ -7,6 +7,10 @@ add_to_loadpath!("../MultiAgents.jl")
 
 using MultiAgents
 init_majl()  # reset agents.id to 1
+@assert MAVERSION == v"0.5"
+
+using SocioEconomics: SEVERSION
+@assert SEVERSION == v"0.3.3"
 
 using MALPM.Models: DemographicABM
 using SocioEconomics.XAgents:  DemographicMap
