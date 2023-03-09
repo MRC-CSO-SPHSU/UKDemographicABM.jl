@@ -64,7 +64,14 @@ DemographicABM(space::DemographicMap, pars, simPars, data) =
     ABM(Person, space; properties = (pars = pars, simPars = simPars, data = data))
 
 towns(model::DemographicABM) = model.space.towns
-houses(model::DemographicABM) = error("using houses(::$(typeof(model)) is not efficient")
+function houses(model::DemographicABM)
+    @warn "using houses(::$(typeof(model)) is not efficient"
+    houses = PersonHouse[]
+    for town in model.space.towns
+        houses = vcat(houses, empty_houses(town), occupied_houses(town))
+    end
+    return houses
+end
 
 all_people(model::DemographicABM) = Agents.allagents(model) # Fix this
 alive_people(model::DemographicABM) = _alive_people(model)
