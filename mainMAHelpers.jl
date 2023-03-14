@@ -7,12 +7,12 @@ add_to_loadpath!("../MultiAgents.jl")
 using MiniObserve
 
 using SocioEconomics: SEVERSION, SEPATH, SESRCPATH
-@assert SEVERSION == v"0.3.3"  # Integration of Agents.jl space concept
+@assert SEVERSION == v"0.4"  # Integration of Agents.jl space concept
 
 using SocioEconomics.ParamTypes
 import SocioEconomics.ParamTypes: load_parameters
 using SocioEconomics.XAgents
-using SocioEconomics.Specification.Create
+using SocioEconomics.Specification.Declare
 using SocioEconomics.Specification.Initialize
 
 # include("mainHelpers.jl")
@@ -43,10 +43,10 @@ function load_parameters(::Light)
     simPars, dataPars, pars
 end
 
-function create_uk_demography(pars,data)
-    ukTowns =  Vector{PersonTown}(create_inhabited_towns(pars))
+function declare_uk_demography(pars,data)
+    ukTowns =  Vector{PersonTown}(declare_inhabited_towns(pars))
     ukHouses = Vector{PersonHouse}()
-    ukPopulation = SimpleABM{Person}(create_pyramid_population(pars))
+    ukPopulation = SimpleABM{Person}(declare_pyramid_population(pars))
     ukTowns, ukHouses, ukPopulation
 end
 
