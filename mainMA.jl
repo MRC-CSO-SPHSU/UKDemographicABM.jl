@@ -44,7 +44,7 @@ const ukTowns, ukHouses, ukPop = declare_uk_demography(pars,data)
 
 const ukDemography = MAModel(ukTowns, ukHouses, ukPop, pars, data)
 
-init!(ukDemography)
+init!(ukDemography,verify=true)
 
 const lpmDemographySim =
     ABMSimulatorP{typeof(simPars)}(simPars,setupEnabled = false)
