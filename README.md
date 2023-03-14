@@ -49,6 +49,7 @@ The following are performance statistics (IPS : Initial Population Size)
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 Version | 1 Minute simulation with IPS of | IPS = 100,000 | IPS = 1,000,000
 --- | --- | --- | --- 
@@ -61,6 +62,9 @@ Version | 1 Minute simulation with IPS of | IPS = 100000
 >>>>>>> 0ff45c1 (adjusting)
 =======
 Version | 1 Minute simulation with IPS of | IPS = 100000 | IPS = 1,000,000
+=======
+Version | 1 Minute simulation with IPS of | IPS = 100,000 | IPS = 1,000,000
+>>>>>>> 64de09e (formatting)
 --- | --- | --- | --- 
 0.3.1 | 56200 (~ 2.1 M A. + 520 MB) | ~ 168 secs  (3.84 M A., 930 MB) | 5 hours 11 min (40.04 M A., 9.116 GiB)
 >>>>>>> 38c3e4a (stats with population size of 1 million)
