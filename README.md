@@ -27,9 +27,6 @@ Releases
 - **V0.3 (14.01.2023)** : Making use of the rest of the fixed API of SE's Simulate function, further code simplification and tuning. Signficant memory allocation reduction and runtime performance improvement  
    - V0.3.1 (16.1) : Blue style badge, separating mainMAHelpers.jl from mainHelpers.jl, arbitrary population size
    - V0.3.2 (20.1) : Employing the blue-styled SE V0.3.2 
-- **V0.4 (14.03.2023)** : Compatible with SE Version SE0.4, started an Agents.jl-based main program, moving unsed code to deprecated 
-   - V0.4.1 (15.5) : another main simulation program based on Agents.jl  
-   - V0.4.2 (16.5) : simplification of main simulation functions (now without time argument)
 
 Performance Progress History 
 ============================
