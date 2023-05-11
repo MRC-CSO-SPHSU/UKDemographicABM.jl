@@ -73,7 +73,7 @@ function houses(model::DemographicABM)
     return houses
 end
 
-all_people(model::DemographicABM) = Agents.allagents(model) # Fix this
+all_people(model::DemographicABM) = collect(Agents.allagents(model)) # TODO Is there something better
 alive_people(model::DemographicABM) = _alive_people(model)
 
 all_pars(model::DemographicABM) =  model.properties.pars
