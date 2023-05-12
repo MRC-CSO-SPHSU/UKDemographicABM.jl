@@ -78,7 +78,12 @@ alive_people(model::DemographicABM) = _alive_people(model)
 
 all_pars(model::DemographicABM) =  model.pars
 population_pars(model::DemographicABM) = model.pars.poppars
+birth_pars(model::DemographicABM) = model.pars.birthpars
+divorce_pars(model::DemographicABM) = model.pars.divorcepars
+marriage_pars(model::DemographicABM) = model.pars.marriagepars
+work_pars(model::DemographicABM) = model.pars.workpars
 map_pars(model::DemographicABM) = model.pars.mappars
+
 add_person!(model::DemographicABM,person) = add_agent_pos!(person, model)
 
 # The following is needed by add_agent[_pos]!(agent,model)
