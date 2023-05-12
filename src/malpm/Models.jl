@@ -14,7 +14,7 @@ using SocioEconomics.ParamTypes: DemographyPars, DemographyData
 using MultiAgents: AbstractMABM, SimpleABM
 using MultiAgents: allagents, add_agent!, kill_agent_at_opt!
 
-import MultiAgents: add_agent_pos!, add_agent_to_space!, nagents, allagents
+import MultiAgents: add_agent_pos!, add_agent_to_space!, nagents, allagents, remove_agent_from_space!
 import SocioEconomics.API.ParamFunc: all_pars, population_pars, birth_pars, divorce_pars,
     marriage_pars, work_pars, map_pars
 import SocioEconomics.API.ModelFunc: all_people, alive_people,
@@ -23,7 +23,6 @@ import SocioEconomics.API.ModelFunc: all_people, alive_people,
 
 export MAModel
 export DemographicABM
-
 
 _alive_people(model) =  [ person for person in all_people(model)  if alive(person) ]
 
@@ -43,8 +42,8 @@ alive_people(model::MAModel) = _alive_people(model)
 houses(model::MAModel) = model.houses
 towns(model::MAModel) = model.towns
 data_of(model) = model.data
-add_person!(model, person) = add_agent!(model.pop, person)
-remove_person!(model, personidx::Int) = kill_agent_at_opt!(personidx, model.pop)
+add_person!(model::MAModel, person) = add_agent!(model.pop, person)
+remove_person!(model::MAModel, person, personidx::Int) = kill_agent_at_opt!(personidx, model.pop)
 add_house!(model, house) = push!(model.houses, house)
 
 all_pars(model::MAModel) = model.parameters
@@ -85,11 +84,19 @@ work_pars(model::DemographicABM) = model.pars.workpars
 map_pars(model::DemographicABM) = model.pars.mappars
 
 add_person!(model::DemographicABM,person) = add_agent_pos!(person, model)
-
 # The following is needed by add_agent[_pos]!(agent,model)
 function add_agent_to_space!(person, model::DemographicABM)
     @assert ishomeless(person) ||  home(person) in houses(hometown(person))
     @assert undefined(hometown(person)) || hometown(person) in towns(model)
 end
+
+function remove_person!(model::DemographicABM, person, personidx::Int)
+    kill_agent!(person,model)
+end
+# The following is needed by kill_agent!
+function remove_agent_from_space!(person, model::DemographicABM)
+    # reset_house!?
+end
+
 
 end # module Models
