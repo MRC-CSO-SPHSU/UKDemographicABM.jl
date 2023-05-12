@@ -73,7 +73,8 @@ function houses(model::DemographicABM)
 end
 
 all_people(model::DemographicABM) = collect(Agents.allagents(model)) # TODO Is there something better
-alive_people(model::DemographicABM) = _alive_people(model)
+#all_people(model::DemographicABM) = Agents.allagents(model) # TODO Is there something better
+alive_people(model::DemographicABM) = all_people(model) #_alive_people(model)
 
 all_pars(model::DemographicABM) =  model.pars
 population_pars(model::DemographicABM) = model.pars.poppars
@@ -95,7 +96,7 @@ function remove_person!(model::DemographicABM, person, personidx::Int)
 end
 # The following is needed by kill_agent!
 function remove_agent_from_space!(person, model::DemographicABM)
-    # reset_house!?
+    @assert undefined(person.pos)
 end
 
 
