@@ -87,7 +87,7 @@ map_pars(model::DemographicABM) = model.pars.mappars
 add_person!(model::DemographicABM,person) = add_agent_pos!(person, model)
 # The following is needed by add_agent[_pos]!(agent,model)
 function add_agent_to_space!(person, model::DemographicABM)
-    @assert ishomeless(person) ||  home(person) in houses(hometown(person))
+    @assert ishomeless(person) ||  home(person) in occupied_houses(hometown(person))
     @assert undefined(hometown(person)) || hometown(person) in towns(model)
 end
 
