@@ -76,9 +76,9 @@ end
 all_people(model::DemographicABM) = collect(Agents.allagents(model)) # TODO Is there something better
 alive_people(model::DemographicABM) = _alive_people(model)
 
-all_pars(model::DemographicABM) =  model.properties.pars
-population_pars(model::DemographicABM) = model.properties.pars.poppars
-map_pars(model::DemographicABM) = model.properties.pars.mappars
+all_pars(model::DemographicABM) =  model.pars
+population_pars(model::DemographicABM) = model.pars.poppars
+map_pars(model::DemographicABM) = model.pars.mappars
 add_person!(model::DemographicABM,person) = add_agent_pos!(person, model)
 
 # The following is needed by add_agent[_pos]!(agent,model)
