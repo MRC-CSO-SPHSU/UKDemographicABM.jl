@@ -51,13 +51,20 @@ const dt = model.simPars.dt
 
 debug_setup(model.simPars)
 
+using SocioEconomics.Specification.SimulateNew: dodeaths!, do_assign_guardians!,
+    dobirths!, domarriages!,  do_age_transitions!, dodivorces!,
+    do_work_transitions!, do_social_transitions!,
+    age_transition!, death!, assign_guardian!, marriage!, divorce!,
+    work_transition!, social_transition!
+
 # TODO move to Models?
-function agent_steps!(model,person)
+function agent_steps!(person,model)
+    age_transition!(person, currtime , model)
+    divorce!(person, currtime, model)
+    work_transition!(person, currtime, model)
+    social_transition!(person, currtime, model)
     nothing
 end
-
-using SocioEconomics.Specification.SimulateNew: dodeaths!, do_assign_guardians!,
-    dobirths!, domarriages!,  do_age_transitions!, dodivorces!
 
 function model_steps!(model)
     global currtime += dt
@@ -65,11 +72,9 @@ function model_steps!(model)
     do_assign_guardians!(model,currtime)
     dobirths!(model,currtime)
     domarriages!(model,currtime)
-    do_age_transitions!(model,currtime)
-    #dodivorces!(model,currtime)
     nothing
 end
 
-@time run!(model,agent_steps!,model_steps!,12*10) # run 10 year
+@time run!(model,agent_steps!,model_steps!,12*30) # run 30 year
 
 @info currtime
