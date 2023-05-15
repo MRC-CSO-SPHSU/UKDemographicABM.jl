@@ -43,7 +43,8 @@ houses(model::MAModel) = model.houses
 towns(model::MAModel) = model.towns
 data_of(model) = model.data
 add_person!(model::MAModel, person) = add_agent!(model.pop, person)
-remove_person!(model::MAModel, person, personidx::Int) = kill_agent_at_opt!(personidx, model.pop)
+remove_person!(model::MAModel, person, personidx::Int) =
+    kill_agent_at_opt!(personidx, model.pop)
 add_house!(model, house) = push!(model.houses, house)
 
 all_pars(model::MAModel) = model.parameters
@@ -61,7 +62,6 @@ map_pars(model::MAModel)        = model.parameters.mappars
 const DemographicABM = ABM{DemographicMap}
 DemographicABM(space::DemographicMap, pars, simPars, data) =
     ABM(Person, space; properties = (pars = pars, simPars = simPars, data = data))
-
 towns(model::DemographicABM) = model.space.towns
 function houses(model::DemographicABM)
     @warn "using houses(::$(typeof(model)) is not efficient"
