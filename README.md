@@ -27,6 +27,8 @@ Releases
 - **V0.3 (14.01.2023)** : Making use of the rest of the fixed API of SE's Simulate function, further code simplification and tuning. Signficant memory allocation reduction and runtime performance improvement  
    - V0.3.1 (16.1) : Blue style badge, separating mainMAHelpers.jl from mainHelpers.jl, arbitrary population size
    - V0.3.2 (20.1) : Employing the blue-styled SE V0.3.2 
+- **V0.4 (14.03.2023)** : Compatible with SE Version SE0.4, started an Agents.jl-based main program, moving unsed code to deprecated 
+   - V0.4.1 (15.5) : another main simulation program based on Agents.jl  
 
 Performance Progress History 
 ============================
@@ -45,9 +47,15 @@ V0.3 | 4.7 sec | ~ 380 K | ~ 90 MB |
 
 The following are performance statistics (IPS : Initial Population Size)
 
-Version | 1 Minute simulation with IPS of | IPS = 100000 | IPS = 1,000,000
+Version | 1 Minute simulation with IPS of | IPS = 100,000 | IPS = 1,000,000
 --- | --- | --- | --- 
 0.3.1 | 56200 (~ 2.1 M A. + 520 MB) | ~ 168 secs  (3.84 M A., 930 MB) | 5 hours 11 min (40.04 M A., 9.116 GiB)
+
+The following is Agents.jl performance with IPS = 500 for 100 year 
+
+Version   |   Runtime  |  # Memory Allocation | Storage used | Comment 
+--- | --- | --- | --- | ---
+0.4.1  | ~54 sec. | ~ 91 M | 6 GB | This is only the first version and it is subject to improvement  
 
 
 

@@ -11,8 +11,7 @@ using  MALPM.Simulate: dodeaths!, dobirths!,
 using  MultiAgents: AbstractABMSimulator
 using  MultiAgents: attach_pre_model_step!, attach_post_model_step!,
                     attach_agent_step!, currstep
-using  SocioEconomics.Utilities: setVerbose!, unsetVerbose!, setDelay!,
-                    checkAssumptions!, ignoreAssumptions!, date2yearsmonths
+using  SocioEconomics.ParamTypes: debug_setup
 using  SocioEconomics.XAgents: age, ismale, isfemale, issingle, alive, has_dependents
 using  SocioEconomics.API.Traits: FullPopulation, AlivePopulation
 using  SocioEconomics.Specification.SimulateNew: death!, birth!, divorce!, marriage!,
@@ -24,10 +23,7 @@ import MultiAgents: setup!, verbose
 
 function _setup_common!(sim::AbstractABMSimulator)
 
-    verbose(sim) ? setVerbose!() : unsetVerbose!()
-    setDelay!(sim.parameters.sleeptime)
-    sim.parameters.checkassumption ? checkAssumptions!() :
-                                        ignoreAssumptions!()
+    debug_setup(sim.parameters)
 
     attach_post_model_step!(sim,dodeaths!)
     attach_post_model_step!(sim,do_assign_guardians!)
