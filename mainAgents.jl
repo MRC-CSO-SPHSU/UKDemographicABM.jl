@@ -12,7 +12,7 @@ init_majl()  # reset agents.id to 1
 @assert MAVERSION == v"0.5"
 
 using SocioEconomics: SEVERSION
-@assert SEVERSION == v"0.4"
+@assert SEVERSION == v"0.4.1"
 
 using MALPM.Models: DemographicABM
 using SocioEconomics.XAgents:  DemographicMap
@@ -75,6 +75,6 @@ function model_steps!(model)
     nothing
 end
 
-@time run!(model,agent_steps!,model_steps!,12*30) # run 30 year
+@time run!(model,agent_steps!,model_steps!,12*100) # run 100 year
 
 @info currtime
