@@ -45,7 +45,10 @@ data_of(model) = model.data
 add_person!(model::MAModel, person) = add_agent!(model.pop, person)
 remove_person!(model::MAModel, person, personidx::Int) =
     kill_agent_at_opt!(personidx, model.pop)
-add_house!(model, house) = push!(model.houses, house)
+function add_house!(model::MAModel, house)
+    @assert !(house in model.houses)
+    push!(model.houses, house)
+end
 
 all_pars(model::MAModel) = model.parameters
 population_pars(model::MAModel) = model.parameters.poppars
@@ -97,6 +100,11 @@ end
 # The following is needed by kill_agent!
 function remove_agent_from_space!(person, model::DemographicABM)
     @assert undefined(person.pos)
+end
+
+function add_house!(model::DemographicABM, house)
+    @assert house in town(house).emptyHouses || house in town(house).occupiedHouses
+    nothing # already added add_empty_house!(town(house), house)
 end
 
 
