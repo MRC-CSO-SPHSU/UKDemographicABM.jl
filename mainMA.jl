@@ -10,8 +10,11 @@ from REPL execute it using
 
 include("mainMAHelpers.jl")
 
-using MultiAgents: ABMSimulatorP
+using MultiAgents: ABMSimulatorP, MAVERSION
 using MultiAgents: run!, setup!
+
+@assert MAVERSION == v"0.5"
+
 using MALPM.Models: MAModel
 using SocioEconomics.Specification.Initialize: init!
 using MALPM.Examples
