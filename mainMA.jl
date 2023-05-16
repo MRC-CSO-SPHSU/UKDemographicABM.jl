@@ -45,7 +45,7 @@ const data = load_demography_data(dataPars)
 
 const ukTowns, ukHouses, ukPop = declare_uk_demography(pars,data)
 
-const ukDemography = MAModel(ukTowns, ukHouses, ukPop, pars, data)
+const ukDemography = MAModel(ukTowns, ukHouses, ukPop, pars, data, simPars.starttime)
 
 init!(ukDemography,verify=false)
 
