@@ -67,8 +67,8 @@ function domarriages!(model, sim, example::DemographyExample)
     ret = domarriages!(model,currstep(sim),_popfeature(example),ret)
 end
 
-const retAGuarians = Person[]
-_init_return(::LPMUKDemography,::AssignGuardian) = retAGuarians
+const retAGuardians = Person[]
+_init_return(::LPMUKDemography,::AssignGuardian) = retAGuardians
 
 function do_assign_guardians!(model::AbstractMABM, sim::AbstractABMSimulator, example::DemographyExample)
     ret = _init_return(example, AssignGuardian())
