@@ -72,7 +72,7 @@ _init_return(::LPMUKDemography,::AssignGuardian) = retAGuarians
 
 function do_assign_guardians!(model::AbstractMABM, sim::AbstractABMSimulator, example::DemographyExample)
     ret = _init_return(example, AssignGuardian())
-    ret = do_assign_guardians!(model,currstep(sim),_popfeature(example),ret)
+    ret = do_assign_guardians!(model,_popfeature(example),ret)
     nothing
 end
 

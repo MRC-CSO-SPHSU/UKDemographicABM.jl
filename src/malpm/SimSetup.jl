@@ -39,7 +39,7 @@ _popfeature(::LPMUKDemography) = FullPopulation()
 _popfeature(::LPMUKDemographyOpt) = AlivePopulation()
 
 deathstep!(person, model, sim, example) =
-    death!(person, currstep(sim),model,_popfeature(example))
+    death!(person, model, _popfeature(example))
 
 birthstep!(person, model, sim, example) =
     birth!(person, currstep(sim),model,_popfeature(example))
@@ -51,7 +51,7 @@ marriagestep!(person, model, sim, example) =
     marriage!(person, currstep(sim), model, _popfeature(example))
 
 assign_guardian_step!(person, model, sim, example) =
-    assign_guardian!(person, currstep(sim), model, _popfeature(example))
+    assign_guardian!(person, model, _popfeature(example))
 
 age_transition_step!(person, model, sim, example) =
     age_transition!(person, currstep(sim), model, _popfeature(example))

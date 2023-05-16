@@ -66,7 +66,7 @@ function model_steps!(model)
     model.t += model.simPars.dt
     currtime = currenttime(model)
     dodeaths!(model)
-    do_assign_guardians!(model,currtime)
+    do_assign_guardians!(model)
     dobirths!(model,currtime,FullPopulation())
     domarriages!(model,currtime)
     nothing
