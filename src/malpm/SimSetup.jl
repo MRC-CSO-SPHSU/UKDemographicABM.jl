@@ -6,7 +6,8 @@ using  MALPM.Models: MAModel, all_people, birth_pars
 using  MALPM.Examples
 using  MALPM.Simulate: dodeaths!, dobirths!,
         do_age_transitions!, do_work_transitions!, do_social_transitions!,
-        dodivorces!, domarriages!, do_assign_guardians!
+        dodivorces!, domarriages!, do_assign_guardians!,
+        increment_time!
 
 using  MultiAgents: AbstractABMSimulator
 using  MultiAgents: attach_pre_model_step!, attach_post_model_step!,
@@ -25,6 +26,7 @@ function _setup_common!(sim::AbstractABMSimulator)
 
     debug_setup(sim.parameters)
 
+    attach_pre_model_step!(sim,increment_time!)
     attach_post_model_step!(sim,dodeaths!)
     attach_post_model_step!(sim,do_assign_guardians!)
     attach_post_model_step!(sim,dobirths!)

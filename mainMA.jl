@@ -15,7 +15,7 @@ using MultiAgents: run!, setup!
 
 @assert MAVERSION == v"0.5"
 
-using MALPM.Models: MAModel
+using MALPM.Models: MAModel, currenttime
 using SocioEconomics.Specification.Initialize: init!
 using MALPM.Examples
 
@@ -56,5 +56,7 @@ setup!(lpmDemographySim,lpmExample)
 
 # Execution
 @time run!(ukDemography,lpmDemographySim,lpmExample)
+
+@info currenttime(ukDemography)
 
 close_logfile(logfile,mainConfig)
