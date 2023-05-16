@@ -14,11 +14,10 @@ init_majl()  # reset agents.id to 1
 using SocioEconomics: SEVERSION
 @assert SEVERSION == v"0.4.1"
 
-using MALPM.Models: DemographicABM
+using MALPM.Models: DemographicABM, currenttime
+
 using SocioEconomics.XAgents:  DemographicMap
-
 using SocioEconomics.ParamTypes
-
 using SocioEconomics.Specification.Declare
 using SocioEconomics.Specification.Initialize
 
@@ -34,10 +33,7 @@ simPars.sleeptime = 0
 pars.poppars.initialPop = 500
 
 const data = load_demography_data(dataPars)
-#const ukTowns = create_inhabited_towns(pars)
-#const ukPop = create_pyramid_population(pars)
 
-# to fix
 space = DemographicMap("The United Kingdom")
 model = DemographicABM(space,pars,simPars,data)
 declare_inhabited_towns!(model)
@@ -46,9 +42,6 @@ Initialize.init!(model,AgentsModelInit();verify=true)
 
 # Execute ...
 
-global currtime::Rational{Int} = model.simPars.starttime
-const dt = model.simPars.dt
-
 debug_setup(model.simPars)
 
 using SocioEconomics.Specification.SimulateNew: dodeaths!, do_assign_guardians!,
@@ -56,9 +49,12 @@ using SocioEconomics.Specification.SimulateNew: dodeaths!, do_assign_guardians!,
     do_work_transitions!, do_social_transitions!,
     age_transition!, death!, assign_guardian!, marriage!, divorce!,
     work_transition!, social_transition!
+using  SocioEconomics.API.Traits: FullPopulation, AlivePopulation
+
 
 # TODO move to Models?
 function agent_steps!(person,model)
+    currtime = currenttime(model) + model.simPars.dt # agent_steps is executed first
     age_transition!(person, currtime , model)
     divorce!(person, currtime, model)
     work_transition!(person, currtime, model)
@@ -67,14 +63,15 @@ function agent_steps!(person,model)
 end
 
 function model_steps!(model)
-    global currtime += dt
+    model.t += model.simPars.dt
+    currtime = currenttime(model)
     dodeaths!(model,currtime)
     do_assign_guardians!(model,currtime)
-    dobirths!(model,currtime)
+    dobirths!(model,currtime,FullPopulation())
     domarriages!(model,currtime)
     nothing
 end
 
-@time run!(model,agent_steps!,model_steps!,12*100) # run 100 year
+@time run!(model,agent_steps!,model_steps!,12*30) # run 10 year
 
-@info currtime
+@info currenttime(model)
