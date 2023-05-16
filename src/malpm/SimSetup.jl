@@ -45,22 +45,22 @@ birthstep!(person, model, sim, example) =
     birth!(person, model, _popfeature(example))
 
 divorcestep!(person, model, sim, example) =
-    divorce!(person, currstep(sim), model, _popfeature(example))
+    divorce!(person, model, _popfeature(example))
 
 marriagestep!(person, model, sim, example) =
-    marriage!(person, currstep(sim), model, _popfeature(example))
+    marriage!(person, model, _popfeature(example))
 
 assign_guardian_step!(person, model, sim, example) =
     assign_guardian!(person, model, _popfeature(example))
 
 age_transition_step!(person, model, sim, example) =
-    age_transition!(person, currstep(sim), model, _popfeature(example))
+    age_transition!(person, model, _popfeature(example))
 
 work_transition_step!(person, model, sim, example) =
-    work_transition!(person, currstep(sim), model, _popfeature(example))
+    work_transition!(person, model, _popfeature(example))
 
 social_transition_step!(person, model, sim, example) =
-    social_transition!(person, currstep(sim), model, _popfeature(example))
+    social_transition!(person, model, _popfeature(example))
 
 _ageclass(person) = trunc(Int, age(person)/10)
 @memoize Dict function share_childless_men(model::MAModel, ageclass :: Int)

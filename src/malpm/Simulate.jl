@@ -58,7 +58,7 @@ _init_return(::LPMUKDemography,::Birth) = retBirth
 
 function dodivorces!(model, sim, example::DemographyExample)
     ret = _init_return(example, Birth())
-    ret = dodivorces!(model,currstep(sim),_popfeature(example),ret)
+    ret = dodivorces!(model,_popfeature(example),ret)
     nothing
 end
 
@@ -67,7 +67,7 @@ _init_return(::LPMUKDemography,::Marriage) = retMarriage
 
 function domarriages!(model, sim, example::DemographyExample)
     ret = _init_return(example, Marriage())
-    ret = domarriages!(model,currstep(sim),_popfeature(example),ret)
+    ret = domarriages!(model,_popfeature(example),ret)
 end
 
 const retAGuardians = Person[]
@@ -84,7 +84,7 @@ _init_return(::LPMUKDemography,pr::AgeTransition) =
 
 function do_age_transitions!(model::AbstractMABM, sim::AbstractABMSimulator, example::DemographyExample)
     ret = _init_return(example,AgeTransition())
-    ret = do_age_transitions!(model,currstep(sim),_popfeature(example),ret)
+    ret = do_age_transitions!(model,_popfeature(example),ret)
     nothing
 end
 
@@ -93,7 +93,7 @@ _init_return(::LPMUKDemography,pr::WorkTransition) =
 
 function do_work_transitions!(model::AbstractMABM, sim, example::DemographyExample)
     ret = _init_return(example,WorkTransition())
-    ret = do_work_transitions!(model,currstep(sim),_popfeature(example),ret)
+    ret = do_work_transitions!(model,_popfeature(example),ret)
     nothing
 end
 
@@ -102,7 +102,7 @@ _init_return(::LPMUKDemography,pr::SocialTransition) =
 
 function do_social_transitions!(model::AbstractMABM, sim, example::DemographyExample)
     ret = _init_return(example,SocialTransition())
-    ret = do_social_transitions!(model,currstep(sim),_popfeature(example),ret)
+    ret = do_social_transitions!(model,_popfeature(example),ret)
     nothing
 end
 

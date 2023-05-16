@@ -55,10 +55,10 @@ using  SocioEconomics.API.Traits: FullPopulation, AlivePopulation
 # TODO move to Models?
 function agent_steps!(person,model)
     currtime = currenttime(model) + model.simPars.dt # agent_steps is executed first
-    age_transition!(person, currtime , model)
-    divorce!(person, currtime, model)
-    work_transition!(person, currtime, model)
-    social_transition!(person, currtime, model)
+    age_transition!(person, model)
+    divorce!(person, model)
+    work_transition!(person, model)
+    social_transition!(person, model)
     nothing
 end
 
@@ -68,7 +68,7 @@ function model_steps!(model)
     dodeaths!(model)
     do_assign_guardians!(model)
     dobirths!(model,FullPopulation())
-    domarriages!(model,currtime)
+    domarriages!(model)
     nothing
 end
 
