@@ -67,7 +67,7 @@ function model_steps!(model)
     currtime = currenttime(model)
     dodeaths!(model)
     do_assign_guardians!(model)
-    dobirths!(model,currtime,FullPopulation())
+    dobirths!(model,FullPopulation())
     domarriages!(model,currtime)
     nothing
 end

@@ -42,7 +42,7 @@ deathstep!(person, model, sim, example) =
     death!(person, model, _popfeature(example))
 
 birthstep!(person, model, sim, example) =
-    birth!(person, currstep(sim),model,_popfeature(example))
+    birth!(person, model, _popfeature(example))
 
 divorcestep!(person, model, sim, example) =
     divorce!(person, currstep(sim), model, _popfeature(example))

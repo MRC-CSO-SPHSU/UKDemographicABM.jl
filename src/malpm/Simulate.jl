@@ -31,6 +31,9 @@ _init_return(::LPMUKDemography,::Death) = retDeath
 function increment_time!(model, sim, example::DemographyExample)
     @assert currstep(sim) == currenttime(model) + dt(sim)
     model.t += dt(sim)
+    #=if model.t % 10 == 0
+        @info "current year " * string(model.t)
+    end=#
     nothing
 end
 
@@ -46,7 +49,7 @@ _init_return(::LPMUKDemography,::Birth) = retBirth
 
 function dobirths!(model, sim, example::DemographyExample)
     ret = _init_return(example,Birth())
-    ret = dobirths!(model,currstep(sim),_popfeature(example),ret)
+    ret = dobirths!(model,_popfeature(example),ret)
     nothing
 end
 
