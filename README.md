@@ -44,7 +44,8 @@ V0.2.4 | 21.5 sec. | ~ 280 M | ~ 10.5 GB | MA Version 0.4
 V0.2.5 | 20 sec. | ~ 155 M | ~ 8 GB |  
 V0.2.6 | 7.6 sec. | ~ 37 M | ~ 2.2 GB | 
 V0.2.8 | 6.3 sec. | ~ 24 M | ~ 1.6 GB |
-V0.3 | 4.7 sec | ~ 380 K | ~ 90 MB | 
+V0.3 | 4.7 sec | ~ 380 k | ~ 90 MB | 
+V0.4.2 | 4.44 sec | ~ 354 k | 88 MB |
 
 The following are performance statistics (IPS : Initial Population Size)
 
