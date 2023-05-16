@@ -9,7 +9,7 @@ module Models
 using Agents
 
 using SocioEconomics.XAgents
-using SocioEconomics.ParamTypes: DemographyPars, DemographyData
+using SocioEconomics.ParamTypes: DemographyPars, DemographyData, SimulationPars
 
 using MultiAgents: AbstractMABM, SimpleABM
 using MultiAgents: allagents, add_agent!, kill_agent_at_opt!
@@ -19,7 +19,8 @@ import SocioEconomics.API.ParamFunc: all_pars, population_pars, birth_pars, divo
     marriage_pars, work_pars, map_pars
 import SocioEconomics.API.ModelFunc: all_people, alive_people,
     data_of, houses, towns,
-    add_person!, add_house!, remove_person!
+    add_person!, add_house!, remove_person!,
+    currenttime
 
 export MAModel
 export DemographicABM
@@ -29,9 +30,10 @@ _alive_people(model) =  [ person for person in all_people(model)  if alive(perso
 struct MAModel <: AbstractMABM
     towns  :: Vector{PersonTown}
     houses :: Vector{PersonHouse}
-    pop    :: SimpleABM{Person}
+    pop :: SimpleABM{Person}
     parameters :: DemographyPars
-    data       :: DemographyData
+    data :: DemographyData
+    t :: Rational{Int}
 end
 
 allagents(model::MAModel) = allagents(model.pop)
@@ -42,6 +44,8 @@ alive_people(model::MAModel) = _alive_people(model)
 houses(model::MAModel) = model.houses
 towns(model::MAModel) = model.towns
 data_of(model) = model.data
+currenttime(model) = model.t
+
 add_person!(model::MAModel, person) = add_agent!(model.pop, person)
 remove_person!(model::MAModel, person, personidx::Int) =
     kill_agent_at_opt!(personidx, model.pop)
@@ -63,8 +67,21 @@ map_pars(model::MAModel)        = model.parameters.mappars
 #################
 
 const DemographicABM = ABM{DemographicMap}
+#=
 DemographicABM(space::DemographicMap, pars, simPars, data) =
     ABM(Person, space; properties = (pars = pars, simPars = simPars, data = data))
+=#
+mutable struct DemographicProperties
+    const pars :: DemographyPars
+    const simPars :: SimulationPars
+    const data  :: DemographyData
+    t :: Rational{Int}
+end
+function DemographicABM(space::DemographicMap, pars, simPars, data)
+    demoprop = DemographicProperties(pars, simPars, data, simPars.starttime)
+    return ABM(Person, space; properties = demoprop)
+end
+
 towns(model::DemographicABM) = model.space.towns
 function houses(model::DemographicABM)
     @warn "using houses(::$(typeof(model)) is not efficient"
@@ -74,6 +91,8 @@ function houses(model::DemographicABM)
     end
     return houses
 end
+
+currenttime(model::DemographicABM) = model.t
 
 all_people(model::DemographicABM) = collect(Agents.allagents(model)) # TODO Is there something better
 #all_people(model::DemographicABM) = Agents.allagents(model) # TODO Is there something better
