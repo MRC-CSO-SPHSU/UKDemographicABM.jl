@@ -12,7 +12,7 @@ init_majl()  # reset agents.id to 1
 @assert MAVERSION == v"0.5"
 
 using SocioEconomics: SEVERSION
-@assert SEVERSION == v"0.4.1"
+@assert SEVERSION == v"0.4.2"
 
 using MALPM.Models: DemographicABM, currenttime
 
