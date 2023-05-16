@@ -27,12 +27,12 @@ export DemographicABM
 
 _alive_people(model) =  [ person for person in all_people(model)  if alive(person) ]
 
-struct MAModel <: AbstractMABM
-    towns  :: Vector{PersonTown}
-    houses :: Vector{PersonHouse}
-    pop :: SimpleABM{Person}
-    parameters :: DemographyPars
-    data :: DemographyData
+mutable struct MAModel <: AbstractMABM
+    const towns  :: Vector{PersonTown}
+    const houses :: Vector{PersonHouse}
+    const pop :: SimpleABM{Person}
+    const parameters :: DemographyPars
+    const data :: DemographyData
     t :: Rational{Int}
 end
 
