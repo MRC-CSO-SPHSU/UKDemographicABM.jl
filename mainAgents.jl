@@ -65,13 +65,13 @@ end
 function model_steps!(model)
     model.t += model.simPars.dt
     currtime = currenttime(model)
-    dodeaths!(model,currtime)
+    dodeaths!(model)
     do_assign_guardians!(model,currtime)
     dobirths!(model,currtime,FullPopulation())
     domarriages!(model,currtime)
     nothing
 end
 
-@time run!(model,agent_steps!,model_steps!,12*30) # run 10 year
+@time run!(model,agent_steps!,model_steps!,12*30) # run 30 year
 
 @info currenttime(model)

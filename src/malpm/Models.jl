@@ -44,7 +44,7 @@ alive_people(model::MAModel) = _alive_people(model)
 houses(model::MAModel) = model.houses
 towns(model::MAModel) = model.towns
 data_of(model) = model.data
-currenttime(model) = model.t
+currenttime(model)::Rational{Int} = model.t
 
 add_person!(model::MAModel, person) = add_agent!(model.pop, person)
 remove_person!(model::MAModel, person, personidx::Int) =
@@ -92,7 +92,7 @@ function houses(model::DemographicABM)
     return houses
 end
 
-currenttime(model::DemographicABM) = model.t
+currenttime(model::DemographicABM)::Rational{Int} = model.t
 
 all_people(model::DemographicABM) = collect(Agents.allagents(model)) # TODO Is there something better
 #all_people(model::DemographicABM) = Agents.allagents(model) # TODO Is there something better

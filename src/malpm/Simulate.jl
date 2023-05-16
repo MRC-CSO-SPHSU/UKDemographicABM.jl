@@ -36,9 +36,8 @@ end
 
 function dodeaths!(model, sim, example::DemographyExample)
     ret = _init_return(example,Death())
-    ret = dodeaths!(model,currstep(sim),_popfeature(example),ret)
-    #=years, months = date2yearsmonths(currstep(sim))
-    @info "# of deaths $(years) $(months+1) : $(length(ret.people))"=#
+    ret = dodeaths!(model,_popfeature(example),ret)
+    #ret = dodeaths!(model,currstep(sim),_popfeature(example),ret)
     nothing
 end # function doDeaths!
 
