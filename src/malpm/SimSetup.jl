@@ -2,7 +2,6 @@ module SimSetup
 
 using Memoization
 
-using  MALPM.Models: MAModel, all_people, birth_pars
 using  MALPM.Examples
 using  MALPM.Simulate: dodeaths!, dobirths!,
         do_age_transitions!, do_work_transitions!, do_social_transitions!,
@@ -63,7 +62,7 @@ social_transition_step!(person, model, sim, example) =
     social_transition!(person, model, _popfeature(example))
 
 _ageclass(person) = trunc(Int, age(person)/10)
-@memoize Dict function share_childless_men(model::MAModel, ageclass :: Int)
+@memoize Dict function share_childless_men(model, ageclass :: Int)
     nAll = 0
     nNoC = 0
     for p in Iterators.filter(x->alive(x) && ismale(x) && _ageclass(x) == ageclass, all_people(model))
@@ -75,7 +74,7 @@ _ageclass(person) = trunc(Int, age(person)/10)
     return nNoC / nAll
 end
 
-@memoize eligible_women(model::MAModel) =
+@memoize eligible_women(model) =
     [f for f in all_people(model) if isfemale(f) && alive(f) &&
         issingle(f) && age(f) > birth_pars(model).minPregnancyAge]
 

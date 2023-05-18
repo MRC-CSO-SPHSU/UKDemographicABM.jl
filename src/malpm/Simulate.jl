@@ -13,7 +13,7 @@ using SocioEconomics.API.Traits: FullPopulation, AlivePopulation,
                                     SimProcess, Death, Birth, Marriage,
                                         AssignGuardian, AgeTransition,
                                         WorkTransition, SocialTransition
-using MALPM.Models: currenttime
+using SocioEconomics.API.ModelFunc: currenttime
 using SocioEconomics.Utilities: date2yearsmonths
 import SocioEconomics.Specification.SimulateNew: dodeaths!, dobirths!,
                         dodivorces!, domarriages!, do_assign_guardians!,
