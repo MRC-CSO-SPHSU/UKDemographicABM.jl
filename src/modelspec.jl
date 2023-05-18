@@ -1,6 +1,5 @@
 include("utils/utils.jl")
 add_to_loadpath!(pwd() * "/../SocioEconomics.jl/src")
-add_to_loadpath!(pwd())
 add_to_loadpath!(pwd() * "/src")
 add_to_loadpath!(pwd() * "/../MultiAgents.jl")
 

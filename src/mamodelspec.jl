@@ -3,8 +3,9 @@ using Random
 include("./modelspec.jl")
 using MultiAgents: SimpleABM
 
-include("utils/analysis.jl")
+add_to_loadpath!(pwd() * "/src/utils/MiniObserve/src")
 using MiniObserve
+include("utils/analysis.jl")
 
 """
 How simulations is to be executed:
