@@ -7,10 +7,6 @@ include("../modelapi.jl")
 #################
 
 const DemographicABM = ABM{DemographicMap}
-#=
-DemographicABM(space::DemographicMap, pars, simPars, data) =
-    ABM(Person, space; properties = (pars = pars, simPars = simPars, data = data))
-=#
 mutable struct DemographicProperties
     const parameters :: DemographyPars
     const simPars :: SimulationPars
