@@ -1,10 +1,6 @@
-using Memoization
-
 using  MultiAgents: AbstractABMSimulator
 using  MultiAgents: attach_pre_model_step!, attach_post_model_step!,
                     attach_agent_step!, currstep
-
-import SocioEconomics.API.ModelFunc: share_childless_men, eligible_women
 import MultiAgents: setup!
 #export setup!
 
@@ -47,29 +43,6 @@ work_transition_step!(person, model, sim, example) =
 
 social_transition_step!(person, model, sim, example) =
     social_transition!(person, model, _popfeature(example))
-
-_ageclass(person) = trunc(Int, age(person)/10)
-@memoize Dict function share_childless_men(model, ageclass :: Int)
-    nAll = 0
-    nNoC = 0
-    for p in Iterators.filter(x->alive(x) && ismale(x) && _ageclass(x) == ageclass, all_people(model))
-        nAll += 1
-        if !has_dependents(p)
-            nNoC += 1
-        end
-    end
-    return nNoC / nAll
-end
-
-@memoize eligible_women(model) =
-    [f for f in all_people(model) if isfemale(f) && alive(f) &&
-        issingle(f) && age(f) > birth_pars(model).minPregnancyAge]
-
-function reset_cache_marriages(model,sim,::LPMUKDemography)
-    #@info "cache reset at $(date2yearsmonths(currstep(sim)))"
-    Memoization.empty_cache!(share_childless_men)
-    Memoization.empty_cache!(eligible_women)
-end
 
 "set up simulation functions where dead people are removed"
 function setup!(sim::AbstractABMSimulator, example::LPMUKDemography)
