@@ -13,15 +13,15 @@ include("src/mamodelspec.jl")
 using MultiAgents: ABMSimulatorP
 using MultiAgents: run!, setup!
 
-using MALPM.Models: MAModel, currenttime
+#using MALPM.Models: MAModel, currenttime
 using SocioEconomics.Specification.Initialize: init!
 using MALPM.Examples
 
+# lpmExample = LPMUKDemography()    # don't remove deads
+const lpmExample = LPMUKDemographyOpt()   # remove deads
+
 const mainConfig = Light()    # no input files, logging or flags (REPL Exec.)
 # const mainConfig = WithInputFiles()
-
-# lpmExample = LPMUKDemography()    # don't remove deads
-lpmExample = LPMUKDemographyOpt()   # remove deads
 
 const simPars, dataPars, pars = load_parameters(mainConfig)
 
@@ -29,7 +29,7 @@ const simPars, dataPars, pars = load_parameters(mainConfig)
 # The following works only with Light() configuration
 #   useful when executing from REPL
 if mainConfig == Light()
-    simPars.seed = 0; seed!(simPars)
+    simPars.seed = 0; ParamTypes.seed!(simPars)
     simPars.verbose = false
     simPars.checkassumption = false
     simPars.sleeptime = 0
@@ -55,7 +55,6 @@ setup!(lpmDemographySim,lpmExample)
 
 # Execution
 @time run!(ukDemography,lpmDemographySim,lpmExample)
+close_logfile(logfile,mainConfig)
 
 @info currenttime(ukDemography)
-
-close_logfile(logfile,mainConfig)

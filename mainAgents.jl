@@ -2,12 +2,10 @@
 LPM using Agents.jl package
 """
 
-include("src/modelspec.jl")
+include("src/agentsjlmodelspec.jl")
 
-using MultiAgents
+#using MultiAgents
 using Agents
-
-using MALPM.Models: DemographicABM, currenttime
 
 const simPars, dataPars, pars = load_parameters()
 # significant parameters
