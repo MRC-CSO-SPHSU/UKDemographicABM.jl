@@ -22,13 +22,6 @@ function load_parameters(::WithInputFiles)
 end
 load_parameters(::Light) = load_parameters()
 
-function declare_uk_demography(pars,data)
-    ukTowns =  Vector{PersonTown}(declare_inhabited_towns(pars))
-    ukHouses = Vector{PersonHouse}()
-    ukPopulation = SimpleABM{Person}(declare_pyramid_population(pars))
-    ukTowns, ukHouses, ukPopulation
-end
-
 function setup_logging(simPars; FS = "\t")
     if simPars.logfile == ""
         return nothing
