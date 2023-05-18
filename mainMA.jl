@@ -8,12 +8,10 @@ from REPL execute it using
 > include("mainMA.jl")
 """
 
-include("mainMAHelpers.jl")
+include("src/mamodelspec.jl")
 
-using MultiAgents: ABMSimulatorP, MAVERSION
+using MultiAgents: ABMSimulatorP
 using MultiAgents: run!, setup!
-
-@assert MAVERSION == v"0.5"
 
 using MALPM.Models: MAModel, currenttime
 using SocioEconomics.Specification.Initialize: init!
@@ -36,7 +34,7 @@ if mainConfig == Light()
     simPars.checkassumption = false
     simPars.sleeptime = 0
     # V0.3.3 28300 for 1-min simulation / 165 sec for IPS = 100,000
-    pars.poppars.initialPop = 5000
+    pars.poppars.initialPop = 500
 end
 
 const logfile = setup_logging(simPars,mainConfig)

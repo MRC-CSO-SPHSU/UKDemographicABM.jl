@@ -1,8 +1,12 @@
 using Random
 
-include("libspath.jl")
-include("analysis.jl")
-add_to_loadpath!("../MultiAgents.jl")
+include("utils/utils.jl")
+add_to_loadpath!(pwd() * "/../SocioEconomics.jl/src")
+add_to_loadpath!(pwd())
+add_to_loadpath!(pwd() * "/src")
+
+include("../analysis.jl")
+add_to_loadpath!(pwd() * "/../MultiAgents.jl")
 
 using MiniObserve
 
@@ -15,10 +19,9 @@ using SocioEconomics.XAgents
 using SocioEconomics.Specification.Declare
 using SocioEconomics.Specification.Initialize
 
-# include("mainHelpers.jl")
-
-using MultiAgents: init_majl
+using MultiAgents: init_majl, MAVERSION
 using MultiAgents: SimpleABM
+@assert MAVERSION == v"0.5"
 init_majl()             # reset agents id counter
 
 """
