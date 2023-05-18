@@ -44,9 +44,6 @@ function dobirths!(model, sim, example::DemographyExample)
     nothing
 end
 
-const retBirth = Person[]
-_init_return(::LPMUKDemography,::Birth) = retBirth
-
 function dodivorces!(model, sim, example::DemographyExample)
     ret = _init_return(example, Birth())
     ret = dodivorces!(model,_popfeature(example),ret)
