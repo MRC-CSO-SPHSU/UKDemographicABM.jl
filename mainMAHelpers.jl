@@ -7,7 +7,7 @@ add_to_loadpath!("../MultiAgents.jl")
 using MiniObserve
 
 using SocioEconomics: SEVERSION, SEPATH, SESRCPATH
-@assert SEVERSION == v"0.4"  # Integration of Agents.jl space concept
+@assert SEVERSION == v"0.4.2"  # Integration of Agents.jl space concept
 
 using SocioEconomics.ParamTypes
 import SocioEconomics.ParamTypes: load_parameters

@@ -10,9 +10,12 @@ from REPL execute it using
 
 include("mainMAHelpers.jl")
 
-using MultiAgents: ABMSimulatorP
+using MultiAgents: ABMSimulatorP, MAVERSION
 using MultiAgents: run!, setup!
-using MALPM.Models: MAModel
+
+@assert MAVERSION == v"0.5"
+
+using MALPM.Models: MAModel, currenttime
 using SocioEconomics.Specification.Initialize: init!
 using MALPM.Examples
 
@@ -33,7 +36,7 @@ if mainConfig == Light()
     simPars.checkassumption = false
     simPars.sleeptime = 0
     # V0.3.3 28300 for 1-min simulation / 165 sec for IPS = 100,000
-    pars.poppars.initialPop = 500
+    pars.poppars.initialPop = 5000
 end
 
 const logfile = setup_logging(simPars,mainConfig)
@@ -42,9 +45,9 @@ const data = load_demography_data(dataPars)
 
 const ukTowns, ukHouses, ukPop = declare_uk_demography(pars,data)
 
-const ukDemography = MAModel(ukTowns, ukHouses, ukPop, pars, data)
+const ukDemography = MAModel(ukTowns, ukHouses, ukPop, pars, data, simPars.starttime)
 
-init!(ukDemography,verify=true)
+init!(ukDemography,verify=false)
 
 const lpmDemographySim =
     ABMSimulatorP{typeof(simPars)}(simPars,setupEnabled = false)
@@ -53,5 +56,7 @@ setup!(lpmDemographySim,lpmExample)
 
 # Execution
 @time run!(ukDemography,lpmDemographySim,lpmExample)
+
+@info currenttime(ukDemography)
 
 close_logfile(logfile,mainConfig)
