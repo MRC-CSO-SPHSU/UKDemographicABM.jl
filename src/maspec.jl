@@ -1,7 +1,9 @@
 using Random
 
 include("spec/components.jl")
-include("spec/models/mamodel.jl")
+include("spec/ma/model.jl")
+include("malpm/Simulate.jl")
+include("malpm/SimSetup.jl")
 
 add_to_loadpath!(pwd() * "/src/utils/MiniObserve/src")
 using MiniObserve

@@ -1,6 +1,4 @@
-#using SocioEconomics.XAgents
-#using SocioEconomics.ParamTypes: DemographyPars, DemographyData, SimulationPars
-include("./modelapi.jl")
+include("../modelapi.jl")
 
 using MultiAgents: SimpleABM, AbstractMABM, add_agent!, kill_agent_at_opt!
 import MultiAgents: allagents

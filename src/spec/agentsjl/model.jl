@@ -1,6 +1,6 @@
 using Agents
 import Agents: add_agent_pos!, add_agent_to_space!, remove_agent_from_space!
-include("./modelapi.jl")
+include("../modelapi.jl")
 
 #################
 # Agents.jl Model
