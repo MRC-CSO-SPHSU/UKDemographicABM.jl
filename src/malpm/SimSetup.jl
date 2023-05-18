@@ -6,7 +6,8 @@ using  MALPM.Models: MAModel, all_people, birth_pars
 using  MALPM.Examples
 using  MALPM.Simulate: dodeaths!, dobirths!,
         do_age_transitions!, do_work_transitions!, do_social_transitions!,
-        dodivorces!, domarriages!, do_assign_guardians!
+        dodivorces!, domarriages!, do_assign_guardians!,
+        increment_time!
 
 using  MultiAgents: AbstractABMSimulator
 using  MultiAgents: attach_pre_model_step!, attach_post_model_step!,
@@ -25,6 +26,7 @@ function _setup_common!(sim::AbstractABMSimulator)
 
     debug_setup(sim.parameters)
 
+    attach_pre_model_step!(sim,increment_time!)
     attach_post_model_step!(sim,dodeaths!)
     attach_post_model_step!(sim,do_assign_guardians!)
     attach_post_model_step!(sim,dobirths!)
@@ -37,28 +39,28 @@ _popfeature(::LPMUKDemography) = FullPopulation()
 _popfeature(::LPMUKDemographyOpt) = AlivePopulation()
 
 deathstep!(person, model, sim, example) =
-    death!(person, currstep(sim),model,_popfeature(example))
+    death!(person, model, _popfeature(example))
 
 birthstep!(person, model, sim, example) =
-    birth!(person, currstep(sim),model,_popfeature(example))
+    birth!(person, model, _popfeature(example))
 
 divorcestep!(person, model, sim, example) =
-    divorce!(person, currstep(sim), model, _popfeature(example))
+    divorce!(person, model, _popfeature(example))
 
 marriagestep!(person, model, sim, example) =
-    marriage!(person, currstep(sim), model, _popfeature(example))
+    marriage!(person, model, _popfeature(example))
 
 assign_guardian_step!(person, model, sim, example) =
-    assign_guardian!(person, currstep(sim), model, _popfeature(example))
+    assign_guardian!(person, model, _popfeature(example))
 
 age_transition_step!(person, model, sim, example) =
-    age_transition!(person, currstep(sim), model, _popfeature(example))
+    age_transition!(person, model, _popfeature(example))
 
 work_transition_step!(person, model, sim, example) =
-    work_transition!(person, currstep(sim), model, _popfeature(example))
+    work_transition!(person, model, _popfeature(example))
 
 social_transition_step!(person, model, sim, example) =
-    social_transition!(person, currstep(sim), model, _popfeature(example))
+    social_transition!(person, model, _popfeature(example))
 
 _ageclass(person) = trunc(Int, age(person)/10)
 @memoize Dict function share_childless_men(model::MAModel, ageclass :: Int)
