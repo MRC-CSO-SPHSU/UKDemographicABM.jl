@@ -1,12 +1,4 @@
-module SimSetup
-
 using Memoization
-
-using  MALPM.Examples
-using  MALPM.Simulate: dodeaths!, dobirths!,
-        do_age_transitions!, do_work_transitions!, do_social_transitions!,
-        dodivorces!, domarriages!, do_assign_guardians!,
-        increment_time!
 
 using  MultiAgents: AbstractABMSimulator
 using  MultiAgents: attach_pre_model_step!, attach_post_model_step!,
@@ -19,7 +11,7 @@ using  SocioEconomics.Specification.SimulateNew: death!, birth!, divorce!, marri
 
 import SocioEconomics.API.ModelFunc: share_childless_men, eligible_women
 import MultiAgents: setup!, verbose
-#export setup!
+export setup!
 
 function _setup_common!(sim::AbstractABMSimulator)
 
@@ -103,5 +95,3 @@ function setup!(sim::AbstractABMSimulator,example::LPMUKDemographyOpt)
     _setup_common!(sim)
     nothing
 end
-
-end # SimSetup

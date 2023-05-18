@@ -12,12 +12,9 @@ include("src/maspec.jl")
 
 using MultiAgents: ABMSimulatorP
 using MultiAgents: run!, setup!
-
-#using MALPM.Models: MAModel, currenttime
 using SocioEconomics.Specification.Initialize: init!
-using MALPM.Examples
 
-# lpmExample = LPMUKDemography()    # don't remove deads
+# const lpmExample = LPMUKDemography()    # don't remove deads
 const lpmExample = LPMUKDemographyOpt()   # remove deads
 
 const mainConfig = Light()    # no input files, logging or flags (REPL Exec.)
@@ -56,5 +53,4 @@ setup!(lpmDemographySim,lpmExample)
 # Execution
 @time run!(ukDemography,lpmDemographySim,lpmExample)
 close_logfile(logfile,mainConfig)
-
-@info currenttime(ukDemography)
+#@info currenttime(ukDemography)

@@ -1,20 +1,11 @@
-"""
-    Main simulation functions for the demographic aspect of LPM.
-"""
-
-module Simulate
-
 using MultiAgents:  AbstractMABM, AbstractABMSimulator
 using MultiAgents:  currstep, dt
-using MALPM.Examples
-using SocioEconomics
-using SocioEconomics.XAgents: Person
+
 using SocioEconomics.API.Traits: FullPopulation, AlivePopulation,
                                     SimProcess, Death, Birth, Marriage,
                                         AssignGuardian, AgeTransition,
                                         WorkTransition, SocialTransition
 using SocioEconomics.API.ModelFunc: currenttime
-using SocioEconomics.Utilities: date2yearsmonths
 import SocioEconomics.Specification.SimulateNew: dodeaths!, dobirths!,
                         dodivorces!, domarriages!, do_assign_guardians!,
                         do_age_transitions!, do_work_transitions!, do_social_transitions!
@@ -105,5 +96,3 @@ function do_social_transitions!(model::AbstractMABM, sim, example::DemographyExa
     ret = do_social_transitions!(model,_popfeature(example),ret)
     nothing
 end
-
-end # Simulate
