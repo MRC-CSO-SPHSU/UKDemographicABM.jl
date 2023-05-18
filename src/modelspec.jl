@@ -6,6 +6,7 @@ add_to_loadpath!(pwd() * "/../MultiAgents.jl")
 
 using MultiAgents: MAVERSION
 @assert MAVERSION == v"0.5.0"
+init_majl()  # reset agents id counter
 
 using SocioEconomics: SEVERSION
 @assert SEVERSION == v"0.4.2"  # Integration of Agents.jl space concept

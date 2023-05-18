@@ -9,8 +9,6 @@ using MiniObserve
 using MultiAgents: init_majl
 using MultiAgents: SimpleABM
 
-init_majl()             # reset agents id counter
-
 """
 How simulations is to be executed:
 - with or without input files, arguments and logging

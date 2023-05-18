@@ -6,7 +6,6 @@ include("src/modelspec.jl")
 
 using MultiAgents
 using Agents
-init_majl()  # reset agents.id to 1
 
 using MALPM.Models: DemographicABM, currenttime
 
