@@ -2,10 +2,10 @@
 #using SocioEconomics.ParamTypes: DemographyPars, DemographyData, SimulationPars
 include("./modelapi.jl")
 
-using MultiAgents
+using MultiAgents: SimpleABM, AbstractMABM, add_agent!, kill_agent_at_opt!
 import MultiAgents: allagents
 
-_alive_people(model) =  [ person for person in all_people(model)  if alive(person) ]
+_alive_people(model::MAModel) =  [ person for person in all_people(model)  if alive(person) ]
 
 mutable struct MAModel <: AbstractMABM
     const towns  :: Vector{PersonTown}
