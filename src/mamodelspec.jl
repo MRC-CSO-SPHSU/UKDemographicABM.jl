@@ -1,7 +1,7 @@
 using Random
 
 include("spec/components.jl")
-using MultiAgents: SimpleABM
+include("spec/models/mamodel.jl")
 
 add_to_loadpath!(pwd() * "/src/utils/MiniObserve/src")
 using MiniObserve
