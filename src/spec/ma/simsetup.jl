@@ -3,15 +3,10 @@ using Memoization
 using  MultiAgents: AbstractABMSimulator
 using  MultiAgents: attach_pre_model_step!, attach_post_model_step!,
                     attach_agent_step!, currstep
-using  SocioEconomics.ParamTypes: debug_setup
-using  SocioEconomics.XAgents: age, ismale, isfemale, issingle, alive, has_dependents
-using  SocioEconomics.API.Traits: FullPopulation, AlivePopulation
-using  SocioEconomics.Specification.SimulateNew: death!, birth!, divorce!, marriage!,
-        assign_guardian!, age_transition!, work_transition!, social_transition!
 
 import SocioEconomics.API.ModelFunc: share_childless_men, eligible_women
-import MultiAgents: setup!, verbose
-export setup!
+import MultiAgents: setup!
+#export setup!
 
 function _setup_common!(sim::AbstractABMSimulator)
 

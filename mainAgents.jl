@@ -27,14 +27,6 @@ Initialize.init!(model,AgentsModelInit();verify=true)
 
 debug_setup(model.simPars)
 
-using SocioEconomics.Specification.SimulateNew: dodeaths!, do_assign_guardians!,
-    dobirths!, domarriages!,  do_age_transitions!, dodivorces!,
-    do_work_transitions!, do_social_transitions!,
-    age_transition!, death!, assign_guardian!, marriage!, divorce!,
-    work_transition!, social_transition!
-using  SocioEconomics.API.Traits: FullPopulation, AlivePopulation
-
-
 # TODO move to Models?
 function agent_steps!(person,model)
     age_transition!(person, model)
