@@ -24,14 +24,7 @@ function load_parameters(::WithInputFiles)
     seed!(simPars)
     simPars, dataPars, pars
 end
-
-function load_parameters(::Light)
-    simPars = SimulationPars()
-    seed!(simPars)
-    dataPars = DataPars()
-    pars = DemographyPars()
-    simPars, dataPars, pars
-end
+load_parameters(::Light) = load_parameters()
 
 function declare_uk_demography(pars,data)
     ukTowns =  Vector{PersonTown}(declare_inhabited_towns(pars))

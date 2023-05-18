@@ -15,3 +15,11 @@ using SocioEconomics.ParamTypes
 using SocioEconomics.XAgents
 using SocioEconomics.Specification.Declare
 using SocioEconomics.Specification.Initialize
+
+function load_parameters()
+    simPars = SimulationPars()
+    ParamTypes.seed!(simPars)
+    dataPars = DataPars()
+    pars = DemographyPars()
+    simPars, dataPars, pars
+end

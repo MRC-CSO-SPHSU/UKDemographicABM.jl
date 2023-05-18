@@ -9,10 +9,7 @@ using Agents
 
 using MALPM.Models: DemographicABM, currenttime
 
-const simPars = SimulationPars()
-const dataPars = DataPars()
-const pars = DemographyPars()
-
+const simPars, dataPars, pars = load_parameters()
 # significant parameters
 simPars.seed = 0; ParamTypes.seed!(simPars)
 simPars.verbose = false
