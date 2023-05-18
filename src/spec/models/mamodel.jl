@@ -4,8 +4,18 @@ include("./modelapi.jl")
 
 using MultiAgents: SimpleABM, AbstractMABM, add_agent!, kill_agent_at_opt!
 import MultiAgents: allagents
+import MultiAgents.Util: AbstractExample
+export  DemographyExample, LPMUKDemography, LPMUKDemographyOpt
 
-_alive_people(model::MAModel) =  [ person for person in all_people(model)  if alive(person) ]
+### Example Names
+"Super type for all demographic models"
+abstract type DemographyExample <: AbstractExample end
+
+"This corresponds to direct translation of the python model"
+struct LPMUKDemography <: DemographyExample end
+
+"This is an attemp for improved algorthimic translation"
+struct LPMUKDemographyOpt <: DemographyExample end
 
 mutable struct MAModel <: AbstractMABM
     const towns  :: Vector{PersonTown}
@@ -15,6 +25,8 @@ mutable struct MAModel <: AbstractMABM
     const data :: DemographyData
     t :: Rational{Int}
 end
+
+_alive_people(model::MAModel) =  [ person for person in all_people(model)  if alive(person) ]
 
 allagents(model::MAModel) = allagents(model.pop)
 all_people(model::MAModel) = allagents(model.pop)
