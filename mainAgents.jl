@@ -2,24 +2,13 @@
 LPM using Agents.jl package
 """
 
-include("libspath.jl")
-add_to_loadpath!("../MultiAgents.jl")
+include("src/modelspec.jl")
 
 using MultiAgents
 using Agents
-
 init_majl()  # reset agents.id to 1
-@assert MAVERSION == v"0.5"
-
-using SocioEconomics: SEVERSION
-@assert SEVERSION == v"0.4.2"
 
 using MALPM.Models: DemographicABM, currenttime
-
-using SocioEconomics.XAgents:  DemographicMap
-using SocioEconomics.ParamTypes
-using SocioEconomics.Specification.Declare
-using SocioEconomics.Specification.Initialize
 
 const simPars = SimulationPars()
 const dataPars = DataPars()
@@ -70,6 +59,6 @@ function model_steps!(model)
     nothing
 end
 
-@time run!(model,agent_steps!,model_steps!,12*100) # run 100 year
+@time run!(model,agent_steps!,model_steps!,12*10) # run 10 year
 
 @info currenttime(model)

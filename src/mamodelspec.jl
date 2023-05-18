@@ -1,27 +1,14 @@
 using Random
 
-include("utils/utils.jl")
-add_to_loadpath!(pwd() * "/../SocioEconomics.jl/src")
-add_to_loadpath!(pwd())
-add_to_loadpath!(pwd() * "/src")
+include("./modelspec.jl")
 
 include("../analysis.jl")
-add_to_loadpath!(pwd() * "/../MultiAgents.jl")
 
 using MiniObserve
 
-using SocioEconomics: SEVERSION, SEPATH, SESRCPATH
-@assert SEVERSION == v"0.4.2"  # Integration of Agents.jl space concept
-
-using SocioEconomics.ParamTypes
-import SocioEconomics.ParamTypes: load_parameters
-using SocioEconomics.XAgents
-using SocioEconomics.Specification.Declare
-using SocioEconomics.Specification.Initialize
-
-using MultiAgents: init_majl, MAVERSION
+using MultiAgents: init_majl
 using MultiAgents: SimpleABM
-@assert MAVERSION == v"0.5"
+
 init_majl()             # reset agents id counter
 
 """
@@ -31,6 +18,8 @@ How simulations is to be executed:
 abstract type MainSim end
 struct WithInputFiles <: MainSim end   # Input parameter files
 struct Light <: MainSim end            # no input files
+
+import SocioEconomics.ParamTypes: load_parameters
 
 function load_parameters(::WithInputFiles)
     simPars, dataPars, pars = load_parameters(ARGS)
