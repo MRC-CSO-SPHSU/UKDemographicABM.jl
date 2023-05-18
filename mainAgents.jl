@@ -2,7 +2,7 @@
 LPM using Agents.jl package
 """
 
-include("src/agentsjlmodelspec.jl")
+include("src/agentsjlspec.jl")
 
 #using MultiAgents
 using Agents

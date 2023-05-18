@@ -8,7 +8,7 @@ from REPL execute it using
 > include("mainMA.jl")
 """
 
-include("src/mamodelspec.jl")
+include("src/maspec.jl")
 
 using MultiAgents: ABMSimulatorP
 using MultiAgents: run!, setup!
