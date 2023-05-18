@@ -1,13 +1,10 @@
 using Random
 
 include("./modelspec.jl")
-
-include("../analysis.jl")
-
-using MiniObserve
-
-using MultiAgents: init_majl
 using MultiAgents: SimpleABM
+
+include("utils/analysis.jl")
+using MiniObserve
 
 """
 How simulations is to be executed:
@@ -16,8 +13,6 @@ How simulations is to be executed:
 abstract type MainSim end
 struct WithInputFiles <: MainSim end   # Input parameter files
 struct Light <: MainSim end            # no input files
-
-import SocioEconomics.ParamTypes: load_parameters
 
 function load_parameters(::WithInputFiles)
     simPars, dataPars, pars = load_parameters(ARGS)
