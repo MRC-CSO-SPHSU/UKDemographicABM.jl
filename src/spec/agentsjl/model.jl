@@ -9,12 +9,12 @@ include("../modelapi.jl")
 const DemographicABM = ABM{DemographicMap}
 mutable struct DemographicProperties
     const parameters :: DemographyPars
-    const simPars :: SimulationPars
+    #const simPars :: SimulationPars
     const data  :: DemographyData
     t :: Rational{Int}
 end
 function DemographicABM(space::DemographicMap, pars, simPars, data)
-    demoprop = DemographicProperties(pars, simPars, data, simPars.starttime)
+    demoprop = DemographicProperties(pars, data, simPars.starttime )
     return ABM(Person, space; properties = demoprop)
 end
 

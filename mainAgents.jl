@@ -25,7 +25,7 @@ Initialize.init!(model,AgentsModelInit();verify=true)
 
 # Execute ...
 
-debug_setup(model.simPars)
+debug_setup(simPars)
 
 # TODO move to Models?
 function agent_steps!(person,model)
@@ -37,7 +37,7 @@ function agent_steps!(person,model)
 end
 
 function model_steps!(model)
-    model.t += model.simPars.dt
+    model.t += simPars.dt
     dodeaths!(model)
     do_assign_guardians!(model)
     dobirths!(model,FullPopulation())
@@ -45,6 +45,6 @@ function model_steps!(model)
     nothing
 end
 
-@time run!(model,agent_steps!,model_steps!,12*10) # run 10 year
+@time run!(model,agent_steps!,model_steps!,12*100) # run 10 year
 
 @info currenttime(model)
