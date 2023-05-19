@@ -19,6 +19,9 @@ marriage_pars(model) = model.parameters.marriagepars
 work_pars(model) = model.parameters.workpars
 map_pars(model) = model.parameters.mappars
 
+_alive_people(model) =
+    [ person for person in all_people(model)  if alive(person) ]
+
 _ageclass(person) = trunc(Int, age(person)/10)
 @memoize Dict function share_childless_men(model, ageclass :: Int)
     nAll = 0

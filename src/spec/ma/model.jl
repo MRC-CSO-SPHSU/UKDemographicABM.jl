@@ -29,8 +29,6 @@ mutable struct MAModel <: AbstractMABM
     t :: Rational{Int}
 end
 
-_alive_people(model::MAModel) =  [ person for person in all_people(model)  if alive(person) ]
-
 allagents(model::MAModel) = allagents(model.pop)
 all_people(model::MAModel) = allagents(model.pop)
 alive_people(model::MAModel) = _alive_people(model)

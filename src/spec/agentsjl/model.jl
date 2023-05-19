@@ -30,7 +30,7 @@ end
 
 all_people(model::DemographicABM) = collect(Agents.allagents(model)) # TODO Is there something better
 #all_people(model::DemographicABM) = Agents.allagents(model) # TODO Is there something better
-alive_people(model::DemographicABM) = all_people(model) #_alive_people(model)
+alive_people(model::DemographicABM) = _alive_people(model) # all_people(model) #
 
 add_person!(model::DemographicABM,person) = add_agent_pos!(person, model)
 # The following is needed by add_agent[_pos]!(agent,model)
