@@ -17,6 +17,9 @@ abstract type AbsAlivePopEx <: LPMUKExample end
 
 struct AlivePopEx <: AbsAlivePopEx end
 
+"Simulation with a simple simulator type"
+struct SimpleSimulatorEx <: AbsAlivePopEx end
+
 mutable struct MAModel <: AbstractMABM
     const towns  :: Vector{PersonTown}
     const houses :: Vector{PersonHouse}

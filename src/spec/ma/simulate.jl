@@ -44,7 +44,7 @@ const retDeath = Person[]
 _init_return(::FullPopEx,::Death) = retDeath
 
 function increment_time!(model, sim, example::LPMUKExample)
-    @assert currstep(sim) == currenttime(model) + dt(sim)
+    @assert currstep(sim) == currenttime(model)  + dt(sim)
     model.t += dt(sim)
     #=if model.t % 10 == 0
         @info "current year " * string(model.t)
@@ -115,5 +115,25 @@ _init_return(::FullPopEx,pr::SocialTransition) =
 function do_social_transitions!(model::AbstractMABM, sim, example::LPMUKExample)
     ret = _init_return(example,SocialTransition())
     ret = do_social_transitions!(model,_popfeature(example),ret)
+    nothing
+end
+
+function pre_model_stepping!(model, sim::FixedStepSimP, example::SimpleSimulatorEx)
+    increment_time!(model, sim, example)
+end
+
+function agent_stepping!(person, model, sim::FixedStepSimP, example::SimpleSimulatorEx)
+    age_transition!(person, model, _popfeature(example))
+    divorce!(person, model, _popfeature(example))
+    work_transition!(person, model, _popfeature(example))
+    social_transition!(person, model, _popfeature(example))
+    nothing
+end
+
+function post_model_stepping!(model, sim::FixedStepSimP, example::SimpleSimulatorEx)
+    dodeaths!(model, _popfeature(example))
+    do_assign_guardians!(model, _popfeature(example))
+    dobirths!(model, _popfeature(example))
+    domarriages!(model, _popfeature(example))
     nothing
 end

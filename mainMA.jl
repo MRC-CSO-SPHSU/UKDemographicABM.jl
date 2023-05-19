@@ -10,12 +10,13 @@ from REPL execute it using
 
 include("src/maspec.jl")
 
-using MultiAgents: ABMSimulatorP
+using MultiAgents: ABMSimulatorP, FixedStepSimP
 using MultiAgents: run!, setup!
 using SocioEconomics.Specification.Initialize: init!
 
 # const lpmExample = FullPopEx()    # don't remove deads
-const lpmExample = AlivePopEx()   # remove deads
+# const lpmExample = AlivePopEx()   # remove deads
+const lpmExample = SimpleSimulatorEx() # dead removal and simple simulator
 
 const mainConfig = Light()    # no input files, logging or flags (REPL Exec.)
 # const mainConfig = WithInputFiles()
@@ -31,7 +32,7 @@ if mainConfig == Light()
     simPars.checkassumption = false
     simPars.sleeptime = 0
     # V0.4.2 28500 for 1-min simulation / 162 sec for IPS = 100_000
-    pars.poppars.initialPop = 28500
+    pars.poppars.initialPop = 5000
 end
 
 const logfile = setup_logging(simPars,mainConfig)
@@ -45,12 +46,23 @@ const ukDemography = MAModel(ukTowns, ukHouses, ukPop, pars, data, simPars.start
 
 init!(ukDemography,verify=false)
 
-const lpmDemographySim =
-    ABMSimulatorP{typeof(simPars)}(simPars,setupEnabled = false)
+_declare_simulator(pars,::LPMUKExample) =
+    ABMSimulatorP{typeof(pars)}(pars,setupEnabled = false)
+_declare_simulator(pars,::SimpleSimulatorEx) =
+    FixedStepSimP{typeof(pars)}(pars)
 
-setup!(lpmDemographySim,lpmExample)
+const lpmDemographySim = _declare_simulator(simPars,lpmExample)
+
+_setup_simulator!(simulator::ABMSimulatorP,example) = setup!(simulator,example)
+_setup_simulator!(simulator::FixedStepSimP,example) = debug_setup(simulator.parameters)
+_setup_simulator!(lpmDemographySim,lpmExample)
 
 # Execution
-@time run!(ukDemography,lpmDemographySim,lpmExample)
+
+_run_model!(model,simulator::ABMSimulatorP,example) = run!(model,simulator,example)
+_run_model!(model,simulator::FixedStepSimP,example::SimpleSimulatorEx) =
+    run!(model,pre_model_stepping!,agent_stepping!,post_model_stepping!,simulator,example)
+
+@time _run_model!(ukDemography,lpmDemographySim,lpmExample)
 close_logfile(logfile,mainConfig)
-#@info currenttime(ukDemography)
+@info currenttime(ukDemography)
