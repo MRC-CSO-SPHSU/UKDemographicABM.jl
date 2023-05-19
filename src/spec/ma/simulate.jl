@@ -12,9 +12,9 @@ import SocioEconomics.Specification.SimulateNew: dodeaths!, dobirths!,
 export increment_time!
 
 _popfeature(::FullPopEx) = FullPopulation()
-_popfeature(::AlivePopEx) = AlivePopulation()
+_popfeature(::AbsAlivePopEx) = AlivePopulation()
 
-_init_return(::AlivePopEx,::SimProcess) = 0
+_init_return(::AbsAlivePopEx,::SimProcess) = 0
 
 const retDeath = Person[]
 _init_return(::FullPopEx,::Death) = retDeath
@@ -68,7 +68,7 @@ function do_assign_guardians!(model::AbstractMABM, sim::AbstractABMSimulator, ex
 end
 
 _init_return(::FullPopEx,pr::AgeTransition) =
-    _init_return(AlivePopEx(),pr)
+    _init_return(AbsAlivePopEx(),pr)
 
 function do_age_transitions!(model::AbstractMABM, sim::AbstractABMSimulator, example::LPMUKExample)
     ret = _init_return(example,AgeTransition())
@@ -77,7 +77,7 @@ function do_age_transitions!(model::AbstractMABM, sim::AbstractABMSimulator, exa
 end
 
 _init_return(::FullPopEx,pr::WorkTransition) =
-    _init_return(AlivePopEx(),pr)
+    _init_return(AbsAlivePopEx(),pr)
 
 function do_work_transitions!(model::AbstractMABM, sim, example::LPMUKExample)
     ret = _init_return(example,WorkTransition())
@@ -86,7 +86,7 @@ function do_work_transitions!(model::AbstractMABM, sim, example::LPMUKExample)
 end
 
 _init_return(::FullPopEx,pr::SocialTransition) =
-    _init_return(AlivePopEx(),pr)
+    _init_return(AbsAlivePopEx(),pr)
 
 function do_social_transitions!(model::AbstractMABM, sim, example::LPMUKExample)
     ret = _init_return(example,SocialTransition())

@@ -18,7 +18,7 @@ function _setup_common!(sim::AbstractABMSimulator)
 end
 
 _popfeature(::FullPopEx) = FullPopulation()
-_popfeature(::AlivePopEx) = AlivePopulation()
+_popfeature(::AbsAlivePopEx) = AlivePopulation()
 
 deathstep!(person, model, sim, example) =
     death!(person, model, _popfeature(example))
@@ -55,7 +55,7 @@ function setup!(sim::AbstractABMSimulator, example::FullPopEx)
     nothing
 end
 
-function setup!(sim::AbstractABMSimulator,example::AlivePopEx)
+function setup!(sim::AbstractABMSimulator,example::AbsAlivePopEx)
     attach_post_model_step!(sim,do_age_transitions!)
     attach_post_model_step!(sim,dodivorces!)
     attach_post_model_step!(sim,do_work_transitions!)

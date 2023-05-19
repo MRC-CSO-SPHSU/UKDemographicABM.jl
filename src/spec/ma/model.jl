@@ -3,7 +3,7 @@ include("../modelapi.jl")
 using MultiAgents: SimpleABM, AbstractMABM, add_agent!, kill_agent_at_opt!
 import MultiAgents: allagents
 import MultiAgents.Util: AbstractExample
-export  LPMUKExample, FullPopEx, AlivePopEx
+export  LPMUKExample, FullPopEx, AbsAlivePopEx
 
 ### Example Names
 "Super type for all demographic models"
@@ -13,7 +13,9 @@ abstract type LPMUKExample <: AbstractExample end
 struct FullPopEx <: LPMUKExample end
 
 "With deads removal"
-struct AlivePopEx <: LPMUKExample end
+abstract type AbsAlivePopEx <: LPMUKExample end
+
+struct AlivePopEx <: AbsAlivePopEx end
 
 mutable struct MAModel <: AbstractMABM
     const towns  :: Vector{PersonTown}
