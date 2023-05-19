@@ -45,6 +45,8 @@ function model_steps!(model)
     nothing
 end
 
-@time run!(model,agent_steps!,model_steps!,12*100) # run 10 year
+#const adata = []
+#const mdata = [currenttime]
+@time run!(model,agent_steps!,model_steps!,12*100) #;adata,mdata) # run 10 year
 
 @info currenttime(model)
