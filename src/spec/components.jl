@@ -4,11 +4,11 @@ add_to_loadpath!(pwd() * "/src")
 add_to_loadpath!(pwd() * "/../MultiAgents.jl")
 
 using MultiAgents: MAVERSION, init_majl
-@assert MAVERSION == v"0.5.0"
+@assert MAVERSION == v"0.5.1"
 init_majl()  # reset agents id counter
 
 using SocioEconomics: SEVERSION
-@assert SEVERSION == v"0.4.2"  # Integration of Agents.jl space concept
+@assert SEVERSION == v"0.4.3"  # Integration of Agents.jl space concept
 
 using SocioEconomics.ParamTypes                 # Model parameters
 using SocioEconomics.XAgents                    # Basic agent types
