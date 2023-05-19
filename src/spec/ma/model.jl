@@ -9,10 +9,10 @@ export  LPMUKExample, FullPopEx, AlivePopEx
 "Super type for all demographic models"
 abstract type LPMUKExample <: AbstractExample end
 
-"This corresponds to direct translation of the python model"
+"This corresponds to simulation with full population without deads removal"
 struct FullPopEx <: LPMUKExample end
 
-"This is an attemp for improved algorthimic translation"
+"With deads removal"
 struct AlivePopEx <: LPMUKExample end
 
 mutable struct MAModel <: AbstractMABM
