@@ -27,21 +27,23 @@ Initialize.init!(model,AgentsModelInit();verify=true)
 
 debug_setup(simPars)
 
+const pf = AlivePopulation()
+
 # TODO move to Models?
 function agent_steps!(person,model)
-    age_transition!(person, model)
-    divorce!(person, model)
-    work_transition!(person, model)
-    social_transition!(person, model)
+    age_transition!(person, model, pf)
+    divorce!(person, model, pf)
+    work_transition!(person, model, pf)
+    social_transition!(person, model, pf)
     nothing
 end
 
 function model_steps!(model)
     model.t += simPars.dt
-    dodeaths!(model)
-    do_assign_guardians!(model)
+    dodeaths!(model,pf)
+    do_assign_guardians!(model,pf)
     dobirths!(model,FullPopulation())
-    domarriages!(model)
+    domarriages!(model,pf)
     nothing
 end
 
