@@ -3,17 +3,17 @@ include("../modelapi.jl")
 using MultiAgents: SimpleABM, AbstractMABM, add_agent!, kill_agent_at_opt!
 import MultiAgents: allagents
 import MultiAgents.Util: AbstractExample
-export  DemographyExample, LPMUKDemography, LPMUKDemographyOpt
+export  LPMUKExample, FullPopEx, AlivePopEx
 
 ### Example Names
 "Super type for all demographic models"
-abstract type DemographyExample <: AbstractExample end
+abstract type LPMUKExample <: AbstractExample end
 
 "This corresponds to direct translation of the python model"
-struct LPMUKDemography <: DemographyExample end
+struct FullPopEx <: LPMUKExample end
 
 "This is an attemp for improved algorthimic translation"
-struct LPMUKDemographyOpt <: DemographyExample end
+struct AlivePopEx <: LPMUKExample end
 
 mutable struct MAModel <: AbstractMABM
     const towns  :: Vector{PersonTown}

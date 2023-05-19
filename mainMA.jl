@@ -14,8 +14,8 @@ using MultiAgents: ABMSimulatorP
 using MultiAgents: run!, setup!
 using SocioEconomics.Specification.Initialize: init!
 
-# const lpmExample = LPMUKDemography()    # don't remove deads
-const lpmExample = LPMUKDemographyOpt()   # remove deads
+# const lpmExample = FullPopEx()    # don't remove deads
+const lpmExample = AlivePopEx()   # remove deads
 
 const mainConfig = Light()    # no input files, logging or flags (REPL Exec.)
 # const mainConfig = WithInputFiles()
@@ -31,7 +31,7 @@ if mainConfig == Light()
     simPars.checkassumption = false
     simPars.sleeptime = 0
     # V0.4.2 28500 for 1-min simulation / 162 sec for IPS = 100_000
-    pars.poppars.initialPop = 500
+    pars.poppars.initialPop = 28500
 end
 
 const logfile = setup_logging(simPars,mainConfig)

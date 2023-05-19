@@ -17,8 +17,8 @@ function _setup_common!(sim::AbstractABMSimulator)
     nothing
 end
 
-_popfeature(::LPMUKDemography) = FullPopulation()
-_popfeature(::LPMUKDemographyOpt) = AlivePopulation()
+_popfeature(::FullPopEx) = FullPopulation()
+_popfeature(::AlivePopEx) = AlivePopulation()
 
 deathstep!(person, model, sim, example) =
     death!(person, model, _popfeature(example))
@@ -45,7 +45,7 @@ social_transition_step!(person, model, sim, example) =
     social_transition!(person, model, _popfeature(example))
 
 "set up simulation functions where dead people are removed"
-function setup!(sim::AbstractABMSimulator, example::LPMUKDemography)
+function setup!(sim::AbstractABMSimulator, example::FullPopEx)
     attach_agent_step!(sim,age_transition_step!)
     attach_agent_step!(sim,divorcestep!)
     attach_agent_step!(sim,work_transition_step!)
@@ -55,7 +55,7 @@ function setup!(sim::AbstractABMSimulator, example::LPMUKDemography)
     nothing
 end
 
-function setup!(sim::AbstractABMSimulator,example::LPMUKDemographyOpt)
+function setup!(sim::AbstractABMSimulator,example::AlivePopEx)
     attach_post_model_step!(sim,do_age_transitions!)
     attach_post_model_step!(sim,dodivorces!)
     attach_post_model_step!(sim,do_work_transitions!)
