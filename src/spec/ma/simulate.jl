@@ -14,6 +14,30 @@ export increment_time!
 _popfeature(::FullPopEx) = FullPopulation()
 _popfeature(::AbsAlivePopEx) = AlivePopulation()
 
+deathstep!(person, model, sim, example) =
+    death!(person, model, _popfeature(example))
+
+birthstep!(person, model, sim, example) =
+    birth!(person, model, _popfeature(example))
+
+divorcestep!(person, model, sim, example) =
+    divorce!(person, model, _popfeature(example))
+
+marriagestep!(person, model, sim, example) =
+    marriage!(person, model, _popfeature(example))
+
+assign_guardian_step!(person, model, sim, example) =
+    assign_guardian!(person, model, _popfeature(example))
+
+age_transition_step!(person, model, sim, example) =
+    age_transition!(person, model, _popfeature(example))
+
+work_transition_step!(person, model, sim, example) =
+    work_transition!(person, model, _popfeature(example))
+
+social_transition_step!(person, model, sim, example) =
+    social_transition!(person, model, _popfeature(example))
+
 _init_return(::AbsAlivePopEx,::SimProcess) = 0
 
 const retDeath = Person[]
