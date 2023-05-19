@@ -1,4 +1,4 @@
-using MultiAgents:  AbstractMABM, AbstractABMSimulator
+using MultiAgents:  AbstractMABM, AbstractABMSimulator, FixedStepSimP
 using MultiAgents:  currstep, dt
 
 using SocioEconomics.API.Traits: FullPopulation, AlivePopulation,
