@@ -30,6 +30,7 @@ Releases
 - **V0.4 (14.03.2023)** : Compatible with SE Version SE0.4, started an Agents.jl-based main program, moving unsed code to deprecated 
    - V0.4.1 (15.5) : another main simulation program based on Agents.jl  
    - V0.4.2 (16.5) : simplification of main simulation functions (now without time argument)
+   - V0.4.3 (x.5) : improved code structure, simulation with a simple simulator type 
 
 Performance Progress History 
 ============================
