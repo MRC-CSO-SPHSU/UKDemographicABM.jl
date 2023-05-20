@@ -30,6 +30,7 @@ Releases
 - **V0.4 (14.03.2023)** : Compatible with SE Version SE0.4, started an Agents.jl-based main program, moving unsed code to deprecated 
    - V0.4.1 (15.5) : another main simulation program based on Agents.jl  
    - V0.4.2 (16.5) : simplification of main simulation functions (now without time argument)
+   - V0.4.3 (x.5) : improved code structure, simulation with a simple simulator type 
 
 Performance Progress History 
 ============================
@@ -60,7 +61,6 @@ Version   |   Runtime  |  # Memory Allocation | Storage used | Comment
 --- | --- | --- | --- | --- 
 0.4.1  | ~54 sec. | ~ 91 M | 6 GB | This is only the first version and it is subject to improvement 
 0.4.2  | ~39.5 sec | 55.5 M | 3.95 GB | Improvement was due to the usage of Julia compiler V1.9.0 (instead of V1.8.1) 
-
 
 
 

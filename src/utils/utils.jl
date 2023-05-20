@@ -5,11 +5,3 @@ function add_to_loadpath!(paths...)
         end
     end
 end
-
-add_to_loadpath!("../SocioEconomics.jl/src")
-add_to_loadpath!("./src")
-add_to_loadpath!(".")
-
-
-
-

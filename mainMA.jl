@@ -8,22 +8,18 @@ from REPL execute it using
 > include("mainMA.jl")
 """
 
-include("mainMAHelpers.jl")
+include("src/maspec.jl")
 
-using MultiAgents: ABMSimulatorP, MAVERSION
+using MultiAgents: ABMSimulatorP, FixedStepSimP
 using MultiAgents: run!, setup!
-
-@assert MAVERSION == v"0.5"
-
-using MALPM.Models: MAModel, currenttime
 using SocioEconomics.Specification.Initialize: init!
-using MALPM.Examples
+
+# const lpmExample = FullPopEx()    # don't remove deads
+# const lpmExample = AlivePopEx()   # remove deads
+const lpmExample = SimpleSimulatorEx() # dead removal and simple simulator
 
 const mainConfig = Light()    # no input files, logging or flags (REPL Exec.)
 # const mainConfig = WithInputFiles()
-
-# lpmExample = LPMUKDemography()    # don't remove deads
-lpmExample = LPMUKDemographyOpt()   # remove deads
 
 const simPars, dataPars, pars = load_parameters(mainConfig)
 
@@ -31,11 +27,11 @@ const simPars, dataPars, pars = load_parameters(mainConfig)
 # The following works only with Light() configuration
 #   useful when executing from REPL
 if mainConfig == Light()
-    simPars.seed = 0; seed!(simPars)
+    simPars.seed = 0; ParamTypes.seed!(simPars)
     simPars.verbose = false
     simPars.checkassumption = false
     simPars.sleeptime = 0
-    # V0.3.3 28300 for 1-min simulation / 165 sec for IPS = 100,000
+    # V0.4.2 28500 for 1-min simulation / 162 sec for IPS = 100_000
     pars.poppars.initialPop = 5000
 end
 
@@ -43,20 +39,30 @@ const logfile = setup_logging(simPars,mainConfig)
 
 const data = load_demography_data(dataPars)
 
-const ukTowns, ukHouses, ukPop = declare_uk_demography(pars,data)
-
+const ukTowns =  Vector{PersonTown}(declare_inhabited_towns(pars))
+const ukHouses = Vector{PersonHouse}()
+const ukPop = SimpleABM{Person}(declare_pyramid_population(pars))
 const ukDemography = MAModel(ukTowns, ukHouses, ukPop, pars, data, simPars.starttime)
 
 init!(ukDemography,verify=false)
 
-const lpmDemographySim =
-    ABMSimulatorP{typeof(simPars)}(simPars,setupEnabled = false)
+_declare_simulator(pars,::LPMUKExample) =
+    ABMSimulatorP{typeof(pars)}(pars,setupEnabled = false)
+_declare_simulator(pars,::SimpleSimulatorEx) =
+    FixedStepSimP{typeof(pars)}(pars)
 
-setup!(lpmDemographySim,lpmExample)
+const lpmDemographySim = _declare_simulator(simPars,lpmExample)
+
+_setup_simulator!(simulator::ABMSimulatorP,example) = setup!(simulator,example)
+_setup_simulator!(simulator::FixedStepSimP,example) = debug_setup(simulator.parameters)
+_setup_simulator!(lpmDemographySim,lpmExample)
 
 # Execution
-@time run!(ukDemography,lpmDemographySim,lpmExample)
 
-@info currenttime(ukDemography)
+_run_model!(model,simulator::ABMSimulatorP,example) = run!(model,simulator,example)
+_run_model!(model,simulator::FixedStepSimP,example::SimpleSimulatorEx) =
+    run!(model,pre_model_stepping!,agent_stepping!,post_model_stepping!,simulator,example)
 
+@time _run_model!(ukDemography,lpmDemographySim,lpmExample)
 close_logfile(logfile,mainConfig)
+@info currenttime(ukDemography)

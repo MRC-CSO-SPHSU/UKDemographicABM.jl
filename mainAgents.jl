@@ -2,29 +2,12 @@
 LPM using Agents.jl package
 """
 
-include("libspath.jl")
-add_to_loadpath!("../MultiAgents.jl")
+include("src/agentsjlspec.jl")
 
-using MultiAgents
+#using MultiAgents
 using Agents
 
-init_majl()  # reset agents.id to 1
-@assert MAVERSION == v"0.5"
-
-using SocioEconomics: SEVERSION
-@assert SEVERSION == v"0.4.2"
-
-using MALPM.Models: DemographicABM, currenttime
-
-using SocioEconomics.XAgents:  DemographicMap
-using SocioEconomics.ParamTypes
-using SocioEconomics.Specification.Declare
-using SocioEconomics.Specification.Initialize
-
-const simPars = SimulationPars()
-const dataPars = DataPars()
-const pars = DemographyPars()
-
+const simPars, dataPars, pars = load_parameters()
 # significant parameters
 simPars.seed = 0; ParamTypes.seed!(simPars)
 simPars.verbose = false
@@ -42,34 +25,30 @@ Initialize.init!(model,AgentsModelInit();verify=true)
 
 # Execute ...
 
-debug_setup(model.simPars)
+debug_setup(simPars)
 
-using SocioEconomics.Specification.SimulateNew: dodeaths!, do_assign_guardians!,
-    dobirths!, domarriages!,  do_age_transitions!, dodivorces!,
-    do_work_transitions!, do_social_transitions!,
-    age_transition!, death!, assign_guardian!, marriage!, divorce!,
-    work_transition!, social_transition!
-using  SocioEconomics.API.Traits: FullPopulation, AlivePopulation
-
+const pf = AlivePopulation()
 
 # TODO move to Models?
 function agent_steps!(person,model)
-    age_transition!(person, model)
-    divorce!(person, model)
-    work_transition!(person, model)
-    social_transition!(person, model)
+    age_transition!(person, model, pf)
+    divorce!(person, model, pf)
+    work_transition!(person, model, pf)
+    social_transition!(person, model, pf)
     nothing
 end
 
 function model_steps!(model)
-    model.t += model.simPars.dt
-    dodeaths!(model)
-    do_assign_guardians!(model)
+    model.t += simPars.dt
+    dodeaths!(model,pf)
+    do_assign_guardians!(model,pf)
     dobirths!(model,FullPopulation())
-    domarriages!(model)
+    domarriages!(model,pf)
     nothing
 end
 
-@time run!(model,agent_steps!,model_steps!,12*100) # run 100 year
+#const adata = []
+#const mdata = [currenttime]
+@time run!(model,agent_steps!,model_steps!,12*100) #;adata,mdata) # run 10 year
 
 @info currenttime(model)
