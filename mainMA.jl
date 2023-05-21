@@ -27,12 +27,12 @@ const simPars, dataPars, pars = load_parameters(mainConfig)
 # The following works only with Light() configuration
 #   useful when executing from REPL
 if mainConfig == Light()
-    simPars.seed = 0; ParamTypes.seed!(simPars)
+    simPars.seed = 10; ParamTypes.seed!(simPars)
     simPars.verbose = false
     simPars.checkassumption = false
     simPars.sleeptime = 0
     # V0.4.2 28500 for 1-min simulation / 162 sec for IPS = 100_000
-    pars.poppars.initialPop = 5000
+    pars.poppars.initialPop = 10000
 end
 
 const logfile = setup_logging(simPars,mainConfig)
@@ -44,7 +44,9 @@ const ukHouses = Vector{PersonHouse}()
 const ukPop = SimpleABM{Person}(declare_pyramid_population(pars))
 const ukDemography = MAModel(ukTowns, ukHouses, ukPop, pars, data, simPars.starttime)
 
-init!(ukDemography,verify=false)
+applycaching(::SimProcess) = false
+applycaching(::Birth) = true
+init!(ukDemography;verify=false,applycaching)
 
 _declare_simulator(pars,::LPMUKExample) =
     ABMSimulatorP{typeof(pars)}(pars,setupEnabled = false)

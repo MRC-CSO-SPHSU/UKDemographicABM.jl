@@ -130,10 +130,17 @@ function agent_stepping!(person, model, sim::FixedStepSimP, example::SimpleSimul
     nothing
 end
 
+function _dobirths_caching()
+    if  applycaching(Birth()) == true
+        return UseCache()
+    end
+    return NoCaching()
+end
+
 function post_model_stepping!(model, sim::FixedStepSimP, example::SimpleSimulatorEx)
     dodeaths!(model, _popfeature(example))
     do_assign_guardians!(model, _popfeature(example))
-    dobirths!(model, _popfeature(example))
+    dobirths!(model, _popfeature(example); caching = _dobirths_caching())
     domarriages!(model, _popfeature(example))
     nothing
 end
