@@ -10,11 +10,11 @@ init_majl()  # reset agents id counter
 using SocioEconomics: SEVERSION
 @assert SEVERSION == v"0.4.3"  # Integration of Agents.jl space concept
 
-using SocioEconomics.ParamTypes                 # Model parameters
-using SocioEconomics.XAgents                    # Basic agent types
-using SocioEconomics.Specification.Declare      # Model Components declaration
-using SocioEconomics.Specification.Initialize   # Model initialization
-using  SocioEconomics.API.Traits: FullPopulation, AlivePopulation
+using SocioEconomics.ParamTypes # Model parameters
+using SocioEconomics.XAgents # Basic agent types
+using SocioEconomics.Specification.Declare # Model Components declaration
+using SocioEconomics.Specification.Initialize # Model initialization
+using SocioEconomics.API.Traits # Population, Simulation Processes and operation traits
 using SocioEconomics.Specification.SimulateNew
 
 import SocioEconomics.ParamTypes: load_parameters
