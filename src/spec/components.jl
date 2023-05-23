@@ -8,7 +8,7 @@ using MultiAgents: MAVERSION, init_majl
 init_majl()  # reset agents id counter
 
 using SocioEconomics: SEVERSION
-@assert SEVERSION == v"0.4.3"  # Integration of Agents.jl space concept
+@assert SEVERSION == v"0.4.4"  # Performance tuning
 
 using SocioEconomics.ParamTypes # Model parameters
 using SocioEconomics.XAgents # Basic agent types
