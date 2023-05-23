@@ -27,12 +27,12 @@ const simPars, dataPars, pars = load_parameters(mainConfig)
 # The following works only with Light() configuration
 #   useful when executing from REPL
 if mainConfig == Light()
-    simPars.seed = 10; ParamTypes.seed!(simPars)
+    simPars.seed = 0; ParamTypes.seed!(simPars)
     simPars.verbose = false
     simPars.checkassumption = false
     simPars.sleeptime = 0
-    # V0.4.2 28500 for 1-min simulation / 162 sec for IPS = 100_000
-    pars.poppars.initialPop = 10000
+    # V0.4.4 58000 (2.17M, 536MB) for 1-min simulation / 153.45 (3.78M, 926 MB) sec for IPS = 100_000
+    pars.poppars.initialPop =  5000 # 29100 # 50_000
 end
 
 const logfile = setup_logging(simPars,mainConfig)
