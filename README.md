@@ -30,7 +30,8 @@ Releases
 - **V0.4 (14.03.2023)** : Compatible with SE Version SE0.4, started an Agents.jl-based main program, moving unsed code to deprecated 
    - V0.4.1 (15.5) : another main simulation program based on Agents.jl  
    - V0.4.2 (16.5) : simplification of main simulation functions (now without time argument)
-   - V0.4.3 (x.5) : improved code structure, simulation with a simple simulator type 
+   - V0.4.3 (19.5) : improved code structure, simulation with a simple simulator type 
+   - V0.4.4 (23.5) : caching pre-computations and little tuning 
 
 Performance Progress History 
 ============================
@@ -46,14 +47,16 @@ V0.2.5 | 20 sec. | ~ 155 M | ~ 8 GB |
 V0.2.6 | 7.6 sec. | ~ 37 M | ~ 2.2 GB | 
 V0.2.8 | 6.3 sec. | ~ 24 M | ~ 1.6 GB |
 V0.3 | 4.7 sec | ~ 380 k | ~ 90 MB | 
-V0.4.2 | 4.44 sec | ~ 354 k | 88 MB |
+V0.4.2 | 4.44 sec | ~ 354 k | 88 MB | Julia Version 1.9
+V0.4.4 | 4.33 sec | ~ 370 k | 90 MB | 
 
-The following are performance statistics (IPS : Initial Population Size)
+The following are performance statistics (IPS : Initial Population Size) on a dell laptob (11th Gen. Intel@ core i9-1900H @ 2.5 GnZ) x 16, 32 GB Memory :
 
 Version | 1 Minute simulation with IPS of | IPS = 100,000 | IPS = 1,000,000
 --- | --- | --- | --- 
 0.3.1 | 56200 (~ 2.1 M A. + 520 MB) | ~ 168 secs  (3.84 M A., 930 MB) | 5 hours 11 min (40.04 M A., 9.116 GB)
 0.4.2 | 57000 (~ 2.08 M A. + 518 MB) | ~ 162 secs (3.77 M A., 929 MB) | ?  
+0.4.4 | 58000 (~ 2.17 M A. + 536 MB) | ~ 153.5 secs (3.78 M , 926 MB) | ? 
 
 The following is Agents.jl performance with IPS = 500 for 100 year 
 
