@@ -56,7 +56,8 @@ Version | 1 Minute simulation with IPS of | IPS = 100,000 | IPS = 1,000,000
 --- | --- | --- | --- 
 0.3.1 | 56200 (~ 2.1 M A. + 520 MB) | ~ 168 secs  (3.84 M A., 930 MB) | 5 hours 11 min (40.04 M A., 9.116 GB)
 0.4.2 | 57000 (~ 2.08 M A. + 518 MB) | ~ 162 secs (3.77 M A., 929 MB) | ?  
-0.4.4 | 58000 (~ 2.17 M A. + 536 MB) | ~ 153.5 secs (3.78 M , 926 MB) | 5 hours 1 (38.95 M , 9.022) 
+0.4.4 | 58000 (~ 2.17 M A. + 536 MB) | ~ 153.5 secs (3.78 M , 926 MB) | 5 hours 1 min (38.95 M , 9.022) 
+0.4.5 | ? | 151 secs (3.76 M, 922 MB) | ? 
 
 The following is Agents.jl performance with IPS = 500 for 100 year 
 
