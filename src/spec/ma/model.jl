@@ -34,9 +34,6 @@ all_people(model::MAModel) = allagents(model.pop)
 alive_people(model::MAModel) = _alive_people(model)
     # Iterators.filter(person->alive(person),people) # Iterators did not show significant value sofar
 
-houses(model::MAModel) = model.houses
-towns(model::MAModel) = model.towns
-
 add_person!(model::MAModel, person) = add_agent!(model.pop, person)
 remove_person!(model::MAModel, person, personidx::Int) =
     kill_agent_at_opt!(personidx, model.pop)
