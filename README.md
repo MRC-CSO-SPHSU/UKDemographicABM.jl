@@ -49,6 +49,7 @@ V0.2.8 | 6.3 sec. | ~ 24 M | ~ 1.6 GB |
 V0.3 | 4.7 sec | ~ 380 k | ~ 90 MB | 
 V0.4.2 | 4.44 sec | ~ 354 k | 88 MB | Julia Version 1.9
 V0.4.4 | 4.33 sec | ~ 370 k | 90 MB | 
+V0.4.5 | 3.89 | 372 k | 90 MB | 
 
 The following are performance statistics (IPS : Initial Population Size) on a dell laptob (11th Gen. Intel@ core i9-1900H @ 2.5 GnZ) x 16, 32 GB Memory :
 
