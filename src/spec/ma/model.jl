@@ -1,8 +1,8 @@
 include("../modelapi.jl")
 
-using MultiAgents: SimpleABM, AbstractMABM, add_agent!, kill_agent_at_opt!
-import MultiAgents: allagents
-import MultiAgents.Util: AbstractExample
+using ABMSim: SimpleABM, AbstractMABM, add_agent!, kill_agent_at_opt!
+import ABMSim: allagents
+import ABMSim.Util: AbstractExample
 export  LPMUKExample, FullPopEx, AbsAlivePopEx
 
 ### Example Names

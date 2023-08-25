@@ -1,5 +1,5 @@
-using MultiAgents:  AbstractMABM, AbstractABMSimulator, FixedStepSimP
-using MultiAgents:  currstep, dt
+using ABMSim:  AbstractMABM, AbstractABMSimulator, FixedStepSimP
+using ABMSim:  currstep, dt
 
 using SocioEconomics.API.Traits: FullPopulation, AlivePopulation,
                                     SimProcess, Death, Birth, Marriage,

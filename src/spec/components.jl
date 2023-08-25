@@ -1,9 +1,9 @@
 include("../utils/utils.jl")
 add_to_loadpath!(pwd() * "/../SocioEconomics.jl/src")
 add_to_loadpath!(pwd() * "/src")
-add_to_loadpath!(pwd() * "/../MultiAgents.jl")
+add_to_loadpath!(pwd() * "/../ABMSim.jl")
 
-using MultiAgents: MAVERSION, init_majl
+using ABMSim: MAVERSION, init_majl
 @assert MAVERSION == v"0.6"
 init_majl()  # reset agents id counter
 

@@ -4,7 +4,7 @@ LPM using Agents.jl package
 
 include("src/agentsjlspec.jl")
 
-#using MultiAgents
+#using ABMSim
 using Agents
 
 const simPars, dataPars, pars = load_parameters()
