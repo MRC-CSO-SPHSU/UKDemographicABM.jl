@@ -3,9 +3,9 @@ add_to_loadpath!(pwd() * "/../SocioEconomics.jl/src")
 add_to_loadpath!(pwd() * "/src")
 add_to_loadpath!(pwd() * "/../ABMSim.jl")
 
-using ABMSim: MAVERSION, init_majl
-@assert MAVERSION == v"0.6"
-init_majl()  # reset agents id counter
+using ABMSim: MAVERSION, init_abmsim
+@assert ABMSIMVERSION == v"0.6"
+init_abmsim()  # reset agents id counter
 
 using SocioEconomics: SEVERSION
 @assert SEVERSION == v"0.5"  # Performance tuning
