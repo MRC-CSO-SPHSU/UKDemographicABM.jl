@@ -3,7 +3,7 @@ add_to_loadpath!(pwd() * "/../SocioEconomics.jl/src")
 add_to_loadpath!(pwd() * "/src")
 add_to_loadpath!(pwd() * "/../ABMSim.jl")
 
-using ABMSim: MAVERSION, init_abmsim
+using ABMSim: ABMSIMVERSION, init_abmsim
 @assert ABMSIMVERSION == v"0.6"
 init_abmsim()  # reset agents id counter
 
