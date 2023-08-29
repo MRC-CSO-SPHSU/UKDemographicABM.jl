@@ -2,10 +2,13 @@
 Main simulation of the lone parent model
 
 Run this script from shell as
-# julia mainMA.jl
+# julia main.jl
 
 from REPL execute it using
-> include("mainMA.jl")
+> include("main.jl")
+
+Since V0.5, ABMSim.jl V0.6.1 is used instead of MultiAgents.jl accessible 
+under (https://github.com/AtiyahElsheikh/MultiAgents.jl) 
 """
 
 include("src/maspec.jl")
