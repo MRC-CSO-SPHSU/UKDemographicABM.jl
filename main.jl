@@ -10,8 +10,8 @@ from REPL execute it using
 
 include("src/maspec.jl")
 
-using MultiAgents: ABMSimulatorP, FixedStepSimP
-using MultiAgents: run!, setup!
+using ABMSim: ABMSimulatorP, FixedStepSimP
+using ABMSim: run!, setup!
 using SocioEconomics.Specification.Initialize: init!
 
 # const lpmExample = FullPopEx()    # don't remove deads
