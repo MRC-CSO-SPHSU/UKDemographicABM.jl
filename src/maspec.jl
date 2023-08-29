@@ -5,10 +5,6 @@ include("spec/ma/model.jl")
 include("spec/ma/simulate.jl")
 include("spec/ma/simsetup.jl")
 
-add_to_loadpath!(pwd() * "/src/utils/MiniObserve/src")
-using MiniObserve
-include("utils/analysis.jl")
-
 """
 How simulations is to be executed:
 - with or without input files, arguments and logging
