@@ -1,12 +1,12 @@
 using ABMSim:  AbstractMABM, AbstractABMSimulator, FixedStepSimP
 using ABMSim:  currstep, dt
 
-using SocioEconomics.API.Traits: FullPopulation, AlivePopulation,
+using UKSEABMLib.API.Traits: FullPopulation, AlivePopulation,
                                     SimProcess, Death, Birth, Marriage,
                                         AssignGuardian, AgeTransition,
                                         WorkTransition, SocialTransition
-using SocioEconomics.API.ModelFunc: currenttime
-import SocioEconomics.Specification.SimulateNew: dodeaths!, dobirths!,
+using UKSEABMLib.API.ModelFunc: currenttime
+import UKSEABMLib.Specification.SimulateNew: dodeaths!, dobirths!,
                         dodivorces!, domarriages!, do_assign_guardians!,
                         do_age_transitions!, do_work_transitions!, do_social_transitions!
 export increment_time!
