@@ -2,7 +2,7 @@ using Memoization
 
 using SocioEconomics.API.ModelFunc
 import SocioEconomics.API.ModelFunc: all_people, alive_people,
-    add_person!, add_house!, remove_person!
+    add_person!, add_house!, remove_person!,towns, houses
 import SocioEconomics.API.ModelFunc: share_childless_men, eligible_women
 
 _alive_people(model) =
