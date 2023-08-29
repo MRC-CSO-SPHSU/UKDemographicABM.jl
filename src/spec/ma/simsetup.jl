@@ -1,7 +1,7 @@
-using  MultiAgents: AbstractABMSimulator
-using  MultiAgents: attach_pre_model_step!, attach_post_model_step!,
+using  ABMSim: AbstractABMSimulator
+using  ABMSim: attach_pre_model_step!, attach_post_model_step!,
                     attach_agent_step!, currstep
-import MultiAgents: setup!
+import ABMSim: setup!
 #export setup!
 
 function _setup_common!(sim::AbstractABMSimulator)

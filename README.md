@@ -49,6 +49,7 @@ V0.2.8 | 6.3 sec. | ~ 24 M | ~ 1.6 GB |
 V0.3 | 4.7 sec | ~ 380 k | ~ 90 MB | 
 V0.4.2 | 4.44 sec | ~ 354 k | 88 MB | Julia Version 1.9
 V0.4.4 | 4.33 sec | ~ 370 k | 90 MB | 
+V0.4.5 | 3.89 | 372 k | 90 MB | 
 
 The following are performance statistics (IPS : Initial Population Size) on a dell laptob (11th Gen. Intel@ core i9-1900H @ 2.5 GnZ) x 16, 32 GB Memory :
 
@@ -56,7 +57,8 @@ Version | 1 Minute simulation with IPS of | IPS = 100,000 | IPS = 1,000,000
 --- | --- | --- | --- 
 0.3.1 | 56200 (~ 2.1 M A. + 520 MB) | ~ 168 secs  (3.84 M A., 930 MB) | 5 hours 11 min (40.04 M A., 9.116 GB)
 0.4.2 | 57000 (~ 2.08 M A. + 518 MB) | ~ 162 secs (3.77 M A., 929 MB) | ?  
-0.4.4 | 58000 (~ 2.17 M A. + 536 MB) | ~ 153.5 secs (3.78 M , 926 MB) | ? 
+0.4.4 | 58000 (~ 2.17 M A. + 536 MB) | ~ 153.5 secs (3.78 M , 926 MB) | 5 hours 1 min (38.95 M A. , 9.022 GB) 
+0.4.5 | 59000 (~2.23 M A. + 552 MB) | 151 secs (3.76 M, 922 MB) | 4 hours 53 min (38.83 M. A., 9.000 GB)
 
 The following is Agents.jl performance with IPS = 500 for 100 year 
 
