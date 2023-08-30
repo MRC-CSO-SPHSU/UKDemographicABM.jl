@@ -5,7 +5,7 @@
 ### Title 
 
 UKDemographicABM.jl: A demographic Agent-based model of the UK
-Update README.md
+
 ### Description 
 
 Implementation of a demographic agent-based model of the UK based on the UKSEABMLib.jl [1] and employs an agent-based model simulator tool, ABMSim.jl [2] and Agents.jl package [3]. The implementation based on Agents.jl is just a first attempt and is subject to tuning. The model is a re-implementation of the demographic part of the Lone Parent Model implemented in Python [4]. The code is extended from from LoneParentsModel.jl V0.6.1 [5].  
