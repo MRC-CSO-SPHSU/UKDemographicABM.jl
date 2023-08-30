@@ -31,7 +31,10 @@ Releases
    - V0.4.1 (15.5) : another main simulation program based on Agents.jl  
    - V0.4.2 (16.5) : simplification of main simulation functions (now without time argument)
    - V0.4.3 (19.5) : improved code structure, simulation with a simple simulator type 
-   - V0.4.4 (23.5) : caching pre-computations and little tuning 
+   - V0.4.4 (23.5) : caching pre-computations and little tuning
+ 
+- **V0.5 (29.8.2023)**: Employing ABMSim V0.6 rather than MultiAgents, SE V0.5, bug fixes for mainAgents.jl, removing unnecessary code
+- **V0.6 (30.8.2023)**: Renaming SocioEconomics.jl to UKSEABMLib.jl 
 
 Performance Progress History 
 ============================

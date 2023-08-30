@@ -2,17 +2,23 @@
 Main simulation of the lone parent model
 
 Run this script from shell as
-# julia mainMA.jl
+# julia main.jl
 
 from REPL execute it using
-> include("mainMA.jl")
+> include("main.jl")
+
+Since V0.5, ABMSim.jl V0.6.1 is used instead of deprectatd MultiAgents.jl accessible
+under (https://github.com/AtiyahElsheikh/MultiAgents.jl)
+
+Since V0.6, UKSEABMLib.jl V0.6 is used instead of depracted SocioEconomics.jl accessible under
+(https://github.com/AtiyahElsheikh/SocioEconomics.jl)
 """
 
 include("src/maspec.jl")
 
 using ABMSim: ABMSimulatorP, FixedStepSimP
 using ABMSim: run!, setup!
-using SocioEconomics.Specification.Initialize: init!
+using UKSEABMLib.Specification.Initialize: init!
 
 # const lpmExample = FullPopEx()    # don't remove deads
 # const lpmExample = AlivePopEx()   # remove deads

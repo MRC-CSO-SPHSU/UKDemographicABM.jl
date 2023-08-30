@@ -1,9 +1,9 @@
 using Memoization
 
-using SocioEconomics.API.ModelFunc
-import SocioEconomics.API.ModelFunc: all_people, alive_people,
+using UKSEABMLib.API.ModelFunc
+import UKSEABMLib.API.ModelFunc: all_people, alive_people,
     add_person!, add_house!, remove_person!,towns, houses
-import SocioEconomics.API.ModelFunc: share_childless_men, eligible_women
+import UKSEABMLib.API.ModelFunc: share_childless_men, eligible_women
 
 _alive_people(model) =
     [ person for person in all_people(model)  if alive(person) ]
