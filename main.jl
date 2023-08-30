@@ -7,8 +7,11 @@ Run this script from shell as
 from REPL execute it using
 > include("main.jl")
 
-Since V0.5, ABMSim.jl V0.6.1 is used instead of MultiAgents.jl accessible
+Since V0.5, ABMSim.jl V0.6.1 is used instead of deprectatd MultiAgents.jl accessible
 under (https://github.com/AtiyahElsheikh/MultiAgents.jl)
+
+Since V0.6, UKSEABMLib.jl V0.6 is used instead of depracted SocioEconomics.jl accessible under
+(https://github.com/AtiyahElsheikh/SocioEconomics.jl)
 """
 
 include("src/maspec.jl")
