@@ -10,8 +10,7 @@ UKDemographicABM.jl: A demographic Agent-based model of the UK
 
 Implementation of a demographic agent-based model of the UK based on the UKSEABMLib.jl [1] and employs an agent-based model simulator tool, ABMSim.jl [2] and Agents.jl package [3]. The model is a re-implementation of the demographic part of the Lone Parent Model implemented in Python [4]. The code is extended from from LoneParentsModel.jl V0.6.1 [5].  
 
-Releases
-========
+### Releases
 
 - **V0.1.0 (28.11.2022)** : The lone parent model (corresponding to LoneParentsModel.jl Version 0.6.1) based on the SocioEconomics.jl package V0.1.0 
 
@@ -42,8 +41,6 @@ Releases
 - **V0.5 (29.8.2023)**: Employing ABMSim V0.6 rather than MultiAgents, SE V0.5, bug fixes for mainAgents.jl, removing unnecessary code
 - **V0.6 (30.8.2023)**: Renaming SocioEconomics.jl to UKSEABMLib.jl, renaming LPM.jl to UKDemographicABM.jl 
 
-Performance Progress History 
-============================
+### Performance Progress History 
 
 See [here](https://github.com/MRC-CSO-SPHSU/LPM.jl/blob/master/Performance.md)
-
