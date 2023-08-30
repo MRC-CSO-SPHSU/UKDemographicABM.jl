@@ -85,7 +85,38 @@ This is a library with no internal examples. However, cf. [LPM.jl package](https
 
 ### Cite as 
 
-TODO
+Atiyah Elsheikh. (2023). UKDemographicABM.jl: A demographic Agent-based model of the UK. Zenodo. https://doi.org/10.5281/zenodo.8302495
+
+Version 0.6:  
+
+Atiyah Elsheikh. (2023). UKDemographicABM.jl: A demographic Agent-based model of the UK (0.6). Zenodo. https://doi.org/10.5281/zenodo.8302496
+
+#### bibtex 
+
+@software{atiyah_elsheikh_2023_8302496,
+  author       = {Atiyah Elsheikh},
+  title        = {{UKDemographicABM.jl: A demographic Agent-based 
+                   model of the UK}},
+  month        = aug,
+  year         = 2023,
+  publisher    = {Zenodo},
+  doi          = {10.5281/zenodo.8302495},
+  url          = {https://doi.org/10.5281/zenodo.8302495}
+}
+
+version 0.6: 
+
+@software{atiyah_elsheikh_2023_8302496,
+  author       = {Atiyah Elsheikh},
+  title        = {{UKDemographicABM.jl: A demographic Agent-based 
+                   model of the UK}},
+  month        = aug,
+  year         = 2023,
+  publisher    = {Zenodo},
+  version      = {0.6},
+  doi          = {10.5281/zenodo.8302496},
+  url          = {https://doi.org/10.5281/zenodo.8302496}
+}
 
 ### Acknowledgments 
 
