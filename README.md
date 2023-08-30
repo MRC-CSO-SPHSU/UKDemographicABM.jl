@@ -5,7 +5,7 @@
 ### Title 
 
 UKDemographicABM.jl: A demographic Agent-based model of the UK
-
+Update README.md
 ### Description 
 
 Implementation of a demographic agent-based model of the UK based on the UKSEABMLib.jl [1] and employs an agent-based model simulator tool, ABMSim.jl [2] and Agents.jl package [3]. The implementation based on Agents.jl is just a first attempt and is subject to tuning. The model is a re-implementation of the demographic part of the Lone Parent Model implemented in Python [4]. The code is extended from from LoneParentsModel.jl V0.6.1 [5].  
@@ -68,3 +68,27 @@ This is a library with no internal examples. However, cf. [LPM.jl package](https
   > # or 
   > include("mainAgents.jl")  # for using Agents.jl 
 </code> 
+
+### References
+
+[1] [Atiyah Elsheikh,The UKSEABMLib.jl componants library for agent-based UK-oriented socioeconomics modelling applications (V0.6), 2023. Zenodo. https://doi.org/10.5281/zenodo.8301126](https://github.com/MRC-CSO-SPHSU/UKSEABMLib.jl/edit/master)
+
+[2] [Atiyah Elsheikh, ABMSim.jl: An agent-based model simulator (V0.6.1). Zenodo. https://doi.org/10.5281/zenodo.8284009, 2023](https://github.com/MRC-CSO-SPHSU/ABMSim.jl/blob/master)
+
+[3] George Datseris, Ali R. Vahdati and Timothy C. DuBois: Agents.jl: a performant and feature-full agent-based modeling software of minimal code complexity. SIMULATION. 2022. doi:10.1177/00375497211068820 
+
+[4] Umberto Gostoli and Eric Silverman Social and child care provision in kinship networks: An agent-based model. PLoS ONE 15(12): 2020 (https://doi.org/10.1371/journal.pone.0242779) 
+
+[5] [LoneParentsModel.jl V0.6.1](https://archive.softwareheritage.org/browse/origin/directory/?branch=refs/tags/V0.6.1&origin_url=https://github.com/MRC-CSO-SPHSU/LoneParentsModel.jl&snapshot=7b7095bbf44a61414ed6d1abec7861c162a10e60) 
+
+### Cite as 
+
+TODO
+
+### ### Acknowledgments 
+
+For the purpose of open access, the author(s) has applied a Creative Commons Attribution (CC BY) licence to any Author Accepted Manuscript version arising from this submission.
+
+### Fundings 
+
+[Dr. Atyiah Elsheikh](https://www.gla.ac.uk/schools/healthwellbeing/staff/atiyahelsheikh/), by the time of publishing Version 0.6 of this software, is a Research Software Engineer at MRC/CSO Social & Public Health Sciences Unit, School of Health and Wellbeing, University of Glasgow. He is in the Complexity in Health programme. He is supported  by the Medical Research Council (MC_UU_00022/1) and the Scottish Government Chief Scientist Office (SPHSU16). 
