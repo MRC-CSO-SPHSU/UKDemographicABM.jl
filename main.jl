@@ -1,5 +1,5 @@
 """
-Main simulation of the lone parent model
+Main simulation of a demographic ABM simulation of the UK
 
 Run this script from shell as
 # julia main.jl
@@ -20,9 +20,9 @@ using ABMSim: ABMSimulatorP, FixedStepSimP
 using ABMSim: run!, setup!
 using UKSEABMLib.Specification.Initialize: init!
 
-# const lpmExample = FullPopEx()    # don't remove deads
-# const lpmExample = AlivePopEx()   # remove deads
-const lpmExample = SimpleSimulatorEx() # dead removal and simple simulator
+# const mainExample = FullPopEx()    # don't remove deads
+# const mainExample = AlivePopEx()   # remove deads
+const mainExample = SimpleSimulatorEx() # dead removal and simple simulator
 
 const mainConfig = Light()    # no input files, logging or flags (REPL Exec.)
 # const mainConfig = WithInputFiles()
@@ -54,16 +54,16 @@ applycaching(::SimProcess) = false
 applycaching(::Birth) = true
 init!(ukDemography;verify=false,applycaching)
 
-_declare_simulator(pars,::LPMUKExample) =
+_declare_simulator(pars,::AbsExample) =
     ABMSimulatorP{typeof(pars)}(pars,setupEnabled = false)
 _declare_simulator(pars,::SimpleSimulatorEx) =
     FixedStepSimP{typeof(pars)}(pars)
 
-const lpmDemographySim = _declare_simulator(simPars,lpmExample)
+const demographySim = _declare_simulator(simPars,mainExample)
 
 _setup_simulator!(simulator::ABMSimulatorP,example) = setup!(simulator,example)
 _setup_simulator!(simulator::FixedStepSimP,example) = debug_setup(simulator.parameters)
-_setup_simulator!(lpmDemographySim,lpmExample)
+_setup_simulator!(demographySim,mainExample)
 
 # Execution
 
@@ -71,6 +71,6 @@ _run_model!(model,simulator::ABMSimulatorP,example) = run!(model,simulator,examp
 _run_model!(model,simulator::FixedStepSimP,example::SimpleSimulatorEx) =
     run!(model,pre_model_stepping!,agent_stepping!,post_model_stepping!,simulator,example)
 
-@time _run_model!(ukDemography,lpmDemographySim,lpmExample)
+@time _run_model!(ukDemography,demographySim,mainExample)
 close_logfile(logfile,mainConfig)
 @info currenttime(ukDemography)

@@ -3,17 +3,17 @@ include("../modelapi.jl")
 using ABMSim: SimpleABM, AbstractMABM, add_agent!, kill_agent_at_opt!
 import ABMSim: allagents
 import ABMSim.Util: AbstractExample
-export  LPMUKExample, FullPopEx, AbsAlivePopEx
+export  AbsExample, FullPopEx, AbsAlivePopEx
 
 ### Example Names
 "Super type for all demographic models"
-abstract type LPMUKExample <: AbstractExample end
+abstract type AbsExample <: AbstractExample end
 
 "This corresponds to simulation with full population without deads removal"
-struct FullPopEx <: LPMUKExample end
+struct FullPopEx <: AbsExample end
 
 "With deads removal"
-abstract type AbsAlivePopEx <: LPMUKExample end
+abstract type AbsAlivePopEx <: AbsExample end
 
 struct AlivePopEx <: AbsAlivePopEx end
 
