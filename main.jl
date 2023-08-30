@@ -1,5 +1,5 @@
 """
-Main simulation of the lone parent model
+Main simulation of a demographic ABM simulation of the UK
 
 Run this script from shell as
 # julia main.jl
