@@ -8,7 +8,7 @@ UKDemographicABM.jl: A demographic Agent-based model of the UK
 
 ### Description 
 
-Implementation of a demographic agent-based model of the UK based on the UKSEABMLib.jl [1] and employs an agent-based model simulator tool, ABMSim.jl [2] and Agents.jl package [3]. The model is a re-implementation of the demographic part of the Lone Parent Model implemented in Python [4]. The code is extended from from LoneParentsModel.jl V0.6.1 [5].  
+Implementation of a demographic agent-based model of the UK based on the UKSEABMLib.jl [1] and employs an agent-based model simulator tool, ABMSim.jl [2] and Agents.jl package [3]. The implementation based on Agents.jl is just a first attempt and is subject to tuning. The model is a re-implementation of the demographic part of the Lone Parent Model implemented in Python [4]. The code is extended from from LoneParentsModel.jl V0.6.1 [5].  
 
 ### Releases
 
@@ -44,3 +44,27 @@ Implementation of a demographic agent-based model of the UK based on the UKSEABM
 ### Performance Progress History 
 
 See [here](https://github.com/MRC-CSO-SPHSU/LPM.jl/blob/master/Performance.md)
+
+### License 
+
+MIT License
+
+Copyright (c) 2023 Atiyah Elsheikh, MRC/CSO Social & Public Health Sciences Unit, School of Health and Wellbeing, University of Glasgow, Cf. [License](https://github.com/MRC-CSO-SPHSU/UKDemographicABM.jl/blob/master/LICENSE) for further information
+
+### Platform 
+
+This code was developed and experimented on 
+- Ubuntu 22.04.2 LTS
+- VSCode V1.71.2
+- Julia language V1.9.1
+- Agents.jl V5.14.0
+
+### Exeution 
+
+This is a library with no internal examples. However, cf. [LPM.jl package](https://github.com/MRC-CSO-SPHSU/LPM.jl) as an example. Execution of unit tests within REPL: 
+
+<code>  
+  > include("main.jl")
+  > # or 
+  > include("mainAgents.jl")  # for using Agents.jl 
+</code> 
