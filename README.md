@@ -71,9 +71,9 @@ This is a library with no internal examples. However, cf. [LPM.jl package](https
 
 ### References
 
-[1] [Atiyah Elsheikh,The UKSEABMLib.jl componants library for agent-based UK-oriented socioeconomics modelling applications (V0.6), 2023. Zenodo. https://doi.org/10.5281/zenodo.8301126](https://github.com/MRC-CSO-SPHSU/UKSEABMLib.jl/edit/master)
+[1] [Atiyah Elsheikh,The UKSEABMLib.jl componants library for agent-based UK-oriented socioeconomics modelling applications, 2023. Zenodo. https://doi.org/10.5281/zenodo.8301125](https://github.com/MRC-CSO-SPHSU/UKSEABMLib.jl/edit/master)
 
-[2] [Atiyah Elsheikh, ABMSim.jl: An agent-based model simulator (V0.6.1). Zenodo. https://doi.org/10.5281/zenodo.8284009, 2023](https://github.com/MRC-CSO-SPHSU/ABMSim.jl/blob/master)
+[2] [Atiyah Elsheikh, ABMSim.jl: An agent-based model simulator. Zenodo. https://doi.org/10.5281/zenodo.8284008, 2023](https://github.com/MRC-CSO-SPHSU/ABMSim.jl/blob/master)
 
 [3] George Datseris, Ali R. Vahdati and Timothy C. DuBois: Agents.jl: a performant and feature-full agent-based modeling software of minimal code complexity. SIMULATION. 2022. doi:10.1177/00375497211068820 
 
