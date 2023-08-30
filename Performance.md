@@ -31,3 +31,10 @@ Version   |   Runtime  |  # Memory Allocation | Storage used | Comment
 --- | --- | --- | --- | --- 
 0.4.1  | ~54 sec. | ~ 91 M | 6 GB | This is only the first version and it is subject to improvement 
 0.4.2  | ~39.5 sec | 55.5 M | 3.95 GB | Improvement was due to the usage of Julia compiler V1.9.0 (instead of V1.8.1)
+
+Backward compatibility issues
+=======
+
+- Since V0.5, ABMSim.jl V0.6.1 is used instead of the deprecated package [MultiAgents.jl](https://github.com/AtiyahElsheikh/MultiAgents.jl) 
+
+- Since V0.6, UKSEABMLib.jl V0.6 is used instead of the deprecated package [SocioEconomics.jl](https://github.com/AtiyahElsheikh/SocioEconomics.jl)
