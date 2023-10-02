@@ -12,7 +12,7 @@ simPars.seed = 0; ParamTypes.seed!(simPars)
 simPars.verbose = false
 simPars.checkassumption = false
 simPars.sleeptime = 0
-pars.poppars.initialPop = 500
+pars.poppars.initialPop = 5000
 
 const data = load_demography_data(dataPars)
 
