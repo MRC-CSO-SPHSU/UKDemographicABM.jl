@@ -1,11 +1,5 @@
-include("../utils/utils.jl")
 add_to_loadpath!(pwd() * "/../UKSEABMLib.jl/src")
 add_to_loadpath!(pwd() * "/src")
-add_to_loadpath!(pwd() * "/../ABMSim.jl")
-
-using ABMSim: ABMSIMVERSION, init_abmsim
-@assert ABMSIMVERSION == v"0.7.1"
-init_abmsim()  # reset agents id counter
 
 using UKSEABMLib: SEVERSION
 @assert SEVERSION == v"0.6.1"  # Performance tuning
