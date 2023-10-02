@@ -8,7 +8,7 @@ using ABMSim: ABMSIMVERSION, init_abmsim
 init_abmsim()  # reset agents id counter
 
 using UKSEABMLib: SEVERSION
-@assert SEVERSION == v"0.6"  # Performance tuning
+@assert SEVERSION == v"0.6.1"  # Performance tuning
 
 using UKSEABMLib.ParamTypes # Model parameters
 using UKSEABMLib.XAgents # Basic agent types
