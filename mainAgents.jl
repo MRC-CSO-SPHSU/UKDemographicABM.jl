@@ -4,7 +4,6 @@ A demographic-ABM simulation of the UK using Agents.jl package
 
 include("src/agentsjlspec.jl")
 
-#using ABMSim
 using Agents
 
 const simPars, dataPars, pars = load_parameters()
