@@ -25,7 +25,7 @@ Version | 1 Minute simulation with IPS of | IPS = 100,000 | IPS = 1,000,000
 0.4.4 | 58000 (~ 2.17 M A. + 536 MB) | ~ 153.5 secs (3.78 M , 926 MB) | 5 hours 1 min (38.95 M A. , 9.022 GB) 
 0.4.5 | 59000 (~2.23 M A. + 552 MB) | 151 secs (3.76 M, 922 MB) | 4 hours 53 min (38.83 M. A., 9.000 GB)
 
-The following is Agents.jl performance with IPS = 500 for 100 year 
+The following is Agents.jl performance with IPS = 500 for 100 year. Apparently there is an issue in the code and not Agents.j since the performance of Agents.jl in the [MiniDemographicABM.jl](https://github.com/MRC-CSO-SPHSU/MiniDemographicABM.jl) model is quite comparible with ABMSim.jl. 
 
 Version   |   Runtime  |  # Memory Allocation | Storage used | Comment 
 --- | --- | --- | --- | --- 

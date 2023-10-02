@@ -1,11 +1,18 @@
-# LPM.jl
+# UKDemographicABM.jl
 
 [![Code Style: Blue](https://img.shields.io/badge/code%20style-blue-4495d1.svg)](https://github.com/invenia/BlueStyle)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.8302495.svg)](https://doi.org/10.5281/zenodo.8302495)
 
-Implementation of the Lone Parents Model based on the SocioEconomics.jl Library. The initial code is based on the LoneParentsModel.jl package that was implemented together by Martin Hinsch and Atiyah Elsheikh.  
 
-Releases
-========
+### Title 
+
+UKDemographicABM.jl: A demographic Agent-based model of the UK
+
+### Description 
+
+Implementation of a demographic agent-based model of the UK based on the UKSEABMLib.jl [1] and employs an agent-based model simulator tool, ABMSim.jl [2] and Agents.jl package [3]. The implementation based on Agents.jl is just a first attempt and is subject to tuning. The model is a re-implementation of the demographic part of the Lone Parent Model implemented in Python [4]. The code is extended from from LoneParentsModel.jl V0.6.1 [5].  
+
+### Releases
 
 - **V0.1.0 (28.11.2022)** : The lone parent model (corresponding to LoneParentsModel.jl Version 0.6.1) based on the SocioEconomics.jl package V0.1.0 
 
@@ -34,10 +41,88 @@ Releases
    - V0.4.4 (23.5) : caching pre-computations and little tuning
  
 - **V0.5 (29.8.2023)**: Employing ABMSim V0.6 rather than MultiAgents, SE V0.5, bug fixes for mainAgents.jl, removing unnecessary code
-- **V0.6 (30.8.2023)**: Renaming SocioEconomics.jl to UKSEABMLib.jl 
+- **V0.6 (30.8.2023)**: Renaming SocioEconomics.jl to UKSEABMLib.jl, renaming LPM.jl to UKDemographicABM.jl 
 
-Performance Progress History 
-============================
+### Performance Progress History 
 
 See [here](https://github.com/MRC-CSO-SPHSU/LPM.jl/blob/master/Performance.md)
+
+### License 
+
+MIT License
+
+Copyright (c) 2023 Atiyah Elsheikh, MRC/CSO Social & Public Health Sciences Unit, School of Health and Wellbeing, University of Glasgow, Cf. [License](https://github.com/MRC-CSO-SPHSU/UKDemographicABM.jl/blob/master/LICENSE) for further information
+
+### Platform 
+
+This code was developed and experimented on 
+- Ubuntu 22.04.2 LTS
+- VSCode V1.71.2
+- Julia language V1.9.1
+- Agents.jl V5.14.0
+
+### Exeution 
+
+This model is making use of the [ABMSim.jl package](https://github.com/MRC-CSO-SPHSU/ABMSim.jl) which needs to be internally installed (currently not registered). 
+
+<code>  
+  > include("main.jl")
+  > # or 
+  > include("mainAgents.jl")  # for using Agents.jl 
+</code> 
+
+### References
+
+[1] [Atiyah Elsheikh,The UKSEABMLib.jl componants library for agent-based UK-oriented socioeconomics modelling applications, 2023. Zenodo. https://doi.org/10.5281/zenodo.8301125](https://github.com/MRC-CSO-SPHSU/UKSEABMLib.jl/edit/master)
+
+[2] [Atiyah Elsheikh, ABMSim.jl: An agent-based model simulator. Zenodo. https://doi.org/10.5281/zenodo.8284008, 2023](https://github.com/MRC-CSO-SPHSU/ABMSim.jl/blob/master)
+
+[3] George Datseris, Ali R. Vahdati and Timothy C. DuBois: Agents.jl: a performant and feature-full agent-based modeling software of minimal code complexity. SIMULATION. 2022. doi:10.1177/00375497211068820 
+
+[4] Umberto Gostoli and Eric Silverman Social and child care provision in kinship networks: An agent-based model. PLoS ONE 15(12): 2020 (https://doi.org/10.1371/journal.pone.0242779) 
+
+[5] [LoneParentsModel.jl V0.6.1](https://archive.softwareheritage.org/browse/origin/directory/?branch=refs/tags/V0.6.1&origin_url=https://github.com/MRC-CSO-SPHSU/LoneParentsModel.jl&snapshot=7b7095bbf44a61414ed6d1abec7861c162a10e60) 
+
+### Cite as 
+
+Atiyah Elsheikh. (2023). UKDemographicABM.jl: A demographic Agent-based model of the UK. Zenodo. https://doi.org/10.5281/zenodo.8302495
+
+Version 0.6:  
+
+Atiyah Elsheikh. (2023). UKDemographicABM.jl: A demographic Agent-based model of the UK (0.6). Zenodo. https://doi.org/10.5281/zenodo.8302496
+
+#### bibtex 
+
+@software{atiyah_elsheikh_2023_8302496,
+  author       = {Atiyah Elsheikh},
+  title        = {{UKDemographicABM.jl: A demographic Agent-based 
+                   model of the UK}},
+  month        = aug,
+  year         = 2023,
+  publisher    = {Zenodo},
+  doi          = {10.5281/zenodo.8302495},
+  url          = {https://doi.org/10.5281/zenodo.8302495}
+}
+
+version 0.6: 
+
+@software{atiyah_elsheikh_2023_8302496,
+  author       = {Atiyah Elsheikh},
+  title        = {{UKDemographicABM.jl: A demographic Agent-based 
+                   model of the UK}},
+  month        = aug,
+  year         = 2023,
+  publisher    = {Zenodo},
+  version      = {0.6},
+  doi          = {10.5281/zenodo.8302496},
+  url          = {https://doi.org/10.5281/zenodo.8302496}
+}
+
+### Acknowledgments 
+
+For the purpose of open access, the author(s) has applied a Creative Commons Attribution (CC BY) licence to any Author Accepted Manuscript version arising from this submission.
+
+### Fundings 
+
+[Dr. Atyiah Elsheikh](https://www.gla.ac.uk/schools/healthwellbeing/staff/atiyahelsheikh/), by the time of publishing Version 0.6 of this software, is a Research Software Engineer at MRC/CSO Social & Public Health Sciences Unit, School of Health and Wellbeing, University of Glasgow. He is in the Complexity in Health programme. He is supported  by the Medical Research Council (MC_UU_00022/1) and the Scottish Government Chief Scientist Office (SPHSU16). 
 
