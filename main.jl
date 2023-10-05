@@ -17,7 +17,7 @@ Since V0.6, UKSEABMLib.jl V0.6 is used instead of depracted SocioEconomics.jl ac
 include("src/maspec.jl")
 
 using ABMSim: ABMSimulatorP, FixedStepSimP
-using ABMSim: run!, setup!
+using ABMSim: run!, setup!, nagents
 using UKSEABMLib.Specification.Initialize: init!
 
 # const mainExample = FullPopEx()    # don't remove deads
@@ -48,6 +48,7 @@ const data = load_demography_data(dataPars)
 const ukTowns =  Vector{PersonTown}(declare_inhabited_towns(pars))
 const ukHouses = Vector{PersonHouse}()
 const ukPop = SimpleABM{Person}(declare_pyramid_population(pars))
+@info "population size " * string(nagents(ukPop))
 const ukDemography = MAModel(ukTowns, ukHouses, ukPop, pars, data, simPars.starttime)
 
 applycaching(::SimProcess) = false

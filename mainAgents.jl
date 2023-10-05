@@ -20,6 +20,7 @@ space = DemographicMap("The United Kingdom")
 model = DemographicABM(space,pars,simPars,data)
 declare_inhabited_towns!(model)
 declare_pyramid_population!(model)  # pyramid population
+@info "population size " * string(nagents(model))
 Initialize.init!(model,AgentsModelInit();verify=false)
 
 # Execute ...
