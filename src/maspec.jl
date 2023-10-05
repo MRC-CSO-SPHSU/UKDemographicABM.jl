@@ -1,4 +1,10 @@
+include("utils/utils.jl")
+add_to_loadpath!(pwd() * "/../ABMSim.jl")
+
 using Random
+using ABMSim: ABMSIMVERSION, init_abmsim
+@assert ABMSIMVERSION == v"0.7.1"
+init_abmsim()  # reset agents id counter
 
 include("spec/components.jl")
 include("spec/ma/model.jl")

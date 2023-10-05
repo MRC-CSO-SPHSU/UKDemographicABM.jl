@@ -4,7 +4,6 @@ A demographic-ABM simulation of the UK using Agents.jl package
 
 include("src/agentsjlspec.jl")
 
-#using ABMSim
 using Agents
 
 const simPars, dataPars, pars = load_parameters()
@@ -13,7 +12,7 @@ simPars.seed = 0; ParamTypes.seed!(simPars)
 simPars.verbose = false
 simPars.checkassumption = false
 simPars.sleeptime = 0
-pars.poppars.initialPop = 500
+pars.poppars.initialPop = 5000
 
 const data = load_demography_data(dataPars)
 
@@ -21,6 +20,7 @@ space = DemographicMap("The United Kingdom")
 model = DemographicABM(space,pars,simPars,data)
 declare_inhabited_towns!(model)
 declare_pyramid_population!(model)  # pyramid population
+@info "population size " * string(nagents(model))
 Initialize.init!(model,AgentsModelInit();verify=false)
 
 # Execute ...
